@@ -9,6 +9,7 @@ const socket = io();
 export function Stock(){
     const[stockChartXValue, setstockChartXValue] = useState([]);
     const[stockChartYValue, setstockChartYValue] = useState([]);
+    const textInput = useRef(null);
     
     useEffect(() => {  
         socket.on('stock_data', (data) => {
@@ -21,6 +22,14 @@ export function Stock(){
           }
           setstockChartXValue(stockChartXValuesFunction);
           setstockChartYValue(stockChartYValuesFunction);
+
+          Plotly.newPlot(document.getElementById('test'), [
+  {
+    x: stockChartXValuesFunction,
+    y: stockChartYValuesFunction,
+    type: 'scatter'
+  }
+]);
       });
       
     }, []);
@@ -34,15 +43,14 @@ export function Stock(){
   }
 ];
 
-Plotly.newPlot('test', data);
+console.log('docGet',document.getElementById('test'));
+console.log('textInp',textInput);
+console.log('data',data);
     
     return(
         <div className="Stock">
-        <head>
-	<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
-</head>
             <h1> Stock Market APP </h1>
-            <div id="test"></div>
+            <div id="test" ref={textInput}></div>
         </div>
     );
 }
