@@ -8,7 +8,7 @@ const socket = io();
 function App() {
   return (
     <div className="App">
-      <Stock/>
+      <Stock> </Stock>
     </div>
   );
 }
