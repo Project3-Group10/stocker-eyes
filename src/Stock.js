@@ -19,9 +19,8 @@ export function Stock(){
           for(var key in data['Time Series (Daily)']){
             stockChartXValuesFunction.push(key);
             stockChartYValuesFunction.push(data["Time Series (Daily)"][key]["1. open"]);
-            
-            
           }
+          
           let maxNumberY = Math.max(... stockChartYValuesFunction);
           let indexOfMaxNumberY = stockChartYValuesFunction.indexOf(String(maxNumberY));
           let indexOfMaxNumberX = stockChartXValuesFunction[indexOfMaxNumberY];
@@ -29,8 +28,7 @@ export function Stock(){
           console.log('Max Number: ' + maxNumberY);
           console.log('Index of Max Number X: ' + indexOfMaxNumberX);
           console.log('Index of Max Number Y: ' + indexOfMaxNumberY)
-          
-          console.log(stockChartYValuesFunction)
+          // console.log(stockChartYValuesFunction)
           
           let lowNumberY = Math.min(... stockChartYValuesFunction);
           let indexOfMinNumberY = stockChartYValuesFunction.indexOf(String(lowNumberY));
@@ -48,7 +46,7 @@ export function Stock(){
                   y: maxNumberY,
                   xref: 'x',
                   yref: 'y',
-                  text: 'Highest Amount',
+                  text: 'Highest Amount: ' + maxNumberY,
                   showarrow: true,
                   arrowhead: 7,
                   ax: 0,
@@ -59,7 +57,7 @@ export function Stock(){
                   y: lowNumberY,
                   xref: 'x',
                   yref: 'y',
-                  text: 'Low Amount',
+                  text: 'Low Amount: ' + lowNumberY,
                   showarrow: true,
                   arrowhead: 7,
                   ax: 0,
