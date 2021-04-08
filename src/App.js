@@ -7,13 +7,21 @@ import { GoogleLogin } from "react-google-login";
 import './App.css';
 const socket = io();
 
-const CLIENT_ID = "658725523197-fo8h1djnvhmpgb94h5a6uraibr3se627.apps.googleusercontent.com";
-
 function App() {
   const [isLOggedin, setIsLoggedIn] = useState(false);
   const [imageUri, setImageUri] = useState('');
   const [name, setName] = useState('');
   const [emailAddress, setEmailAddress] = useState('');
+  const [clientId, setClientId] = useState('');
+  
+  useEffect(() => {
+    
+      socket.on('googleInfo', (data) => {
+        setClientId(data['googleId']);
+        console.log(data['googleId']);
+      });
+      }, []);
+  
       useEffect(() => {
     
       socket.on('logged_in', (data) => {
@@ -61,7 +69,7 @@ function App() {
           <div className="LogIn">
             <p><a> Google Log In </a></p>
             <GoogleLogin
-              clientId={CLIENT_ID}
+              clientId={clientId}
               onSuccess={responseGoogleSuccess}
               onFailure={responseGoogleFail}
               />

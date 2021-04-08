@@ -16,7 +16,12 @@ app.secret_key = os.getenv("APP_SECRET_KEY")
 app.config['SESSION_COOKIE_NAME'] = 'google-login-session'
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=5)
 
-
+GOOGLE_CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID", None)
+GOOGLE_CLIENT_SECRET = os.environ.get("GOOGLE_CLIENT_SECRET", None)
+GOOGLE_DISCOVERY_URL = (
+    "https://accounts.google.com/.well-known/openid-configuration"
+    )
+    
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -30,6 +35,13 @@ socketio = SocketIO(app,
                     json=json,
                     manage_session=False)
 
+@socketio.on('connect')
+def on_connect():
+    print('User connected!')
+    socketio.emit('googleInfo', {'googleId': GOOGLE_CLIENT_ID})
+    
+
+
 @socketio.on('root')
 def hello_world():
     email = dict(session)['profile']['email']
@@ -37,6 +49,7 @@ def hello_world():
 
 @socketio.on('logged_in')
 def login(data):
+    print(data)
     print(data['Qs'])
     print(data['Qs']['oT'])
     data_dictionary = {
@@ -46,6 +59,8 @@ def login(data):
         'status' : True
     }
     socketio.emit('logged_in', data_dictionary, broadcast=True, include_self=True)
+    
+    
     
 
 
