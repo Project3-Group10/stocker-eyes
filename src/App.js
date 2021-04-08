@@ -7,6 +7,7 @@ import { GoogleLogin } from "react-google-login";
 import './App.css';
 const socket = io();
 
+const CLIENT_ID = "658725523197-fo8h1djnvhmpgb94h5a6uraibr3se627.apps.googleusercontent.com";
 
 function App() {
   const [isLOggedin, setIsLoggedIn] = useState(false);
@@ -60,7 +61,7 @@ function App() {
           <div className="LogIn">
             <p><a> Google Log In </a></p>
             <GoogleLogin
-              clientId="1060942685983-dp8dn668gcfdub64mf14kuchvjo63nm9.apps.googleusercontent.com"
+              clientId={CLIENT_ID}
               onSuccess={responseGoogleSuccess}
               onFailure={responseGoogleFail}
               />

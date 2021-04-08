@@ -36,9 +36,11 @@ def hello_world():
     socketio.emit('email', email, broadcast = True, include_self = True)
 
 @socketio.on('logged_in')
-def login(data): 
+def login(data):
+    print(data['Qs'])
+    print(data['Qs']['oT'])
     data_dictionary = {
-        'name' : data['Qs']['oT'] + data['Qs']['kR'],
+        'name' : data['Qs']['oT'], #+ data['Qs']['kR'],
         'imageUri' : data['Qs']['EI'],
         'emailAddress' : data['Qs']['zt'],
         'status' : True
