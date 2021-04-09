@@ -1,5 +1,9 @@
 from app import db
 
+subs = db.Table('subs', 
+    db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
+    db.Column('stock_id', db.Integer, db.ForeignKey('stock.id'))
+    )
 
 class User(db.Model):
     __tablename__ = "users"
@@ -13,4 +17,22 @@ class User(db.Model):
 
 
     def __repr__(self):
-        return '<User %r>' % self.id
+        return '<User %r>' % self.name
+
+
+class Stock(db.Model):
+    __tablename__ = "stock"
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=True)
+    
+    def __repr__(self):
+        return '<User %r>' % self.name 
+
+class Crypto(db.Model):
+    __tablename__ = "crypto"
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=True)
+    
+    def __repr__(self):
+        return '<User %r>' % self.name 
+
