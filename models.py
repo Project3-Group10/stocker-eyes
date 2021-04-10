@@ -1,5 +1,6 @@
 from app import db
 
+#check this.
 subs = db.Table('subs', 
     db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
     db.Column('stock_id', db.Integer, db.ForeignKey('stock.id'))
