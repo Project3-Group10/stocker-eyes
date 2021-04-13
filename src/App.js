@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import {useEffect, useState, useRef} from 'react';
 import io from 'socket.io-client';
@@ -8,7 +7,7 @@ import './App.css';
 const socket = io();
 
 function App() {
-  const [isLOggedin, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [imageUri, setImageUri] = useState('');
   const [name, setName] = useState('');
   const [emailAddress, setEmailAddress] = useState('');
@@ -46,7 +45,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <Link to="/">HOME</Link> | <Link to="/profile"> Profile </Link>| <Link to="/login">Log In</Link> |{ isLOggedin ? <Link to="/authorize"> Authorize </Link> : '|' + <Link to="/logout">Log Out</Link> }
+      <Link to="/">HOME</Link> | <Link to="/profile"> Profile </Link>| <Link to="/login">Log In</Link> |{ isLoggedIn ? <Link to="/authorize"> Authorize </Link> : '|' + <Link to="/logout">Log Out</Link> }
         <Switch>
           
           <Route exact path="/">
@@ -54,7 +53,7 @@ function App() {
           </Route>
           
           <Route path="/profile">
-          <p> Welcom to the profile page </p>
+          <p> Welcome to the profile page </p>
           </Route>
           
           <Route path="/authorize">
