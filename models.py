@@ -1,38 +1,38 @@
-from app import db
+from app import DB
 
 #check this.
-subs = db.Table('subs', 
-    db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
-    db.Column('stock_id', db.Integer, db.ForeignKey('stock.id'))
+subs = DB.Table('subs', 
+    DB.Column('user_id', DB.Integer, DB.ForeignKey('user.id')),
+    DB.Column('stock_id', DB.Integer, DB.ForeignKey('stock.id'))
     )
 
-class User(db.Model):
+class User(DB.Model):
     __tablename__ = "users"
-    id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(100), unique=True, nullable=False)
-    name = db.Column(db.String(100), nullable=True)
-    avatar = db.Column(db.String(200))
-    active = db.Column(db.Boolean, default=False)
-    tokens = db.Column(db.Text)
-    #created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow())
+    id = DB.Column(DB.Integer, primary_key=True)
+    email = DB.Column(DB.String(100), unique=True, nullable=False)
+    name = DB.Column(DB.String(100), nullable=True)
+    avatar = DB.Column(DB.String(200))
+    active = DB.Column(DB.Boolean, default=False)
+    tokens = DB.Column(DB.Text)
+    #created_at = DB.Column(DB.DateTime, default=datetime.datetime.utcnow())
 
 
     def __repr__(self):
         return '<User %r>' % self.name
 
 
-class Stock(db.Model):
+class Stock(DB.Model):
     __tablename__ = "stock"
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=True)
+    id = DB.Column(DB.Integer, primary_key=True)
+    name = DB.Column(DB.String(100), nullable=True)
     
     def __repr__(self):
         return '<User %r>' % self.name 
 
-class Crypto(db.Model):
+class Crypto(DB.Model):
     __tablename__ = "crypto"
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=True)
+    id = DB.Column(DB.Integer, primary_key=True)
+    name = DB.Column(DB.String(100), nullable=True)
     
     def __repr__(self):
         return '<User %r>' % self.name 
