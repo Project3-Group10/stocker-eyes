@@ -4,7 +4,7 @@ import requests
 
 load_dotenv(find_dotenv())
 def fetchAPI():
-    ALPHA_API_KEY = os.getenv('Alpha_Vantage_Key')
+    ALPHA_API_KEY = os.getenv('ALPHA_API_KEY')
     SYMBOL = 'OVV'
     URL = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=' + SYMBOL + '&outputsize&apikey=' + ALPHA_API_KEY
     r = requests.get(URL)
