@@ -1,4 +1,4 @@
-.test{
-      height: 300px;
-    width: 400px;
+.NavBar{
+  background: linear-gradient(90deg, rgb(110, 94, 254) 0%, rgb(73, 63, 252, 1) 100%);
+  display: -webkit-box;
 }

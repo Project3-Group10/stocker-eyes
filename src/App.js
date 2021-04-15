@@ -1,18 +1,32 @@
+import React from 'react';
+import { Router } from 'react-router-dom';
+import history from './services/history';
+import Routes from './routes';
+import NavBar from "./components/NavBar";
 import './App.css';
-import Home from './Home';
-import io from 'socket.io-client';
-import {useEffect, useState, useRef} from 'react';
-import GAuth from "./GAuth";
 
 
-const socket = io();
+
 function App() {
   return (
-    <div className="App">
-      <Home sock={socket} />
+  <div>
+    <div className="MainContainer">
+      <div className="NavBar">
+        <NavBar />
+      </div>
+
+      <div className="Routers">
+        <Router history={history}>
+          <Routes />
+        </Router>
+      </div>
+    
     </div>
+  </div>
   );
 }
+
+
 
 export default App;
 

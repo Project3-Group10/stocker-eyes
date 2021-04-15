@@ -1,0 +1,44 @@
+
+
+
+  .navigation {
+    background-color: grey;
+    height: 70px;
+    width: 100%;
+    position: fixed;
+    z-index: 5;
+  }
+
+  .menuItem{
+    height: 100%;
+    width: calc(100%/3);;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+  }
+
+  .nav-menu{
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 202px;
+    list-style: none;
+    text-align: center;
+    width: 70vw;
+    justify-content: end;
+    margin-right: 2rem;
+    font-size: 37px;
+  }
+
+  .nav-links {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+  }
+
+  .nav-links:hover{
+    background-color:#6d76f7;
+    border-radius: 4px;
+    transition: all 0.2s ease-out;
+  }
+  
