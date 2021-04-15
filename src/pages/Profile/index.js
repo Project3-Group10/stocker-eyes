@@ -2,7 +2,7 @@ import React from 'react';
 import {useEffect, useState} from 'react';
 import socket from '../../socket';
 
-function Profile(){
+const Profile = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [imageUri, setImageUri] = useState('');
     const [name, setName] = useState('');

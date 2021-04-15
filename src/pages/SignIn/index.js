@@ -3,7 +3,8 @@ import {useEffect, useState} from 'react';
 import  GoogleLogin  from "react-google-login";
 import socket from '../../socket';
 import './index.css'
-export function GAuth() {
+
+const GAuth = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [clientId, setClientId] = useState('');
 

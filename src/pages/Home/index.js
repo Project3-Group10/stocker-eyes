@@ -4,7 +4,7 @@ import Plotly from 'plotly.js-finance-dist';
 import './index.css';
 import socket from '../../socket';
 
-export function Home(props) {
+const Home = (props) => {
 
     const [expandMain, setexpandMain] = useState({ dow: 1, sp: 1, nasdaq: 1 });
 
