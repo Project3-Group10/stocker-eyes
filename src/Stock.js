@@ -3,13 +3,14 @@ import {useEffect, useState, useRef} from 'react';
 import io from 'socket.io-client';
 import Plotly from 'plotly.js-finance-dist';
 
-
-const socket = io();
-
-export function Stock(){
+export function Stock(props){
+  
+    const { sock } = props;
+    const socket = sock;
     const[stockChartXValue, setstockChartXValue] = useState([]);
     const[stockChartYValue, setstockChartYValue] = useState([]);
     const textInput = useRef(null);
+    
     
     useEffect(() => {  
         socket.on('stock_data', (data) => {
@@ -27,8 +28,14 @@ export function Stock(){
           
           console.log('Max Number: ' + maxNumberY);
           console.log('Index of Max Number X: ' + indexOfMaxNumberX);
+<<<<<<< HEAD
           console.log('Index of Max Number Y: ' + indexOfMaxNumberY)
           // console.log(stockChartYValuesFunction)
+=======
+          console.log('Index of Max Number Y: ' + indexOfMaxNumberY);
+          
+          console.log(stockChartYValuesFunction);
+>>>>>>> 3312a0ce5ed4d08cbd01beac34601c6cb32d6baa
           
           let lowNumberY = Math.min(... stockChartYValuesFunction);
           let indexOfMinNumberY = stockChartYValuesFunction.indexOf(String(lowNumberY));
@@ -92,7 +99,7 @@ export function Stock(){
     
     return(
         <div className="Stock">
-            <h1> Stock Market APP </h1>
+            <h1> Tesla </h1>
             <div id="test" className="test" ref={textInput}></div>
         </div>
     );
