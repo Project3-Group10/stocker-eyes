@@ -18,7 +18,7 @@ function Profile(){
     }, []);
 
     return(
-        <div>
+        <div className="container">
           <img src={imageUri} alt="new"/>
           <h1> Name: {name} </h1>
           <h2> Email Address: {emailAddress} </h2>

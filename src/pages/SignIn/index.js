@@ -2,7 +2,7 @@ import React from 'react';
 import {useEffect, useState} from 'react';
 import  GoogleLogin  from "react-google-login";
 import socket from '../../socket';
-
+import './index.css'
 export function GAuth() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [clientId, setClientId] = useState('');
@@ -23,12 +23,16 @@ export function GAuth() {
   }
 
   return (
-      <div>
-        <GoogleLogin class="GoogleButton"
+      <div className="registerContainer">
+        <div> SOFTWARE PROGRAMMING SUCKS </div>
+        
+        <div className="googleContainer">
+        <GoogleLogin
             clientId={clientId}
             onSuccess={responseGoogleSuccess}
             onFailure={responseGoogleFail}
         />
+      </div>
       </div>
   );
 }

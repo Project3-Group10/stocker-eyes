@@ -1,4 +1,13 @@
-.test{
-    height: 300px;
-  width: 400px;
+.registerContainer{
+  height: 100%;
+  width: 100%;
+  background-color: lightblue;
+  position: absolute;
+  left: calc(5%/2);
+  top: 90px;
+  overflow: hidden;
+  margin-top: 34px;
+  margin-left: -37px;
+  overflow-x: hidden;
 }
+
