@@ -37,6 +37,14 @@ SOCKETIO = SocketIO(APP,
                     json=json,
                     manage_session=False)
 
+def addNewUserDB(user_data):
+    #Addding the user to the db when login
+    newUser = models.User(id = 2, email = user_data['emailAddress'], name = user_data['name'], avatar = user_data['imageUri'], status = user_data['status'])
+    DB.session.add(newUser)
+    DB.session.commit()
+    #allUsers = models.Person.query.all()
+    
+    
 
 @SOCKETIO.on('connect')
 def on_connect():
@@ -65,6 +73,13 @@ def login(data):
         'status': True
     }
     SOCKETIO.emit('logged_in', data_dictionary, broadcast=True, include_self=True)
+    #x = models.User.query.filter_by(name = data_dictionary['name']).first()
+    #if x is None: 
+    addNewUserDB(data_dictionary)
+   # else: 
+       # print(x)
+        
+    
 
 
 @APP.route('/', defaults={"filename": "index.html"})
