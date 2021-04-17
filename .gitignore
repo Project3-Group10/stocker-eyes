@@ -2,8 +2,8 @@
 
 # dependencies
 /node_modules
-/__pychache__
 /.pnp
+/.vscode
 .pnp.js
 .env
 # testing
@@ -23,9 +23,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-<<<<<<< HEAD
 .env
 __pycache__/
-=======
-requirements.txt
->>>>>>> 3312a0ce5ed4d08cbd01beac34601c6cb32d6baa

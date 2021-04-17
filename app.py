@@ -52,6 +52,10 @@ def hello_world():
     email = dict(session)['profile']['email']
     SOCKETIO.emit('email', email, broadcast=True, include_self=True)
 
+@SOCKETIO.on('isLoggedIn')
+def isLoggedIn(data):    
+    print("HELLO PLESE CHECK THIS")
+    print(data)
 
 @SOCKETIO.on('logged_in')
 def login(data):

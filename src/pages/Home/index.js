@@ -5,7 +5,7 @@ import './index.css';
 import socket from '../../socket';
 
 const Home = (props) => {
-
+    console.log(props);
     const [expandMain, setexpandMain] = useState({ dow: 1, sp: 1, nasdaq: 1 });
 
     const [stockChartXValue, setstockChartXValue] = useState([]);
@@ -100,7 +100,6 @@ const Home = (props) => {
         socket.on('stock_data', (data) => {
             fetch_stock_data(data);
         });
-
     }, []);
 
 

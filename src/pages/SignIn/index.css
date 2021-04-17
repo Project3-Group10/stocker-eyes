@@ -1,7 +1,7 @@
 .registerContainer{
   height: 100%;
   width: 100%;
-  background-color: lightblue;
+  background-color: turquoise;
   position: absolute;
   left: calc(5%/2);
   top: 90px;

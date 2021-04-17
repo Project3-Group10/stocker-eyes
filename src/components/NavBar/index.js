@@ -1,24 +1,31 @@
 import React from 'react';
 import './index.css';
-import { Link } from 'react-router-dom';
-import {MenuItems} from './MenuItems';
+import { useEffect, useState, useRef } from 'react';
+
 
 function NavBar(){
-    
+    const [state, setState] = useState('');
+
+    const nav_home = () => {
+        setState(prevState => [...prevState, 'home']);
+    };
+
+    const nav_register = () => {
+        setState(prevState => [...prevState, 'register']);
+    };
+
+    const nav_profile = () => {
+        setState(prevState => [...prevState, 'profile']);
+    };
+
     return(
-        <nav className="NavBarItems">
-            <ul className="nav-menu">
-                {MenuItems.map((item, index)=>{
-                    return(
-                        <li key={index}>
-                            <a className={item.Cname} href={item.url}>
-                                {item.title}
-                            </a>
-                        </li>
-                    );
-                })}
-            </ul>
-        </nav>
+        <div className="NavBarItems">
+            <div className="nav-menu">
+                <button onClick={()=>nav_home}> Home </button>
+                <button onClick={()=>nav_home}> Home </button>
+                <button onClick={()=>nav_home}> Home </button>
+            </div>
+        </div>
     );
 }
 

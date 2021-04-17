@@ -1,0 +1,13 @@
+.container{
+    background: turquoise;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: calc(5%/2);
+    top: 90px;
+    overflow: hidden;
+    margin-top: 34px;
+    margin-left: -10px;
+    overflow-x: hidden;
+    color: black;
+}
