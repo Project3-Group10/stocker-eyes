@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import Home from '../src/pages/Home';
-import GAuth from '../src/pages/SignIn';
 import Profile from '../src/pages/Profile';
 import  { GoogleLogin, GoogleLogout }  from "react-google-login";
 import socket from './socket';
@@ -86,14 +85,15 @@ function App() {
     <div className="home">
 
       <div className="navigation">
-                <button onClick={()=>nav_home()}> Home </button>
-                <button onClick={()=>nav_register()}> Register </button>
-                <button onClick={()=>nav_profile()}> Profile </button>
-                {
+                <button className="menuItem" onClick={()=>nav_home()}> Home </button>
+                <button className="menuItem" onClick={()=>nav_register()}> Register </button>
+                <button className="menuItem" onClick={()=>nav_profile()}> Profile </button>
+      
+      {
       isLoggedIn ? 
       <div> 
             <GoogleLogout
-            clientId='658725523197-fo8h1djnvhmpgb94h5a6uraibr3se627.apps.googleusercontent.com'
+            clientId={clientId}
             onLogoutSuccess={onSuccess}
     />
       </div> 
@@ -105,7 +105,7 @@ function App() {
     
     { 
     homeState ? 
-      <div className="homeContainer">
+      <div className="mainContainer">
           <Home />
       </div> 
       : 
@@ -115,10 +115,10 @@ function App() {
     {
       registerState ?
       
-      <div className="registerContainer"> 
+      <div className="mainContainer"> 
       <div className="googleContainer">
         <GoogleLogin
-            clientId='658725523197-fo8h1djnvhmpgb94h5a6uraibr3se627.apps.googleusercontent.com'
+            clientId={clientId}
             onSuccess={responseGoogleSuccess}
             onFailure={responseGoogleFail}
             cookiePolicy={'single_host_origin'}
@@ -130,7 +130,7 @@ function App() {
     
     {
       profileState ?
-      <div className="profileContainer"> 
+      <div className="mainContainer"> 
         <Profile isLogin={isLoggedIn} imageUrl={imageUri} name={name} emailAddress={emailAddress}/>
       </div> : null
     }

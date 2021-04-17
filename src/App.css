@@ -1,5 +1,17 @@
+body {
+  background-color: #18191A;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
 
   .navigation {
     background-color: grey;
@@ -18,27 +30,26 @@
     font-size: 1.2rem;
   }
 
-  .nav-menu{
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    grid-gap: 202px;
-    list-style: none;
-    text-align: center;
-    width: 70vw;
-    justify-content: end;
-    margin-right: 2rem;
-    font-size: 37px;
+  .menuItem:hover {
+    background-color: red;
   }
 
-  .nav-links {
-    color: white;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
+  .home{
+    background-color: #18191A;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  .nav-links:hover{
-    background-color:#6d76f7;
-    border-radius: 4px;
-    transition: all 0.2s ease-out;
+  .mainContainer{
+    height: 80%;
+    width: 95%;
+    background-color: lightblue;
+    position: absolute;
+    left: calc(5%/2);
+    top: 90px;
+    overflow: hidden;
   }
-  

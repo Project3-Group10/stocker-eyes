@@ -5,7 +5,6 @@ import './index.css';
 import socket from '../../socket';
 
 const Home = (props) => {
-    console.log(props);
     const [expandMain, setexpandMain] = useState({ dow: 1, sp: 1, nasdaq: 1 });
 
     const [stockChartXValue, setstockChartXValue] = useState([]);
@@ -105,7 +104,7 @@ const Home = (props) => {
 
     return (
         <div className="home">
-            <div className="stockContainer">
+            <div className="container">
                 <div className={`stockArea dow ${expandMain.dow? '' : 'hide'}`} onClick={expandStock} >
                     <div id="test1" className="stock"> </div>
                     <div id="news1" className="newsArea newsDOW"></div>

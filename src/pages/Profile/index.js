@@ -16,18 +16,17 @@ export const Profile = (props) => {
       setImageUri(props.imageUrl);
       setName(props.name);
       setEmailAddress(props.emailAddress);
-      
     }, [])
 
     return(
-        <div className="container">
+        <div className="profileContainer">
           { isLoggedIn ?
           <div>
           <img src={imageUri} alt="new"/>
           <h1> Name: {name} </h1>
           <h2> Email Address: {emailAddress} </h2>
           </div>
-            : <div> You are not logged in </div>
+            : <div><h1> You are not logged in </h1></div>
         }
           </div>
     );
