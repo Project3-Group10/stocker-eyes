@@ -27,11 +27,11 @@ class Stock(DB.Model):
     name = DB.Column(DB.String(20), primary_key=True)
     dateDB = DB.Column(DB.String(20), nullable=False)
     open_price = DB.Column(DB.String(100))
-    #high_price = DB.Column(DB.String(100))
-   # low_price = DB.Column(DB.String(100))
+    high_price = DB.Column(DB.String(100))
+    low_price = DB.Column(DB.String(100))
     close_price = DB.Column(DB.String(100))
-    #adjusted_clase_price = DB.Column(DB.String(100))
-   # volume_price = DB.Column(DB.String(100))
+    adjusted_clase_price = DB.Column(DB.String(100))
+    volume_price = DB.Column(DB.String(100))
     
    # users = DB.relationship('User', secondary=association_table, backref='Stock')
     def __repr__(self):
