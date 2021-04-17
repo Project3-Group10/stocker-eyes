@@ -9,13 +9,12 @@ from app import DB
 
 #User table 
 class User(DB.Model):
-   # __tablename__ = 'user'
-    id = DB.Column(DB.Integer, primary_key=True)
-    email = DB.Column(DB.String(100), unique=True, nullable=False)
+    #__tablename__ = 'user'
+    #id = DB.Column(DB.Integer, primary_key=True)
+    email = DB.Column(DB.String(100), primary_key=True)
     name = DB.Column(DB.String(100), nullable=True)
     avatar = DB.Column(DB.String(200))
     status = DB.Column(DB.Boolean, default=False)
-   
     #tokens = DB.Column(DB.Text)
     #stocks = DB.relationship('Stock', secondary=association_table, backref='User')
   
@@ -24,20 +23,26 @@ class User(DB.Model):
 
 #Stock Table 
 class Stock(DB.Model):
-    __tablename__ = "stock"
-    id = DB.Column(DB.Integer, primary_key=True)
-    name = DB.Column(DB.String(100), nullable=True)
-   # users = DB.relationship('User', secondary=association_table, backref='Stock')
+    #__tablename__ = "stock"
+    name = DB.Column(DB.String(20), primary_key=True)
+    dateDB = DB.Column(DB.String(20), nullable=False)
+    open_price = DB.Column(DB.String(100))
+    #high_price = DB.Column(DB.String(100))
+   # low_price = DB.Column(DB.String(100))
+    close_price = DB.Column(DB.String(100))
+    #adjusted_clase_price = DB.Column(DB.String(100))
+   # volume_price = DB.Column(DB.String(100))
     
+   # users = DB.relationship('User', secondary=association_table, backref='Stock')
     def __repr__(self):
-        return '<Stock %r>' % self.name 
+        return f"Stock('{self.name}', '{self.dateDB}', '{self.close_price}')"
 
 #Crypto Table do the relationship TODO 
 class Crypto(DB.Model):
-    __tablename__ = "crypto"
-    id = DB.Column(DB.Integer, primary_key=True)
-    name = DB.Column(DB.String(100), nullable=True)
+    #__tablename__ = "crypto"
+    name = DB.Column(DB.String(100), primary_key=True)
+    closeprice = DB.Column(DB.String(100), nullable=False)
     
     def __repr__(self):
-        return '<Crypto %r>' % self.name 
+        return f"Crypto('{self.name}', '{self.closeprice}')"
 
