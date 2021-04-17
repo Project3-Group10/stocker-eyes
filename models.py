@@ -24,7 +24,8 @@ class User(DB.Model):
 #Stock Table 
 class Stock(DB.Model):
     #__tablename__ = "stock"
-    name = DB.Column(DB.String(20), primary_key=True)
+    id = DB.Column(DB.Integer, primary_key=True)
+    name = DB.Column(DB.String(20), nullable=False)
     dateDB = DB.Column(DB.String(20), nullable=False)
     open_price = DB.Column(DB.String(100))
     high_price = DB.Column(DB.String(100))
@@ -40,6 +41,7 @@ class Stock(DB.Model):
 #Crypto Table do the relationship TODO 
 class Crypto(DB.Model):
     #__tablename__ = "crypto"
+    id = DB.Column(DB.Integer, primary_key=True)
     name = DB.Column(DB.String(100), primary_key=True)
     closeprice = DB.Column(DB.String(100), nullable=False)
     
