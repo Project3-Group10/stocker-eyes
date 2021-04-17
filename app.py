@@ -69,7 +69,21 @@ def addStockDB(stock_data):
         DB.session.add(newStock)
     DB.session.commit()
     
-
+#GET from DB 
+def getUserDB():
+    allUsers = models.User.query.all()
+    users = {}
+    for person in allUsers:
+        users[person.email] = [person.name, person.avatar, person.status]
+    print(users)
+    return users
+    
+def getStocksDB():
+    allStocks = models.Stock.query.all()
+    stocksDic = {}
+    for stock in allStocks:
+        stocksDic[stock.id] = [stock.name, stock.dateDB, stock.open_price, stock.high_price, stock.low_price, stock.close_price, stock.adjusted_clase_price, stock.volume_price]
+    return stocksDic
 
 
 @SOCKETIO.on('connect')
