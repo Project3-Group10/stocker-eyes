@@ -2,7 +2,9 @@ import React from 'react';
 import { useEffect, useState, useRef } from 'react';
 import Plotly from 'plotly.js-finance-dist';
 import "../css/Home.css"
-import socket from "../utils/socket";
+//import socket from "../utils/socket";
+import io from 'socket.io-client';
+const socket = io();
 
 const Home = (props) => {
 const [expandMain, setexpandMain] = useState({ dow: 1, sp: 1, nasdaq: 1 });
@@ -97,6 +99,7 @@ const [expandMain, setexpandMain] = useState({ dow: 1, sp: 1, nasdaq: 1 });
 
     useEffect(() => {
         socket.on('stock_data', (data) => {
+            console.log({stock_data: data });
             fetch_stock_data(data);
         });
     }, []);
