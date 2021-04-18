@@ -5,6 +5,7 @@ Flask-SQLAlchemy
 psycopg2
 requests
 python-dotenv
+google-api-python-client
 
 pylint
 pylint-django
