@@ -4,10 +4,7 @@ import Home from '../src/pages/Home';
 import Profile from '../src/pages/Profile';
 import  { GoogleLogin, GoogleLogout }  from "react-google-login";
 import socket from './socket';
-import Cookies from 'js-cookie';
-
-
-
+import { refreshTokenSetup } from './utils/refreshToken';
 import { useEffect, useState, useRef } from 'react';
 
 function App() {
@@ -20,6 +17,7 @@ function App() {
   const [name, setName] = useState('');
   const [emailAddress, setEmailAddress] = useState('');
   
+
   useEffect(() => {
     socket.on('googleInfo', (data) => {
       setClientId(data['googleId']);
@@ -30,10 +28,12 @@ function App() {
       setImageUri(data['imageUri']);
       setName(data['name']);
       setEmailAddress(data['emailAddress']);
+      localStorage.setItem('user', data['name']);
       setIsLoggedIn(tempIsLoggedIn => tempIsLoggedIn = true);
+      console.log('user logged in')
     });
 
-    readCookie();
+    //readCookie();
 
   }, []);
 
@@ -41,10 +41,7 @@ function App() {
     console.log('FAILED GOOGLE SIGNED IN');
   }
 
-  const onSuccess=() => {
-    console.log('logged out')
-    Cookies.clear("user");
-  }
+
 
   const responseGoogleSuccess=(response)=>{
     setIsLoggedIn(tempIsLoggedIn => tempIsLoggedIn = true);
@@ -52,16 +49,17 @@ function App() {
     console.log(response);
     socket.emit('logged_in', response);
     Profile({loggedIn: true});
-    Cookies.set("user", "logInTrue");
+    refreshTokenSetup(response);
   }
 
-  const readCookie = () => {
-    const user = Cookies.get("user");
-    if(user){
-      setIsLoggedIn(true);
-    }
-  }
+  // const readCookie = () => {
+  //   const user = Cookies.get("user");
+  //   if(user){
+  //     setIsLoggedIn(true);
+  //   }
+  // }
 
+  
   const nav_home = () => {
     setHomeState(tempState => tempState = true);
     setRegisterState(tempState => tempState = false);
@@ -88,17 +86,6 @@ function App() {
                 <button className="menuItem" onClick={()=>nav_home()}> Home </button>
                 <button className="menuItem" onClick={()=>nav_register()}> Register </button>
                 <button className="menuItem" onClick={()=>nav_profile()}> Profile </button>
-      
-      {
-      isLoggedIn ? 
-      <div> 
-            <GoogleLogout
-            clientId={clientId}
-            onLogoutSuccess={onSuccess}
-    />
-      </div> 
-      : null
-    }
         </div>
       
       
@@ -131,7 +118,7 @@ function App() {
     {
       profileState ?
       <div className="mainContainer"> 
-        <Profile isLogin={isLoggedIn} imageUrl={imageUri} name={name} emailAddress={emailAddress}/>
+        <Profile isLogin={isLoggedIn} imageUrl={imageUri} name={name} emailAddress={emailAddress} clientId={clientId} />
       </div> : null
     }
 
@@ -140,4 +127,3 @@ function App() {
 }
 
 export default App;
-

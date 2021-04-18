@@ -1,7 +1,9 @@
 import React from 'react';
 import {useEffect, useState} from 'react';
-import ReactDOM from 'react-dom';
+import { GoogleLogout } from "react-google-login";
 import './index.css';
+import Cookies from 'js-cookie';
+
 const defaultLoggedIn = false;
 
 export const Profile = (props) => {
@@ -17,7 +19,11 @@ export const Profile = (props) => {
       setName(props.name);
       setEmailAddress(props.emailAddress);
     }, [])
-
+    
+    const onSuccess=() => {
+      console.log('logged out')
+    }
+    
     return(
         <div className="profileContainer">
           { isLoggedIn ?
@@ -25,6 +31,13 @@ export const Profile = (props) => {
           <img src={imageUri} alt="new"/>
           <h1> Name: {name} </h1>
           <h2> Email Address: {emailAddress} </h2>
+          <div className="googleLogOut"> 
+            <GoogleLogout
+            clientId={props.clientId}
+            onLogoutSuccess={onSuccess}
+            buttonText="Log Out"
+          />
+          </div>
           </div>
             : <div><h1> You are not logged in </h1></div>
         }
