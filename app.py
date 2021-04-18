@@ -92,6 +92,7 @@ def getStocksDB():
 def on_connect():
     print('User connected!')
     # print(data)
+    print('GOOGLE SIGNED IN!')
     SOCKETIO.emit('stock_data', api_data, broadcast=True, include_self=True)
     # print(api_data['Time Series (Daily)'][yesterday]['1. open'])
     name1 = 'OVV'
@@ -110,6 +111,10 @@ def hello_world():
     email = dict(session)['profile']['email']
     SOCKETIO.emit('email', email, broadcast=True, include_self=True)
 
+@SOCKETIO.on('isLoggedIn')
+def isLoggedIn(data):    
+    print("HELLO PLESE CHECK THIS")
+    print(data)
 
 @SOCKETIO.on('Login')
 def token_validation(data):

@@ -1,4 +1,55 @@
-.test{
-      height: 300px;
-    width: 400px;
+body {
+  background-color: #18191A;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+  .navigation {
+    background-color: grey;
+    height: 70px;
+    width: 100%;
+    position: fixed;
+    z-index: 5;
+  }
+
+  .menuItem{
+    height: 100%;
+    width: calc(100%/3);;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+  }
+
+  .menuItem:hover {
+    background-color: red;
+  }
+
+  .home{
+    background-color: #18191A;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .mainContainer{
+    height: 80%;
+    width: 95%;
+    background-color: lightblue;
+    position: absolute;
+    left: calc(5%/2);
+    top: 90px;
+    overflow: hidden;
+  }

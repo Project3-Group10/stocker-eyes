@@ -6,9 +6,9 @@ psycopg2
 requests
 python-dotenv
 google-api-python-client
-
 pylint
 pylint-django
 pylint-flask
 pylint-flask-sqlalchemy
+pylint-plugin-utils
 pylint-plugin-utils

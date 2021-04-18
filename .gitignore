@@ -2,7 +2,9 @@
 
 # dependencies
 /node_modules
+/lib
 /.pnp
+/.vscode
 .pnp.js
 .env
 # testing
@@ -24,3 +26,7 @@ yarn-error.log*
 
 .env
 __pycache__/
+
+# Ignore IDE specific files
+.vscode/
+lib/
