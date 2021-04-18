@@ -1,16 +1,13 @@
+import React from 'react';
 import './App.css';
-import Stock from './Stock.js';
-import io from 'socket.io-client';
-import {useEffect, useState, useRef} from 'react';
-import GAuth from "./GAuth";
+import Login from "./Components/Login";
+import Logout from "./Components/Logout";
 
-
-const socket = io();
 function App() {
   return (
     <div className="App">
-        <GAuth />
-        <Stock />
+        <Login />
+        <Logout />
     </div>
   );
 }
