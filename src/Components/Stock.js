@@ -92,7 +92,7 @@ export function Stock(){
     
     return(
         <div className="Stock">
-            <h1> Stock Market APP </h1>
+            <h1> NASDAQ </h1>
             <div id="test" className="test" ref={textInput}></div>
         </div>
     );

@@ -12,6 +12,9 @@ function App() {
   return (
       <Router>
           <div>
+              {/* To add links to other directories, follow this guide https://reactrouter.com/web/guides/quick-start*/}
+              {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
               <Switch>
                   <Route path="/">
                       <Home />
