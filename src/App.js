@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Home from "./Components/Home";
+import Register from "./Components/Register";
 import {
   BrowserRouter as Router,
   Switch,
@@ -33,7 +34,7 @@ function App() {
                       <Home />
                   </Route>
                   <Route path="/register">
-                      Register
+                      <Register />
                   </Route>
                   <Route path="/profile">
                       Profile
