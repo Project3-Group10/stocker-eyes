@@ -3,21 +3,21 @@ from app import DB
 #Many to many relationship table User and Stocks
 user_identifie = DB.Table('user_identifie',
     DB.Column('stock_id', DB.Integer, DB.ForeignKey('stocks.stock_id')),
-    DB.Column('user_id', DB.Integer, DB.ForeignKey('users.user_id'))
+    DB.Column('user_id', DB.String(200), DB.ForeignKey('users.user_id'))
 )
 #User table 
 class User(DB.Model):
     __tablename__ = 'users'
-    user_id = DB.Column(DB.Integer, primary_key=True)
+    user_id = DB.Column(DB.String(200), primary_key=True)
     email = DB.Column(DB.String(100), nullable=True)
     name = DB.Column(DB.String(100), nullable=True)
     avatar = DB.Column(DB.String(200))
-    status = DB.Column(DB.Boolean, default=False)
+    #status = DB.Column(DB.Boolean, default=False)
     #tokens = DB.Column(DB.Text)
     #stocks = DB.relationship('Stock', secondary=association_table, backref='User')
   
     def __repr__(self):
-        return '<User %r>' % self.name
+        return f"User('{self.email}', '{self.name}', '{self.avatar}')"
 
 #Stock Table 
 class Stock(DB.Model):
@@ -35,7 +35,7 @@ class Stock(DB.Model):
                                secondary=user_identifie, 
                                backref=DB.backref('stocks', lazy='dynamic'))
     def __repr__(self):
-        return f"Stock('{self.name}', '{self.dateDB}', '{self.close_price}')"
+        return f"Stock('{self.name}', '{self.dateDB}', '{self.open_price}','{self.high_price}', '{self.low_price}', '{self.close_price}', '{self.adjusted_clase_price}','{self.volume_price}')"
 
 #Crypto Table do the relationship TODO 
 class Crypto(DB.Model):
