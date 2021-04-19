@@ -3,10 +3,12 @@ import { useEffect, useState, useRef } from 'react';
 import Plotly from 'plotly.js-finance-dist';
 import "../css/Home.css"
 import socket from "./utils/socket";
+import Stocks from "./Stock";
 
 const Home = (props) => {
     
     const [expandMain, setexpandMain] = useState({ dow: 1, sp: 1, nasdaq: 1 });
+    
     const [stockChartXValue, setstockChartXValue] = useState([]);
     const [stockChartYValue, setstockChartYValue] = useState([]);
 
