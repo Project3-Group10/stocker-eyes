@@ -107,7 +107,7 @@ const Home = (props) => {
 
     return (
         <div className="home">
-            <div className="container">
+            <div className="mainContainer">
                 <div className={`stockArea dow ${expandMain.dow? '' : 'hide'}`} onClick={expandStock} >
                     <div id="test1" className="stock"> </div>
                     <div id="news1" className="newsArea newsDOW"></div>

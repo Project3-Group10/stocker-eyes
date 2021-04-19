@@ -19,7 +19,7 @@ const SearchBox = () => {
     }
 
     return(
-        <div>
+        <div className="search-box">
         <input
             placeholder="Search..."
             ref={inputRef}
