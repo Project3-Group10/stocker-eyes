@@ -12,10 +12,10 @@ const SearchBox = () => {
     const onClick = () => {
         const inputText = inputRef.current.value;
         socket.emit('searchStock', { searchText: inputText })
-        localStorage.setItem('searchQuery', 'true');
+        localStorage.setItem('searchBarQuery', 'true');
+        localStorage.setItem('TickerName', inputText );
         let path = `/search`; 
         history.push(path);
-
     }
 
     return(

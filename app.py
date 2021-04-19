@@ -4,7 +4,7 @@ from flask import Flask, send_from_directory, json, redirect, request, url_for, 
 from flask_socketio import SocketIO
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
-from functions import fetchAPI
+from functions import searchStock, fetchAPI
 from dotenv import load_dotenv, find_dotenv
 from datetime import timedelta
 from google.oauth2 import id_token
@@ -32,7 +32,7 @@ GOOGLE_DISCOVERY_URL = (
     "https://accounts.google.com/.well-known/openid-configuration"
 )
 
-APP.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_SQL_URL')
+APP.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 APP.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 APP.config['pool_size'] = 20
 APP.config['max_overflow'] = 0
@@ -62,6 +62,7 @@ def addNewUserDB(user_data):
                           avatar=user_data['picture'])
     DB.session.add(newUser)
     DB.session.commit()
+    DB.session.remove()
     # allUsers = models.Person.query.all()
 
 
@@ -76,7 +77,7 @@ def addStockDB(stock_data, name1, key):
                             close_price=closeP, adjusted_clase_price=adjustedClaseP, volume_price=volumeP)
     DB.session.add(newStock)
     DB.session.commit()
-
+    DB.session.remove()
 
 # GET from DB
 def getUserDB():
@@ -102,7 +103,7 @@ def on_connect():
     print('User connected!')
     # print(data)
     print('GOOGLE SIGNED IN!')
-    SOCKETIO.emit('stock_data', api_data, broadcast=True, include_self=True)
+    SOCKETIO.emit('stock_data', returnedData, broadcast=True, include_self=True)
     # print(api_data['Time Series (Daily)'][yesterday]['1. open'])
     name1 = 'OVV'
     for key in api_data['Time Series (Daily)']:
@@ -171,7 +172,7 @@ def login(data):
 def searchStockFromAPI(data):
     response = searchStock(data['searchText'])
     #print(response)
-    SOCKETIO.emit('stock_data', response, broadcast=True, include_self=True)
+    SOCKETIO.emit('searchQuerySocket', response, broadcast=True, include_self=True)
 
 @APP.route('/', defaults={"filename": "index.html"})
 @APP.route('/<path:filename>')
@@ -180,25 +181,21 @@ def index(filename):
     return send_from_directory('./build', filename)
 
 
-# User session management setup
-# https://flask-login.readthedocs.io/en/latest
-# login_manager = LoginManager()
-# login_manager.init_app(app)
-@cache.cached(timeout=600, key_prefix='fetchApiStock')
+
 def fetchStockInfo():
-    api_data = fetchAPI()
-    return api_data
+    teslaData = searchStock('WMT')
+    ovvData = searchStock('OVV')
+    amznData = searchStock('AAPL')
+    return {'teslaData': teslaData,'ovvData': ovvData,'amznData': amznData }
 
 if __name__ == "__main__":
     import functions
-    from functions import fetchAPI, searchStock
-    api_data = fetchStockInfo()
-
-
+    from functions import searchStock, fetchAPI
+    returnedData = fetchStockInfo()
+    api_data = returnedData['ovvData']
 
     SOCKETIO.run(
         APP,
         host=os.getenv('IP', '0.0.0.0'),
-        debug=True,
         port=8081 if os.getenv('C9_PORT') else int(os.getenv('PORT', 8081)),
     )
