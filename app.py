@@ -44,13 +44,16 @@ SOCKETIO = SocketIO(APP,
 today_long = datetime.now(timezone('US/Eastern'))
 today = str(date.fromtimestamp(datetime.now(timezone('US/Eastern')).timestamp()))
 yesterday = str(date.fromtimestamp(datetime.now(timezone('US/Eastern')).timestamp()) - timedelta(1))
-print(today)
-print(yesterday)
+
+
+# print(today)
+# print(yesterday)
 
 # DB Funtion section
 def addNewUserDB(user_data):
     # Addding the user to the db when login
-    newUser = models.User(user_id = user_data['sub'], email=user_data['email'], name=user_data['name'], avatar=user_data['picture'])
+    newUser = models.User(user_id=user_data['sub'], email=user_data['email'], name=user_data['name'],
+                          avatar=user_data['picture'])
     DB.session.add(newUser)
     DB.session.commit()
     # allUsers = models.Person.query.all()
@@ -75,7 +78,7 @@ def getUserDB():
     users = {}
     for person in allUsers:
         users[person.email] = [person.name, person.avatar, person.status]
-    print(users)
+    # print(users)
     return users
 
 
@@ -96,14 +99,13 @@ def on_connect():
     SOCKETIO.emit('stock_data', api_data, broadcast=True, include_self=True)
     # print(api_data['Time Series (Daily)'][yesterday]['1. open'])
     name1 = 'OVV'
-    for key in api_data['Time Series (Daily)']: 
-        x = models.Stock.query.filter_by(name = name1, dateDB = key ).first()
-        print(x)
-        if x is None: 
+    for key in api_data['Time Series (Daily)']:
+        x = models.Stock.query.filter_by(name=name1, dateDB=key).first()
+        # print(x)
+        if x is None:
             addStockDB(api_data['Time Series (Daily)'][key], name1, key)
         else:
             continue
-    
 
 
 @SOCKETIO.on('root')
@@ -141,8 +143,8 @@ def token_validation(data):
 @SOCKETIO.on('logged_in')
 def login(data):
     # print(data)
-    print(data['Qs'])
-    print(data['Qs']['oT'])
+    # print(data['Qs'])
+    # print(data['Qs']['oT'])
     data_dictionary = {
         'name': data['Qs']['oT'],  # + data['Qs']['kR'],
         'imageUri': data['Qs']['EI'],
@@ -155,7 +157,8 @@ def login(data):
         addNewUserDB(data_dictionary)
 
     else:
-        print(x)
+        pass
+        # print(x)
 
 
 @APP.route('/', defaults={"filename": "index.html"})
