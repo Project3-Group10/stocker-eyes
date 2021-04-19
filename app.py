@@ -92,10 +92,20 @@ def getStocksDB():
     allStocks = models.Stock.query.all()
     stocksDic = {}
     for stock in allStocks:
-        stocksDic[stock.id] = [stock.name, stock.dateDB, stock.open_price, stock.high_price, stock.low_price,
+        stocksDic[stock.stock_id] = [stock.name, stock.dateDB, stock.open_price, stock.high_price, stock.low_price,
                                stock.close_price, stock.adjusted_clase_price, stock.volume_price]
     return stocksDic
 
+#to get the high_price since the first day of any stock. This method is important for test_case
+def getBestPriceS(stocksDic): 
+    name_closepriceDic = {}
+    for k,v in stocksDic.items():
+        name_closepriceDic[k] = float(v[5])
+    
+    sortDic =  dict(
+        sorted(name_closepriceDic.items(), key=lambda item: item[1], reverse=True))
+    #print(sortDic)
+    return sortDic
 
 @SOCKETIO.on('connect')
 def on_connect():
