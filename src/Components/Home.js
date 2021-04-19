@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState, useRef } from 'react';
 import Plotly from 'plotly.js-finance-dist';
 import "../css/Home.css"
-import socket from "../utils/socket";
+import socket from "./utils/socket";
 
 const Home = (props) => {
     

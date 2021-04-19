@@ -1,0 +1,9 @@
+.pageHolder{
+    height: 80%;
+    width: 95%;
+    background-color: lightblue;
+    position: absolute;
+    left: calc(5%/2);
+    top: 90px;
+    overflow: hidden;
+  }

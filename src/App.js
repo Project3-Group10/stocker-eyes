@@ -3,6 +3,8 @@ import './App.css';
 import Home from "./Components/Home";
 import Register from "./Components/Register";
 import Profile from "./Components/Profile";
+import SearchBox from "./Components/utils/SearchBox";
+import Search from "./Components/Search";
 
 import {
   BrowserRouter as Router,
@@ -23,7 +25,8 @@ function App() {
               <nav className="navigation">
                 <button className="menuItem" onClick={()=>{pageHolder()}}> <Link to="/"> <p>Home </p></Link> </button>
                 <button className="menuItem"> <Link to="/register">Register</Link> </button>
-                <button className="menuItem"> <Link to="/profile">Profile</Link> </button>                 
+                <button className="menuItem"> <Link to="/profile">Profile</Link> </button>
+                <SearchBox />
               </nav>
               {/* To add links to other directories, follow this guide https://reactrouter.com/web/guides/quick-start*/}
               {/* A <Switch> looks through its children <Route>s and
@@ -38,6 +41,9 @@ function App() {
                   </Route>
                   <Route path="/profile">
                       <Profile />
+                  </Route>
+                  <Route path="/search">
+                      <Search />
                   </Route>
               </Switch>
           </div>

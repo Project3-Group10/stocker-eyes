@@ -1,82 +1,105 @@
 import React from 'react';
 import {useEffect, useState, useRef} from 'react';
-import io from 'socket.io-client';
 import Plotly from 'plotly.js-finance-dist';
+import socket from "./utils/socket";
 
 
-const socket = io();
-
-export function Stock(){
+export const Stock = () => {
     const[stockChartXValue, setstockChartXValue] = useState([]);
     const[stockChartYValue, setstockChartYValue] = useState([]);
     const textInput = useRef(null);
+    const [searchQuery, setSearchQuery] = useState(false);
     
+    
+
     useEffect(() => {  
-        socket.on('stock_data', (data) => {
-          let stockChartXValuesFunction = [];
-          let stockChartYValuesFunction = [];
-          
-          for(var key in data['Time Series (Daily)']){
-            stockChartXValuesFunction.push(key);
-            stockChartYValuesFunction.push(data["Time Series (Daily)"][key]["1. open"]);
-          }
-          
-          let maxNumberY = Math.max(... stockChartYValuesFunction);
-          let indexOfMaxNumberY = stockChartYValuesFunction.indexOf(String(maxNumberY));
-          let indexOfMaxNumberX = stockChartXValuesFunction[indexOfMaxNumberY];
-          
-          console.log('Max Number: ' + maxNumberY);
-          console.log('Index of Max Number X: ' + indexOfMaxNumberX);
-          console.log('Index of Max Number Y: ' + indexOfMaxNumberY)
-          // console.log(stockChartYValuesFunction)
-          
-          let lowNumberY = Math.min(... stockChartYValuesFunction);
-          let indexOfMinNumberY = stockChartYValuesFunction.indexOf(String(lowNumberY));
-          let indexOfMinNumberX = stockChartXValuesFunction[indexOfMinNumberY];
-          
-          
-          setstockChartXValue(stockChartXValuesFunction);
-          setstockChartYValue(stockChartYValuesFunction);
-            
-         var layout = {
-              showlegend: false,
-              annotations: [
-                {
+      const temp = localStorage.getItem('isLoggedIn');
+      if (temp === 'true'){
+        setSearchQuery(tempSearch => temp);
+      } else {
+        setSearchQuery(tempSearch => false);
+      }
+      socket.on('stock_data', (data) => {
+          displayGraph(data)
+      });
+      
+    }, []);
+
+    useEffect(() => {
+      socket.on('stock_data', (data) => {
+        displayGraph(data)
+    });
+    }, [searchQuery]);
+
+
+    function displayGraph(data){
+      let stockChartXValuesFunction = [];
+      let stockChartYValuesFunction = [];
+
+      for (var key in data['Time Series (Daily)']) {
+          stockChartXValuesFunction.push(key);
+          stockChartYValuesFunction.push(data["Time Series (Daily)"][key]["1. open"]);
+      }
+
+      let maxNumberY = Math.max(...stockChartYValuesFunction);
+      let indexOfMaxNumberY = stockChartYValuesFunction.indexOf(String(maxNumberY));
+      let indexOfMaxNumberX = stockChartXValuesFunction[indexOfMaxNumberY];
+
+      console.log('Max Number: ' + maxNumberY);
+      console.log('Index of Max Number X: ' + indexOfMaxNumberX);
+      console.log('Index of Max Number Y: ' + indexOfMaxNumberY);
+
+      console.log(stockChartYValuesFunction);
+
+      let lowNumberY = Math.min(...stockChartYValuesFunction);
+      let indexOfMinNumberY = stockChartYValuesFunction.indexOf(String(lowNumberY));
+      let indexOfMinNumberX = stockChartXValuesFunction[indexOfMinNumberY];
+
+
+      setstockChartXValue(stockChartXValuesFunction);
+      setstockChartYValue(stockChartYValuesFunction);
+
+      var layout = {
+          showlegend: false,
+          annotations: [{
                   x: indexOfMaxNumberX,
                   y: maxNumberY,
                   xref: 'x',
                   yref: 'y',
-                  text: 'Highest Amount: ' + maxNumberY,
+                  text: 'Highest Amount',
                   showarrow: true,
                   arrowhead: 7,
                   ax: 0,
                   ay: -40
-                },
-                {
+              },
+              {
                   x: indexOfMinNumberX,
                   y: lowNumberY,
                   xref: 'x',
                   yref: 'y',
-                  text: 'Low Amount: ' + lowNumberY,
+                  text: 'Low Amount',
                   showarrow: true,
                   arrowhead: 7,
                   ax: 0,
-                  ay: -40                   
-                }
-              ]
-            };
-         
-          Plotly.newPlot(document.getElementById('test'), [
-              {
-                x: stockChartXValuesFunction,
-                y: stockChartYValuesFunction,
-                type: 'scatter'
+                  ay: -40
               }
-            ], layout);
-      });
-      
-    }, []);
-    
+          ],
+          margin: {
+              l: 40,
+              r: 40,
+              b: 30,
+              t: 30,
+              pad: 4
+          }
+      };
+
+      Plotly.newPlot(document.getElementById('test2'), [{
+          x: stockChartXValuesFunction,
+          y: stockChartYValuesFunction,
+          type: 'scatter'
+      }], layout);
+  }
+  
     
  var data = [
   {
@@ -85,16 +108,16 @@ export function Stock(){
     type: 'scatter'
   }
 ];
-
-//console.log('docGet',document.getElementById('test'));
-//console.log('textInp',textInput);
-//console.log('data',data);
-    
+ 
     return(
-        <div className="Stock">
-            <h1> NASDAQ </h1>
-            <div id="test" className="test" ref={textInput}></div>
+      <div className="home">
+        <div className="container">
+          <div className="stockArea">
+            <div id="test2" className="stock "> </div>
+            <div id="news2" className="newsArea newsSP"></div>
+          </div>
         </div>
+      </div>
     );
 }
 

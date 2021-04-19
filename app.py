@@ -32,9 +32,11 @@ GOOGLE_DISCOVERY_URL = (
     "https://accounts.google.com/.well-known/openid-configuration"
 )
 
-APP.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_SQL_URL')
+APP.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 
 APP.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+APP.config['pool_size'] = 20
+APP.config['max_overflow'] = 0
 
 DB = SQLAlchemy(APP)
 DB.create_all()
@@ -166,8 +168,11 @@ def login(data):
         # print(x)
 
 
-
-
+@SOCKETIO.on('searchStock')
+def searchStockFromAPI(data):
+    response = searchStock(data['searchText'])
+    #print(response)
+    SOCKETIO.emit('stock_data', response, broadcast=True, include_self=True)
 
 @APP.route('/', defaults={"filename": "index.html"})
 @APP.route('/<path:filename>')
@@ -187,7 +192,7 @@ def fetchStockInfo():
 
 if __name__ == "__main__":
     import functions
-    from functions import fetchAPI
+    from functions import fetchAPI, searchStock
     api_data = fetchStockInfo()
 
 

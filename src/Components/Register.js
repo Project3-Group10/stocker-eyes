@@ -3,7 +3,7 @@ import Login from "./Login";
 import Logout from "./Logout";
 import '../css/Register.css'
 
-function Register() {
+const Register = () => {
     return (
         <div className="pageHolder">
             <div>

@@ -1,8 +1,8 @@
 import React from 'react';
 import { GoogleLogin } from 'react-google-login';
-import { refreshTokenSetup } from '../utils/refreshToken';
+import { refreshTokenSetup } from './utils/refreshToken';
 import io from 'socket.io-client';
-import socket from "../utils/socket";
+import socket from "./utils/socket";
 
 const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
