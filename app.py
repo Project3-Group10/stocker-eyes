@@ -32,7 +32,7 @@ GOOGLE_DISCOVERY_URL = (
     "https://accounts.google.com/.well-known/openid-configuration"
 )
 
-APP.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
+APP.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_SQL_URL')
 APP.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 APP.config['pool_size'] = 20
 APP.config['max_overflow'] = 0
