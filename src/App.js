@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import Home from "./Components/Home";
 import Register from "./Components/Register";
+import Profile from "./Components/Profile";
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -37,7 +39,7 @@ function App() {
                       <Register />
                   </Route>
                   <Route path="/profile">
-                      Profile
+                      <Profile />
                   </Route>
               </Switch>
           </div>
