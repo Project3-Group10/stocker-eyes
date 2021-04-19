@@ -31,14 +31,14 @@ class getBestPriceStock(unittest.TestCase):
 
     def test_sortDic(self):
         for test in self.success_test_params:
-            actual_tuple = getBestPriceS(test[KEY_INPUT])
+            actual_tuple = getBestPriceSDic(test[KEY_INPUT])
             expected_tuple = test[KEY_EXPECTED]
             self.assertEqual(actual_tuple, expected_tuple)
 
     #Failure tests
     def test_failure1(self):
         for test in self.failure_test_paramus:
-            actual_dic = getBestPriceS(test[KEY_INPUT])
+            actual_dic = getBestPriceSDic(test[KEY_INPUT])
             expected_dic = test[KEY_EXPECTED]
             self.assertNotEqual(actual_dic, expected_dic)
 

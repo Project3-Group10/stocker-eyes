@@ -31,7 +31,7 @@ class Stock(DB.Model):
     close_price = DB.Column(DB.String(100))
     adjusted_clase_price = DB.Column(DB.String(100))
     volume_price = DB.Column(DB.String(100))
-    users = DB.relationship("User",
+    users = DB.relationship("UserG",
                                secondary=user_identifie, 
                                backref=DB.backref('stocks', lazy='dynamic'))
     def __repr__(self):

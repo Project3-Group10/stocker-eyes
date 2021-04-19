@@ -62,7 +62,8 @@ def addNewUserDB(user_data):
                           avatar=user_data['picture'])
     DB.session.add(newUser)
     DB.session.commit()
-    # allUsers = models.Person.query.all()
+    users_dic_return = getUserDB()
+    return users_dic_return
 
 
 def addStockDB(stock_data, name1, key):

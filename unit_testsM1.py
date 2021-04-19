@@ -12,47 +12,28 @@ KEY_INPUT = "input"
 KEY_EXPECTED = "expected"
 USER_W = "UserWrong"
 
-INITIAL_USERNAME = 'user1'
+INITIAL_USERNAME = 'Oscar'
 
 
 class AddUserTestCase(unittest.TestCase):
     def setUp(self):
         self.success_test_params = [{
-            KEY_INPUT: 'Oscar',
-            KEY_EXPECTED: [INITIAL_USERNAME, 'Oscar'],
+            KEY_INPUT: ['testid1','oo89@njit.edu', 'Oscar', 'hadfvisdklfvklids' ],
+            KEY_EXPECTED: {'testid1':['oo89@njit.edu','Oscar','hadfvisdklfvklids']}
         }, {
-            KEY_INPUT:
-            'Pepe',
-            KEY_EXPECTED: [INITIAL_USERNAME, 'Oscar', 'Pepe']
-        }, {
-            KEY_INPUT:
-            '',
-            KEY_EXPECTED: [INITIAL_USERNAME, 'Oscar', 'Pepe', '']
+            KEY_INPUT: ['testid2','oo88@njit.edu', 'Oscar2', 'hadfvisdklfvklids1' ],
+            KEY_EXPECTED: {'testid2':['oo88@njit.edu', 'Oscar2', 'hadfvisdklfvklids1']}
         }]
         self.failure_test_paramus = [
-            #no adding correct Name
-            {
-                KEY_INPUT: 'Oscar',
-                USER_W: ['Juan', 'Oscar1', 'User2'],
-            },
-            #no adding the name, len should be wrong and index[2] too
-            {
-                KEY_INPUT: 'Pepe',
-                USER_W: ['Oscar3', 'Pepe2']
-            },
-            #
-            {
-                KEY_INPUT: '',
-                USER_W: ['Oscar2', 'Pepe3', '', 'User1']
-            }
+           
         ]
 
-        initial_person = models.Person(username=INITIAL_USERNAME, score=100)
+        initial_person = models.UserG(name=INITIAL_USERNAME, email='oo89@njit.edu')
         self.initial_db_mock = [initial_person]
 
     #this is called in test_success
-    def mocked_db_session_add(self, username):
-        self.initial_db_mock.append(username)
+    def mocked_db_session_add(self, name):
+        self.initial_db_mock.append(name)
 
     #to simulate commit to the db it also called in test_success
     def mocked_db_session_commit(self):
@@ -67,27 +48,25 @@ class AddUserTestCase(unittest.TestCase):
         for test in self.success_test_params:
             with patch('app.db.session.add', self.mocked_db_session_add):
                 with patch('app.db.session.commit',
-                           self.mocked_db_session_commit):
-                    with patch('models.Person.query') as mocked_query:
-                        mocked_query.all = self.mocked_person_query_all
+                    self.mocked_db_session_commit):
+   
+                    print(self.initial_db_mock)
+                    actual_userLResult = addNewUserDB(
+                        test[KEY_INPUT])
+                    print(actual_userLResult)
+                    expected_ruserLResult = test[KEY_EXPECTED]
+                    print(self.initial_db_mock)
+                    print(actual_userLResult)
 
-                        print(self.initial_db_mock)
-                        actual_userLResult, actual_scoresLResult = addNewUserDB(
-                            test[KEY_INPUT])
-                        print(actual_userLResult)
-                        expected_ruserLResult = test[KEY_EXPECTED]
-                        print(self.initial_db_mock)
-                        print(actual_userLResult)
-
-                        self.assertEqual(len(actual_userLResult),
-                                         len(expected_ruserLResult))
-                        self.assertEqual(actual_userLResult[1],
-                                         expected_ruserLResult[1])
-                        self.assertEqual(actual_userLResult[0],
-                                         expected_ruserLResult[0])
-                        if (len(expected_ruserLResult) == 3):
-                            self.assertEqual(actual_userLResult[2],
-                                             expected_ruserLResult[2])
+                    self.assertEqual(len(actual_userLResult),
+                                     len(expected_ruserLResult))
+                    self.assertEqual(actual_userLResult[1],
+                                     expected_ruserLResult[1])
+                    self.assertEqual(actual_userLResult[0],
+                                     expected_ruserLResult[0])
+                    if (len(expected_ruserLResult) == 3):
+                        self.assertEqual(actual_userLResult[2],
+                                         expected_ruserLResult[2])
 
     def test_failure(self):
         for test in self.failure_test_paramus:
