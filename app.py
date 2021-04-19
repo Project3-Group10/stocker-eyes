@@ -58,7 +58,7 @@ yesterday = str(date.fromtimestamp(datetime.now(timezone('US/Eastern')).timestam
 # DB Funtion section
 def addNewUserDB(user_data):
     # Addding the user to the db when login
-    newUser = models.User(user_id=user_data['sub'], email=user_data['email'], name=user_data['name'],
+    newUser = models.UserG(user_id=user_data['sub'], email=user_data['email'], name=user_data['name'],
                           avatar=user_data['picture'])
     DB.session.add(newUser)
     DB.session.commit()
@@ -80,10 +80,10 @@ def addStockDB(stock_data, name1, key):
 
 # GET from DB
 def getUserDB():
-    allUsers = models.User.query.all()
+    allUsers = models.UserG.query.all()
     users = {}
     for person in allUsers:
-        users[person.email] = [person.name, person.avatar, person.status]
+        users[person.user_id] = [person.email, person.name, person.avatar]
     # print(users)
     return users
 
@@ -97,7 +97,7 @@ def getStocksDB():
     return stocksDic
 
 #to get the high_price since the first day of any stock. This method is important for test_case
-def getBestPriceS(stocksDic): 
+def getBestPriceSDic(stocksDic): 
     name_closepriceDic = {}
     for k,v in stocksDic.items():
         name_closepriceDic[k] = float(v[5])
@@ -106,6 +106,17 @@ def getBestPriceS(stocksDic):
         sorted(name_closepriceDic.items(), key=lambda item: item[1], reverse=True))
     #print(sortDic)
     return sortDic
+
+def getCloseLowStockDic(stocksDic):  
+    name_closepriceDic = {}
+    for k,v in stocksDic.items():
+        name_closepriceDic[k] = [v[0], v[1], float(v[5])]
+        
+    sortDic =  dict(
+        sorted(name_closepriceDic.items(), key=lambda item: item[1][2], reverse=False))
+    return sortDic
+    
+#getCloseLowStockDic({1: ['OVV', '04-18-2021', '4.2', '6.8', '3.5', '5', '3.1', '5000'],2: ['OVV', '04-17-2021', '4.2', '6.8', '3.5', '4.1', '3.1', '5000'],3: ['OVV', '04-16-2021', '4.2', '6.8', '3.5', '5.6', '3.1', '5000'],4: ['OVV', '04-15-2021', '4.2', '6.8', '3.5', '6.8', '3.1', '5000'],5: ['OVV', '04-14-2021', '4.2', '6.8', '3.5', '5.3', '3.1', '5000']})    
 
 @SOCKETIO.on('connect')
 def on_connect():
@@ -145,7 +156,7 @@ def token_validation(data):
         # ID token is valid. Get the user's Google Account ID from the decoded token.
         userid = idinfo['sub']
         print('Login successful')
-        x = models.User.query.filter_by(name=idinfo['name'], email=idinfo['email']).first()
+        x = models.UserG.query.filter_by(name=idinfo['name'], email=idinfo['email']).first()
         if x is None:
             addNewUserDB(idinfo)
         else:
@@ -168,7 +179,7 @@ def login(data):
         'status': True
     }
     SOCKETIO.emit('logged_in', data_dictionary, broadcast=True, include_self=True)
-    x = models.User.query.filter_by(name=data_dictionary['name']).first()
+    x = models.UserG.query.filter_by(name=data_dictionary['name']).first()
     if x is None:
         addNewUserDB(data_dictionary)
 

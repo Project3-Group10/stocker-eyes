@@ -6,7 +6,7 @@ user_identifie = DB.Table('user_identifie',
     DB.Column('user_id', DB.String(200), DB.ForeignKey('users.user_id'))
 )
 #User table 
-class User(DB.Model):
+class UserG(DB.Model):
     __tablename__ = 'users'
     user_id = DB.Column(DB.String(200), primary_key=True)
     email = DB.Column(DB.String(100), nullable=True)
@@ -17,7 +17,7 @@ class User(DB.Model):
     #stocks = DB.relationship('Stock', secondary=association_table, backref='User')
   
     def __repr__(self):
-        return f"User('{self.email}', '{self.name}', '{self.avatar}')"
+        return f"UserG('{self.email}', '{self.name}', '{self.avatar}')"
 
 #Stock Table 
 class Stock(DB.Model):

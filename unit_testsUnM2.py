@@ -1,6 +1,6 @@
 '''
     unit_testsUnM2.py 
-    here is the fist UnMock test 
+    here is the fist UnMocked test 
 
 '''
 import unittest
@@ -9,7 +9,7 @@ import sys
 import models
 
 sys.path.append(os.path.abspath('../../'))
-from app import getBestPriceS
+from app import getBestPriceSDic
 
 KEY_INPUT = "input"
 KEY_EXPECTED = "expected"
