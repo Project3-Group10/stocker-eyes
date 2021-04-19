@@ -28,6 +28,7 @@ code {
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
+    color: black;
   }
 
   .menuItem:hover {

@@ -33,7 +33,7 @@ export const Profile = (props) => {
     }
 
     return(
-        <div className="profileContainer">
+        <div className="pageHolder">
           { isLoggedIn ?
           <div>
           <img src={imageUri} alt="new"/>

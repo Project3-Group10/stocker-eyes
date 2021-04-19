@@ -5,8 +5,8 @@ import "../css/Home.css"
 import socket from "../utils/socket";
 
 const Home = (props) => {
-const [expandMain, setexpandMain] = useState({ dow: 1, sp: 1, nasdaq: 1 });
-
+    
+    const [expandMain, setexpandMain] = useState({ dow: 1, sp: 1, nasdaq: 1 });
     const [stockChartXValue, setstockChartXValue] = useState([]);
     const [stockChartYValue, setstockChartYValue] = useState([]);
 

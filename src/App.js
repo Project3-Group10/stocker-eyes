@@ -13,27 +13,24 @@ import {
 
 function App() {
 
+  const pageHolder = () => {
+    window.location.reload(false);
+  } 
+
   return (
       <Router>
           <div>
-              <nav>
-                  <ul>
-                      <li>
-                          <Link to="/">Home</Link>
-                      </li>
-                      <li>
-                          <Link to="/register">Register</Link>
-                      </li>
-                      <li>
-                         <Link to="/profile">Profile</Link>
-                      </li>
-                  </ul>
+              <nav className="navigation">
+                <button className="menuItem" onClick={()=>{pageHolder()}}> <Link to="/"> <p>Home </p></Link> </button>
+                <button className="menuItem"> <Link to="/register">Register</Link> </button>
+                <button className="menuItem"> <Link to="/profile">Profile</Link> </button>                 
               </nav>
               {/* To add links to other directories, follow this guide https://reactrouter.com/web/guides/quick-start*/}
               {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
               <Switch>
-                  <Route exact path="/">
+                  <Route exact path="/"
+                         refresh="true">
                       <Home />
                   </Route>
                   <Route path="/register">
