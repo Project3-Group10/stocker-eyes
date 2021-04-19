@@ -11,7 +11,8 @@ const SearchBox = () => {
 
     const onClick = () => {
         const inputText = inputRef.current.value;
-        socket.emit('searchStock', { searchText: inputText })
+        socket.emit('searchStock', { searchText: inputText });
+        socket.emit('newsRequest', inputText);
         localStorage.setItem('searchQuery', 'true');
         let path = `/search`; 
         history.push(path);

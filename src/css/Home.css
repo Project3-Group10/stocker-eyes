@@ -95,10 +95,13 @@ body {
   }
 
   .newsArea {
-    height:90%;
-    width: calc(100%/3);
+    height: 90%;
+    width: 65%;
     background-color: lightyellow;
-    display: none;
+    display: inline-block;
+    position: absolute;
+    left: calc(100%/3);
+    top: 40px;
   }
 
   .newsArea:hover {

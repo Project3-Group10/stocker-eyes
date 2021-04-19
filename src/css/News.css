@@ -1,0 +1,18 @@
+.gridContainer {
+    background-color: blue;
+    height: 100%;
+    width:100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 15px 10px;
+}
+
+.iframely-responsive {
+    height: 140px;
+    padding-bottom: 0;
+}
+
+.iframely-responsive>img {
+    height: 100px;
+}

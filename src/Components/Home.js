@@ -121,11 +121,6 @@ const Home = (props) => {
                     <div id="news3" className="newsArea newsNAS"></div>
                 </div>
             </div>
-            <div className="newsContainer">
-                <div id="news1" className="newsArea newsDOW"></div>
-                <div id="news2" className="newsArea newsSP"></div>
-                <div id="news3" className="newsArea newsNAS"></div>
-            </div>
         </div>
     );
 }

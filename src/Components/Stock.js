@@ -2,6 +2,7 @@ import React from 'react';
 import {useEffect, useState, useRef} from 'react';
 import Plotly from 'plotly.js-finance-dist';
 import socket from "./utils/socket";
+import News from "./News";
 
 
 export const Stock = () => {
@@ -114,7 +115,9 @@ export const Stock = () => {
         <div className="container">
           <div className="stockArea">
             <div id="test2" className="stock "> </div>
-            <div id="news2" className="newsArea newsSP"></div>
+            <div id="news2" className="newsArea newsSP">
+              <News ticker='TSLA'/>
+            </div>
           </div>
         </div>
       </div>
