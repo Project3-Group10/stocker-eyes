@@ -19,14 +19,20 @@ const SearchBox = () => {
     }
 
     return(
-        <div className="search-box">
-        <input
-            placeholder="Search..."
-            ref={inputRef}
-            className="inputSearchDiv"
-        />
-        <button onClick={()=>{onClick()}}> Search </button>
-        </div>
+        
+        <form action="" class="search-bar">
+	        <input 
+	            placeholder="Search..."
+                ref={inputRef}
+                className="inputSearchDiv"
+                type="search"
+                name="search"
+                required
+                autocomplete="off"/>
+	        <button class="search-btn" type="submit" onClick={()=>{onClick()}}>
+	    	    <span>Search</span>
+	        </button>
+        </form>
     );
 }
 
