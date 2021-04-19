@@ -1,11 +1,23 @@
 .gridContainer {
-    background-color: blue;
     height: 100%;
     width:100%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 2fr 2fr;
+    grid-template-rows: 1fr 1fr 1fr;
     gap: 15px 10px;
+}
+
+.headline {
+    display: inline-block;
+    width: calc(98% - 140px);
+    bottom: 20px;
+    vertical-align: top;
+    margin-left: 1%;
+}
+
+a[href^="https"] {
+    color:#f1f1f1;
+    text-decoration: none;
 }
 
 .iframely-responsive {
@@ -14,5 +26,8 @@
 }
 
 .iframely-responsive>img {
-    height: 100px;
+    height: 140px;
+    width: 140px;
+    object-fit: cover;
+    display: inline-block;
 }

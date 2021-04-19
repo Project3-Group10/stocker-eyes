@@ -38,18 +38,18 @@ const News = (props) => {
     return(
         
         <div className="newsHolder">
-            
-            {props.ticker}
             <div className="gridContainer">
             {newsStates.map((url)=>
                 
                     <div class="iframely-embed">
-                        <div class="iframely-responsive">
-                            <img src={url['urlToImage']}/>
-                            <a href={url['url']} >
-                             <p>{url['title']}</p>
-                            </a>
-                        </div>
+                        <a href={url['url']}>
+                            <div class="iframely-responsive" >
+                                <img src={url['urlToImage']}/>
+    
+                                 <p className="headline">{url['title']}</p>
+    
+                            </div>
+                        </a>
                     </div>
                 
             )}

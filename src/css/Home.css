@@ -29,7 +29,7 @@ body {
     transition: all ease .5s;
     
   }
-  .menuItem>p,a {
+  .menuItem>p,.menuItem>a {
     color: #f1f1f1;
     width: 10%;
     position: relative;
@@ -97,11 +97,11 @@ body {
   .newsArea {
     height: 90%;
     width: 65%;
-    background-color: lightyellow;
     display: inline-block;
     position: absolute;
     left: calc(100%/3);
     top: 40px;
+    overflow: scroll;
   }
 
   .newsArea:hover {
