@@ -12,3 +12,4 @@ pylint-flask
 pylint-flask-sqlalchemy
 pylint-plugin-utils
 pylint-plugin-utils
+flask_caching
