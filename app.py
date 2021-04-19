@@ -12,10 +12,15 @@ from google.auth.transport import requests
 import models
 from datetime import datetime, date
 from pytz import timezone
+from flask_caching import Cache
+
+cache = Cache()
 
 load_dotenv(find_dotenv())
 
 APP = Flask(__name__, static_folder='./build/static')
+APP.config['CACHE_TYPE'] = 'simple'
+cache.init_app(APP)
 
 APP.secret_key = os.getenv("APP_SECRET_KEY")
 APP.config['SESSION_COOKIE_NAME'] = 'google-login-session'
@@ -161,6 +166,9 @@ def login(data):
         # print(x)
 
 
+
+
+
 @APP.route('/', defaults={"filename": "index.html"})
 @APP.route('/<path:filename>')
 def index(filename):
@@ -172,13 +180,17 @@ def index(filename):
 # https://flask-login.readthedocs.io/en/latest
 # login_manager = LoginManager()
 # login_manager.init_app(app)
-
+@cache.cached(timeout=600, key_prefix='fetchApiStock')
+def fetchStockInfo():
+    api_data = fetchAPI()
+    return api_data
 
 if __name__ == "__main__":
     import functions
     from functions import fetchAPI
+    api_data = fetchStockInfo()
 
-    api_data = fetchAPI()
+
 
     SOCKETIO.run(
         APP,
