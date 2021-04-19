@@ -4,7 +4,7 @@ from flask import Flask, send_from_directory, json, redirect, request, url_for, 
 from flask_socketio import SocketIO
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
-from functions import fetchAPI
+from functions import fetchAPI, fetchNews
 from dotenv import load_dotenv, find_dotenv
 from datetime import timedelta
 from google.oauth2 import id_token
@@ -62,6 +62,7 @@ def addNewUserDB(user_data):
                           avatar=user_data['picture'])
     DB.session.add(newUser)
     DB.session.commit()
+    DB.session.remove()
     # allUsers = models.Person.query.all()
 
 
@@ -76,6 +77,7 @@ def addStockDB(stock_data, name1, key):
                             close_price=closeP, adjusted_clase_price=adjustedClaseP, volume_price=volumeP)
     DB.session.add(newStock)
     DB.session.commit()
+    DB.session.remove()
 
 
 # GET from DB
@@ -96,6 +98,11 @@ def getStocksDB():
                                stock.close_price, stock.adjusted_clase_price, stock.volume_price]
     return stocksDic
 
+
+@SOCKETIO.on('newsRequest')
+def newsResults(ticker):    
+    print('\n\nTICKER RECEIVED',ticker,'\n\n')
+    SOCKETIO.emit('newsResponse', fetchNews(ticker), broadcast=True)
 
 @SOCKETIO.on('connect')
 def on_connect():
@@ -199,6 +206,5 @@ if __name__ == "__main__":
     SOCKETIO.run(
         APP,
         host=os.getenv('IP', '0.0.0.0'),
-        debug=True,
         port=8081 if os.getenv('C9_PORT') else int(os.getenv('PORT', 8081)),
     )
