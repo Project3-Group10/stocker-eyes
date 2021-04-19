@@ -1,9 +1,16 @@
 .pageHolder{
-    height: 80%;
-    width: 95%;
     background-color: lightblue;
     position: absolute;
     left: calc(5%/2);
     top: 90px;
     overflow: hidden;
   }
+  
+ .search-box {
+    justify-content: center;
+    width: calc(100%/3);
+    display: inline-block;
+    margin-left: calc(100%/15);
+    margin-right: calc(100%/12);
+    margin-top: calc(70px - 46px);
+ }

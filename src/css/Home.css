@@ -1,5 +1,5 @@
 body {
-    background-color: #18191A;
+    background-color: #f1f1f1;
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -14,20 +14,32 @@ body {
   }
 
   .navigation {
-    background-color: grey;
+    background-color: #003049;
     height: 70px;
     width: 100%;
     position: fixed;
     z-index: 5;
   }
   .menuItem {
-    background-color: blue;
     height: 100%;
-    width: calc(100%/3);
+    width: calc(100%/6);
     display: inline-block;
+    font-size: 1.2rem;
+    vertical-align: top;
+    transition: all ease .5s;
+    
+  }
+  .menuItem>p,a {
+    color: #f1f1f1;
+    width: 10%;
+    position: relative;
+    text-decoration: none;
+    text-align: center;
   }
   .menuItem:hover {
-    background-color: red;
+    color: #f1f1f1;
+    background-color: #fcbf49;
+    opacity:.8;
   }
 
   .stockContainer {
@@ -45,7 +57,7 @@ body {
   .stockArea {
     height:100%;
     width: 100%;
-    background-color: lightgreen;
+    background-color: #004266;
     display: inline-block;
     position: absolute;
     transition: all 1s ease;
@@ -98,6 +110,6 @@ body {
     height: 80%;
     width: 500px;
     margin-top: calc(40px);
-    margin-left: calc(40px);
+    margin-left: calc((100.01%/3 - 500px)/2);
   }
 
