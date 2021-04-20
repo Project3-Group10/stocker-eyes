@@ -4,7 +4,7 @@ from flask import Flask, send_from_directory, json, redirect, request, url_for, 
 from flask_socketio import SocketIO
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
-from functions import searchStock, fetchAPI
+from functions import searchStock, fetchAPI, fetchNews
 from dotenv import load_dotenv, find_dotenv
 from datetime import timedelta
 from google.oauth2 import id_token
@@ -79,6 +79,7 @@ def addStockDB(stock_data, name1, key):
     DB.session.commit()
     DB.session.remove()
 
+
 # GET from DB
 def getUserDB():
     allUsers = models.User.query.all()
@@ -97,6 +98,11 @@ def getStocksDB():
                                stock.close_price, stock.adjusted_clase_price, stock.volume_price]
     return stocksDic
 
+
+@SOCKETIO.on('newsRequest')
+def newsResults(ticker):    
+    print('\n\nTICKER RECEIVED',ticker,'\n\n')
+    SOCKETIO.emit('newsResponse', fetchNews(ticker), broadcast=True)
 
 @SOCKETIO.on('connect')
 def on_connect():

@@ -7,12 +7,12 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-
+  
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
   }
-
+  
   .navigation {
     background-color: #003049;
     height: 70px;
@@ -24,16 +24,13 @@ body {
     height: 100%;
     width: calc(100%/6);
     display: inline-block;
-    font-size: 1.2rem;
     vertical-align: top;
     transition: all ease .5s;
-    
   }
-  .menuItem>p,.menuItem>a {
-    color: #f1f1f1;
+  .menuItem>p {
     width: 10%;
+    left: calc(50% - 10%);
     position: relative;
-    text-decoration: none;
     text-align: center;
   }
   .menuItem:hover {
@@ -41,7 +38,7 @@ body {
     background-color: #fcbf49;
     opacity:.8;
   }
-
+  
   .stockContainer {
     height: 100%;
     width: 100%;
@@ -53,11 +50,7 @@ body {
     margin-top: 34px;
     margin-left: -37px;
   }
-
-  .stck {
-    pointer-events:none;
-  }
-
+  
   .stockArea {
     height:100%;
     width: 100%;
@@ -66,28 +59,28 @@ body {
     position: absolute;
     transition: all 1s ease;
   }
-
+  
   .hide {
     opacity: 0;
     z-index: -1;
   }
-
+  
   .dow {
     left:0;
   }
-
+  
   .sp {
     left:calc(100%/3);
   }
-
+  
   .nasdaq {
     left:calc(2*(100%/3));
   }
-
+  
   .stockArea:hover {
     background-color: red;
   }
-
+  
   .newsContainer {
     display: none;
     height: 70%;
@@ -97,21 +90,18 @@ body {
     left: calc(10%/2);
     top: 85%;
   }
-
+  
   .newsArea {
-    height: 90%;
-    width: 65%;
-    display: inline-block;
-    position: absolute;
-    left: calc(100%/3);
-    top: 40px;
-    overflow: scroll;
+    height:90%;
+    width: calc(100%/3);
+    background-color: lightyellow;
+    display: none;
   }
-
+  
   .newsArea:hover {
     background-color: red;
   }
-
+  
   .stock {
     background-color:darkgreen;
     height: 80%;
@@ -119,4 +109,5 @@ body {
     margin-top: calc(40px);
     margin-left: calc((100.01%/3 - 500px)/2);
   }
-
+  
+  

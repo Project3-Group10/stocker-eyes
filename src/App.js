@@ -23,10 +23,10 @@ function App() {
       <Router>
           <div>
               <nav className="navigation">
-                <button className="menuItem" onClick={()=>{pageHolder()}}> <Link to="/"> <p>Home </p></Link> </button>
-                <button className="menuItem"> <Link to="/register">Register</Link> </button>
-                <button className="menuItem"> <Link to="/profile">Profile</Link> </button>
                 <SearchBox />
+                <div className="menuItem" onClick={()=>{pageHolder()}}> <Link to="/"> <p>Home </p></Link> </div>
+                <div className="menuItem"> <Link to="/register"><p>Register</p></Link> </div>
+                <div className="menuItem"> <Link to="/profile"><p>Profile</p></Link> </div>
               </nav>
               {/* To add links to other directories, follow this guide https://reactrouter.com/web/guides/quick-start*/}
               {/* A <Switch> looks through its children <Route>s and
