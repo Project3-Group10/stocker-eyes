@@ -23,7 +23,7 @@ const SearchBox = () => {
 
     return(
         
-        <form action="" class="search-bar">
+        <form action="" className="search-bar">
 	        <input 
 	            placeholder="Search..."
                 ref={inputRef}
@@ -31,8 +31,8 @@ const SearchBox = () => {
                 type="search"
                 name="search"
                 required
-                autocomplete="off"/>
-	        <button class="search-btn" type="submit" onClick={()=>{onClick()}}>
+                autoComplete="off"/>
+	        <button className="search-btn" type="submit" onClick={()=>{onClick()}}>
 	    	    <span>Search</span>
 	        </button>
         </form>

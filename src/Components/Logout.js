@@ -12,7 +12,7 @@ function Logout() {
     };
 
     return (
-        <div>
+        <div className="logout">
             <GoogleLogout
                 clientId={clientId}
                 buttonText="Logout"

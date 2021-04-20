@@ -7,3 +7,28 @@
     top: 90px;
     overflow: hidden;
   }
+  
+.loginContainer {
+    height: 30%;
+    width: 40%;
+    top: calc((100% - 30%)/2);
+    position: absolute;
+    left: calc((100% - 40%)/2);
+    display: block;
+    text-align: center;
+}
+
+.logout {
+    width: 30%;
+    height: 20%;
+    left: calc((100% - 30%)/2);
+    position: absolute;
+    top: 50%;
+}
+
+.login {
+    width: 30%;
+    height: 20%;
+    left: calc((100% - 30%)/2);
+    position: absolute;
+}
