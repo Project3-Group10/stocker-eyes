@@ -66,8 +66,6 @@ def addNewUserDB(user_data):
     users_dic_return = getUserDB()
     return users_dic_return
     
-   
-
 
 def addStockDB(stock_data, name1, key):
     openP = stock_data['1. open']
@@ -82,7 +80,7 @@ def addStockDB(stock_data, name1, key):
     DB.session.commit()
     DB.session.remove()
 
-# GET from DB
+# GET from DB user with all the information. It is a dictionary where is also the user_id. 
 def getUserDB():
     allUsers = models.UserG.query.all()
     users = {}
@@ -91,7 +89,7 @@ def getUserDB():
     # print(users)
     return users
 
-
+#this method will help any time you need to get a stock from the DB. From the dictionary you can have everything. 
 def getStocksDB():
     allStocks = models.Stock.query.all()
     stocksDic = {}
@@ -122,6 +120,17 @@ def getCloseLowStockDic(stocksDic):
     
 #getCloseLowStockDic({1: ['OVV', '04-18-2021', '4.2', '6.8', '3.5', '5', '3.1', '5000'],2: ['OVV', '04-17-2021', '4.2', '6.8', '3.5', '4.1', '3.1', '5000'],3: ['OVV', '04-16-2021', '4.2', '6.8', '3.5', '5.6', '3.1', '5000'],4: ['OVV', '04-15-2021', '4.2', '6.8', '3.5', '6.8', '3.1', '5000'],5: ['OVV', '04-14-2021', '4.2', '6.8', '3.5', '5.3', '3.1', '5000']})    
 
+#adding user, stock to the favorite table 
+def addUserFStock(user_id, stock_id):
+    # Addding the user to the db when login
+    s = models.UserG(user_id = user_id)
+    c = models.Stock(stock_id = stock_id)
+    c.users.append(s)
+    DB.session.add(c)
+    DB.session.commit()
+    
+    
+
 @SOCKETIO.on('connect')
 def on_connect():
     print('User connected!')
@@ -129,15 +138,24 @@ def on_connect():
     print('GOOGLE SIGNED IN!')
     SOCKETIO.emit('stock_data', returnedData, broadcast=True, include_self=True)
     # print(api_data['Time Series (Daily)'][yesterday]['1. open'])
-    name1 = 'OVV'
-    for key in api_data['Time Series (Daily)']:
-        x = models.Stock.query.filter_by(name=name1, dateDB=key).first()
-        # print(x)
-        if x is None:
-            addStockDB(api_data['Time Series (Daily)'][key], name1, key)
-        else:
-            continue
+    fetchStockInfoDic = fetchStockInfo()
+    for k in fetchStockInfoDic.keys():
+        api_data_good = fetchStockInfoDic[k]
+        print(api_data_good)
+        name1= (api_data_good['Meta Data']['2. Symbol'])
+        for key in api_data_good['Time Series (Daily)']:
+            x = models.Stock.query.filter_by(name=name1, dateDB=key).first()
+            if x is None:
+               addStockDB(api_data_good['Time Series (Daily)'][key], name1, key)
+            else:
+                continue
 
+
+#to send to js favorite list 
+@SOCKETIO.on('my_f_list')
+def send_to_list():
+    pass
+    
 
 @SOCKETIO.on('root')
 def hello_world():
@@ -207,9 +225,12 @@ def index(filename):
 
 
 def fetchStockInfo():
+    #this is the response
     teslaData = searchStock('WMT')
     ovvData = searchStock('OVV')
     amznData = searchStock('AAPL')
+   # print(teslaData)
+   # print(ovvData)
     return {'teslaData': teslaData,'ovvData': ovvData,'amznData': amznData }
 
 if __name__ == "__main__":
