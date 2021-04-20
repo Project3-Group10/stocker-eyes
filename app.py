@@ -4,7 +4,7 @@ from flask import Flask, send_from_directory, json, redirect, request, url_for, 
 from flask_socketio import SocketIO
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
-from functions import searchStock, fetchAPI
+from functions import searchStock, fetchAPI, fetchNews
 from dotenv import load_dotenv, find_dotenv
 from datetime import timedelta
 from google.oauth2 import id_token
@@ -120,6 +120,10 @@ def getCloseLowStockDic(stocksDic):
     
 #getCloseLowStockDic({1: ['OVV', '04-18-2021', '4.2', '6.8', '3.5', '5', '3.1', '5000'],2: ['OVV', '04-17-2021', '4.2', '6.8', '3.5', '4.1', '3.1', '5000'],3: ['OVV', '04-16-2021', '4.2', '6.8', '3.5', '5.6', '3.1', '5000'],4: ['OVV', '04-15-2021', '4.2', '6.8', '3.5', '6.8', '3.1', '5000'],5: ['OVV', '04-14-2021', '4.2', '6.8', '3.5', '5.3', '3.1', '5000']})    
 
+@SOCKETIO.on('newsRequest')
+def newsResults(ticker):    
+    print('\n\nTICKER RECEIVED',ticker,'\n\n')
+    SOCKETIO.emit('newsResponse', fetchNews(ticker), broadcast=True)
 #adding user, stock to the favorite table 
 def addUserFStock(user_id, stock_id):
     # Addding the user to the db when login

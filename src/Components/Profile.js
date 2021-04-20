@@ -2,7 +2,6 @@ import React from 'react';
 import {useEffect, useState} from 'react';
 import Logout from "./Logout";
 import { GoogleLogout } from "react-google-login";
-import '../css/Profile.css';
 
 const defaultLoggedIn = false;
 

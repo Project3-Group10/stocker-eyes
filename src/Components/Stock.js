@@ -3,6 +3,7 @@ import {useEffect, useState, useRef} from 'react';
 import Plotly from 'plotly.js-finance-dist';
 import socket from "./utils/socket";
 import { refreshTokenSetup } from "./utils/refreshToken";
+import News from "./News";
 
 export const Stock = (props) => {
     const[stockChartXValue, setstockChartXValue] = useState([]);
@@ -164,7 +165,17 @@ export const Stock = (props) => {
 ];
 
     return(
-        <div id={`plotlyGraph-${props.name}`} className="stockGraph"> </div>
+      
+        
+          <div className="stck">
+            <div id="test2" className="stock ">
+              <div id={`plotlyGraph-${props.name}`} className="stockGraph"> </div>
+            </div>
+            <div id="news2" className="newsArea newsSP">
+              <News ticker={props.name}/>
+            </div>
+          </div>
+        
     );
 }
 

@@ -1,20 +1,14 @@
 import React from 'react';
-import '../../src/App.css';
 import Stock from './Stock';
+import News from './News';
 
 const Search = () => {
 
     return(
         <div className="pageHolder">
-        <div className="home">
-            <div className="container">
-            <div className="stockArea"></div>
-            <div className="stock">
-            <Stock />
-            </div>
-            <div id="news2" className="newsArea newsSP"></div>
-        </div>
-        </div>
+                <div className="stock">
+                    <Stock />
+                </div>
         </div>
     );
 }
