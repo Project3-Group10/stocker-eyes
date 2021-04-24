@@ -17,7 +17,7 @@ class UserG(DB.Model):
     #stocks = DB.relationship('Stock', secondary=association_table, backref='User')
   
     def __repr__(self):
-        return f"UserG('{self.email}', '{self.name}', '{self.avatar}')"
+        return f"UserG('{self.user_id}', '{self.email}', '{self.name}', '{self.avatar}')"
 
 #Stock Table 
 class Stock(DB.Model):
@@ -35,7 +35,7 @@ class Stock(DB.Model):
                                secondary=user_identifie, 
                                backref=DB.backref('stocks', lazy='dynamic'))
     def __repr__(self):
-        return f"Stock('{self.name}', '{self.dateDB}', '{self.open_price}','{self.high_price}', '{self.low_price}', '{self.close_price}', '{self.adjusted_clase_price}','{self.volume_price}')"
+        return f"Stock('{self.stock_id}', '{self.name}', '{self.dateDB}', '{self.open_price}','{self.high_price}', '{self.low_price}', '{self.close_price}', '{self.adjusted_clase_price}','{self.volume_price}')"
 
 #Crypto Table do the relationship TODO 
 class Crypto(DB.Model):
