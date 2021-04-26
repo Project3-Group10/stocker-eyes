@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Landing from "./Components/Landing";
 import Home from "./Components/Home";
 import Register from "./Components/Register";
 import Profile from "./Components/Profile";
@@ -24,7 +25,7 @@ function App() {
           <div>
               <nav className="navigation">
                 <SearchBox />
-                <div className="menuItem" onClick={()=>{pageHolder()}}> <Link to="/"> <p>Home </p></Link> </div>
+                <div className="menuItem" onClick={()=>{pageHolder()}}> <Link to="/home"> <p>Home </p></Link> </div>
                 <div className="menuItem"> <Link to="/register"><p>Register</p></Link> </div>
                 <div className="menuItem"> <Link to="/profile"><p>Profile</p></Link> </div>
               </nav>
@@ -34,6 +35,9 @@ function App() {
               <Switch>
                   <Route exact path="/"
                          refresh="true">
+                      <Landing />
+                  </Route>
+                  <Route path="/home">
                       <Home />
                   </Route>
                   <Route path="/register">
