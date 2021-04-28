@@ -80,7 +80,7 @@ def addStockDB(stock_data, name1, key):
     DB.session.commit()
     DB.session.remove()
 
-# GET from DB user with all the information. It is a dictionary where is also the user_id. 
+# GET from DB users with all the information. It is a dictionary where key is also the user_id. 
 def getUsersDB():
     allUsers = models.UserG.query.all()
     users = {}
@@ -88,18 +88,8 @@ def getUsersDB():
         users[person.user_id] = [person.email, person.name, person.avatar]
     # print(users)
     return users
-#This funtion will return a object type UserG in order to use it, for example on favorite list. It is only a query 
-def getAnUserDB(userId, userName):
-    user1 = models.UserG.query.filter_by(user_id = userId, name = userName).first()
-    return user1
-def getAStockDB(stockName):
-    stock1 = models.Stock.query.filter_by(name=stockName).first()
-    return stock1
-    
-    
 
-
-#this method will help any time you need to get a stock from the DB. From the dictionary you can have everything. 
+#this method will help any time you need to get a stocks from the DB. From the dictionary you can have everything. 
 def getStocksDB():
     allStocks = models.Stock.query.all()
     stocksDic = {}
@@ -108,6 +98,22 @@ def getStocksDB():
                                stock.close_price, stock.adjusted_clase_price, stock.volume_price]
     return stocksDic
 
+#This funtion will return a object type UserG in order to use it, for example on favorite list. It is only a query 
+def getAnUserDB(userId, userName):
+    user1 = models.UserG.query.filter_by(user_id = userId, name = userName).first()
+    return user1
+    
+def getAStockDB(stockName):
+    stock1 = models.Stock.query.filter_by(name=stockName).first()
+    return stock1
+
+#adding user, stock to the favorite table / The var user is an object type UserG and stock is an object type Stock 
+def addUserFStock(user, stock):
+    # Addding the user to the db when login
+    stock.users.append(user)
+    DB.session.add(stock)
+    DB.session.commit()
+    
 #to get the high_price since the first day of any stock. This method is important for test_case
 def getBestPriceSDic(stocksDic): 
     name_closepriceDic = {}
@@ -135,17 +141,6 @@ def newsResults(ticker):
     print('\n\nTICKER RECEIVED',ticker,'\n\n')
     SOCKETIO.emit('newsResponse', fetchNews(ticker), broadcast=True)
 
-
-#adding user, stock to the favorite table / The var user is an object type UserG and stock is an object type Stock 
-
-#adding user, stock to the favorite table 
-def addUserFStock(user, stock):
-    # Addding the user to the db when login
-    stock.users.append(user)
-    DB.session.add(stock)
-    DB.session.commit()
-    
- 
 
 @SOCKETIO.on('connect')
 def on_connect():
