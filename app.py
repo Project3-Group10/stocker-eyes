@@ -63,7 +63,7 @@ def addNewUserDB(user_data):
     DB.session.add(newUser)
     DB.session.commit()
     DB.session.remove()
-    users_dic_return = getUserDB()
+    users_dic_return = getUsersDB()
     return users_dic_return
     
 
@@ -81,13 +81,23 @@ def addStockDB(stock_data, name1, key):
     DB.session.remove()
 
 # GET from DB user with all the information. It is a dictionary where is also the user_id. 
-def getUserDB():
+def getUsersDB():
     allUsers = models.UserG.query.all()
     users = {}
     for person in allUsers:
         users[person.user_id] = [person.email, person.name, person.avatar]
     # print(users)
     return users
+#This funtion will return a object type UserG in order to use it, for example on favorite list. It is only a query 
+def getAnUserDB(userId, userName):
+    user1 = models.UserG.query.filter_by(user_id = userId, name = userName).first()
+    return user1
+def getAStockDB(stockName):
+    stock1 = models.Stock.query.filter_by(name=stockName).first()
+    return stock1
+    
+    
+
 
 #this method will help any time you need to get a stock from the DB. From the dictionary you can have everything. 
 def getStocksDB():
@@ -120,16 +130,14 @@ def getCloseLowStockDic(stocksDic):
     
 #getCloseLowStockDic({1: ['OVV', '04-18-2021', '4.2', '6.8', '3.5', '5', '3.1', '5000'],2: ['OVV', '04-17-2021', '4.2', '6.8', '3.5', '4.1', '3.1', '5000'],3: ['OVV', '04-16-2021', '4.2', '6.8', '3.5', '5.6', '3.1', '5000'],4: ['OVV', '04-15-2021', '4.2', '6.8', '3.5', '6.8', '3.1', '5000'],5: ['OVV', '04-14-2021', '4.2', '6.8', '3.5', '5.3', '3.1', '5000']})    
 
-#adding user, stock to the favorite table 
-def addUserFStock(user_id, stock_id):
+#adding user, stock to the favorite table / The var user is an object type UserG and stock is an object type Stock 
+def addUserFStock(user, stock):
     # Addding the user to the db when login
-    s = models.UserG(user_id = user_id)
-    c = models.Stock(stock_id = stock_id)
-    c.users.append(s)
-    DB.session.add(c)
+    stock.users.append(user)
+    DB.session.add(stock)
     DB.session.commit()
     
-    
+ 
 
 @SOCKETIO.on('connect')
 def on_connect():
