@@ -63,7 +63,7 @@ def addNewUserDB(user_data):
     DB.session.add(newUser)
     DB.session.commit()
     DB.session.remove()
-    users_dic_return = getUserDB()
+    users_dic_return = getUsersDB()
     return users_dic_return
     
 
@@ -81,13 +81,23 @@ def addStockDB(stock_data, name1, key):
     DB.session.remove()
 
 # GET from DB user with all the information. It is a dictionary where is also the user_id. 
-def getUserDB():
+def getUsersDB():
     allUsers = models.UserG.query.all()
     users = {}
     for person in allUsers:
         users[person.user_id] = [person.email, person.name, person.avatar]
     # print(users)
     return users
+#This funtion will return a object type UserG in order to use it, for example on favorite list. It is only a query 
+def getAnUserDB(userId, userName):
+    user1 = models.UserG.query.filter_by(user_id = userId, name = userName).first()
+    return user1
+def getAStockDB(stockName):
+    stock1 = models.Stock.query.filter_by(name=stockName).first()
+    return stock1
+    
+    
+
 
 #this method will help any time you need to get a stock from the DB. From the dictionary you can have everything. 
 def getStocksDB():
@@ -124,16 +134,18 @@ def getCloseLowStockDic(stocksDic):
 def newsResults(ticker):    
     print('\n\nTICKER RECEIVED',ticker,'\n\n')
     SOCKETIO.emit('newsResponse', fetchNews(ticker), broadcast=True)
+
+
+#adding user, stock to the favorite table / The var user is an object type UserG and stock is an object type Stock 
+
 #adding user, stock to the favorite table 
-def addUserFStock(user_id, stock_id):
+def addUserFStock(user, stock):
     # Addding the user to the db when login
-    s = models.UserG(user_id = user_id)
-    c = models.Stock(stock_id = stock_id)
-    c.users.append(s)
-    DB.session.add(c)
+    stock.users.append(user)
+    DB.session.add(stock)
     DB.session.commit()
     
-    
+ 
 
 @SOCKETIO.on('connect')
 def on_connect():
