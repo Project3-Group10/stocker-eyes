@@ -96,9 +96,6 @@ def getAStockDB(stockName):
     stock1 = models.Stock.query.filter_by(name=stockName).first()
     return stock1
     
-    
-
-
 #this method will help any time you need to get a stock from the DB. From the dictionary you can have everything. 
 def getStocksDB():
     allStocks = models.Stock.query.all()
