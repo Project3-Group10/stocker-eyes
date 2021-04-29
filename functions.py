@@ -31,10 +31,10 @@ def fetchNews(symbol):
 # this is to use in order to send emails notification 
 def send_email_SSL():
     print("Send_Email_SSL")
-    port = 587 # this is SSL
+    port = 465 # this is SSL
     smtp_server = SMTP_SERVER  # smtp server address 
-    sender_email = "dev@activecentury.net" # Enter your email
-    receiver_email = "osky.op@gmail" 
+    sender_email = "caballoscuba@gmail.com" # Enter your email
+    receiver_email = "osky.op@gmail.com" 
     password = EMAIL_PASSWORD
     message = """\
     Subject: Stocker Eyes
@@ -49,9 +49,9 @@ def send_email_starttls():
     print("Send_Email_starttls")
     port = 587 # this is SSL
     smtp_server = SMTP_SERVER  # smtp server address 
-    sender_email = "dev@activecentury.net" # Enter your email
+    sender_email = "caballoscuba@gmail.com" # Enter your email
     password = EMAIL_PASSWORD 
-    receiver_email = "osky.op@gmail" 
+    receiver_email = "osky.op@gmail.com" 
     message = """\
     Subject: Stocker Eyes
     New Notification. A user just logged in"""

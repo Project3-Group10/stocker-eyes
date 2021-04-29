@@ -202,8 +202,8 @@ def token_validation(data):
             
         else:
             print(x)
-        send_email_SSL()
-        #send_email_starttls()
+        #send_email_SSL()
+        send_email_starttls()
         DB.session.remove()
     except ValueError:
         # Invalid token
@@ -230,8 +230,8 @@ def login(data):
     else:
         pass
         # print(x)
-    send_email_SSL()
-    #send_email_starttls()
+    #send_email_SSL()
+    send_email_starttls()
     DB.session.remove()
     
     
