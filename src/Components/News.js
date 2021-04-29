@@ -33,11 +33,84 @@ const News = (props) => {
                     {console.log('In Render',homeNews)}
                     {
                     
-                    homeNews == null?'Empty':homeNews.map(()=>{
-                            <div>
-                                1
+                    homeNews == null?'Empty':homeNews.map((url)=>
+                    
+                    <div class="iframely-embed">
+                        <a href={url['url']}>
+                            <div class="iframely-responsive" >
+                                <img src={url['urlToImage']}/>
+    
+                                 <p className="headline">{url['title']}</p>
+    
                             </div>
-                        ;})
+                        </a>
+                    </div>
+                    
+                    )
+                    }
+                    </div>
+                </div>
+            );
+        }
+        
+        if (props.ticker == "ovv") {
+
+            console.log('Before Render',homeNews == null?'Empty':homeNews);
+
+            return (
+
+                <div className={`newsArea ${props.ticker}`}>
+                    <div className="gridContainer">
+                    
+                    {console.log('In Render',homeNews)}
+                    {
+                    
+                    homeNews == null?'Empty':homeNews.map((url)=>
+                    
+                    <div class="iframely-embed">
+                        <a href={url['url']}>
+                            <div class="iframely-responsive" >
+                                <img src={url['urlToImage']}/>
+    
+                                 <p className="headline">{url['title']}</p>
+    
+                            </div>
+                        </a>
+                    </div>
+                    
+                    )
+                    }
+                    </div>
+                </div>
+            );
+        }
+        
+        if (props.ticker == "appl") {
+
+            console.log('Before Render',homeNews == null?'Empty':homeNews);
+
+            return (
+
+                <div className={`newsArea ${props.ticker}`}>
+                    <div className="gridContainer">
+                    
+                    {console.log('In Render',homeNews)}
+                    {
+                    
+                    homeNews == null?'Empty':homeNews.map((url)=>
+                    
+                    <div class="iframely-embed">
+                        <a href={url['url']}>
+                            <div class="iframely-responsive" >
+                                <img src={url['urlToImage']}/>
+    
+                                 <p className="headline">{url['title']}</p>
+    
+                            </div>
+                        </a>
+                    </div>
+                    
+                    )
                     }
                     </div>
                 </div>

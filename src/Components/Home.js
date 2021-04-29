@@ -51,12 +51,16 @@ const Home = (props) => {
                 <div className={`stockArea sp ${expandMain.sp? '' : 'hide'}`} onClick={expandStock} >
 
                     <Stock ticker={"ovv"} rq={"Home"}/>
+                    <News ticker={"ovv"} rq={"Home"}/>
+
 
 
                 </div>
                 <div className={`stockArea nasdaq ${expandMain.nasdaq? '' : 'hide'}`} onClick={expandStock} >
 
                     <Stock ticker={"appl"} rq={"Home"}/>
+                    <News ticker={"appl"} rq={"Home"}/>
+
 
                 </div>
             </div>

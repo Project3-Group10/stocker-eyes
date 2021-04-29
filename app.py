@@ -140,17 +140,6 @@ def getCloseLowStockDic(stocksDic):
 #getCloseLowStockDic({1: ['OVV', '04-18-2021', '4.2', '6.8', '3.5', '5', '3.1', '5000'],2: ['OVV', '04-17-2021', '4.2', '6.8', '3.5', '4.1', '3.1', '5000'],3: ['OVV', '04-16-2021', '4.2', '6.8', '3.5', '5.6', '3.1', '5000'],4: ['OVV', '04-15-2021', '4.2', '6.8', '3.5', '6.8', '3.1', '5000'],5: ['OVV', '04-14-2021', '4.2', '6.8', '3.5', '5.3', '3.1', '5000']})    
 
 
-#adding user, stock to the favorite table 
-def addUserFStock(user_id, stock_id):
-    # Addding the user to the db when login
-    s = models.UserG(user_id = user_id)
-    c = models.Stock(stock_id = stock_id)
-    c.users.append(s)
-    DB.session.add(c)
-    DB.session.commit()
-    DB.session.remove()
-    
-    
 
 @SOCKETIO.on('connect')
 def on_connect():
