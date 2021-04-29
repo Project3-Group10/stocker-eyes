@@ -154,7 +154,6 @@ def on_connect():
         api_data_good = fetchStockInfoDic[k]
         # print(api_data_good['Meta Data']['2. Symbol'])
         name1= (api_data_good['Meta Data']['2. Symbol'])
-        nRepo = fetchNews(api_data_good['Meta Data']['2. Symbol'])
         # print(api_data_good['Time Series (Daily)'])
         for key in api_data_good['Time Series (Daily)']:
             x = models.Stock.query.filter_by(name=name1, dateDB=key).first()
