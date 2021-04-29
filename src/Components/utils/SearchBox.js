@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import socket from './socket';
 import { useHistory } from "react-router-dom";
 
@@ -12,11 +12,8 @@ const SearchBox = () => {
     const onClick = () => {
         const inputText = inputRef.current.value;
 
-        socket.emit('searchStock', { searchText: inputText })
-        localStorage.setItem('searchBarQuery', 'true');
         localStorage.setItem('TickerName', inputText );
 
-        // socket.emit('newsRequest', inputText);
         let path = `/search`; 
         history.push(path);
     }

@@ -7,11 +7,20 @@ import "../css/Register.css";
 import "../css/Search.css";
 import socket from "./utils/socket";
 import { Stock } from "./Stock";
+import News from "./News";
 
 const Home = (props) => {
-    localStorage.setItem('requsetHome', 'true');
+
     const [expandMain, setexpandMain] = useState({ dow: 1, sp: 1, nasdaq: 1 });
+    const [homeData, setHomeData] = useState(false);
     
+    if (!homeData) {
+        console.log('homeEmit');
+        socket.emit('homeRequest');
+        setHomeData(true);
+    }
+    
+
     function expandStock(ele) {
         const box = ele.target.classList[1];
         let expandCopy = { dow: 0, sp: 0, nasdaq: 0 };
@@ -28,31 +37,26 @@ const Home = (props) => {
         }
 
     }
-
-    useEffect(() => {
-        socket.on('stock_data', (data) => {
-            localStorage.setItem('homeStockInfo', JSON.stringify(data));
-        });
-    }, []);
-
+    
 
     return (
         <div className="home">
             <div className="mainContainer">
                 <div className={`stockArea dow ${expandMain.dow? '' : 'hide'}`} onClick={expandStock} >
                      
-                    <Stock name={"tsla"}/>
+                    <Stock ticker={"wmt"} rq={"Home"}/>
+                    <News ticker={"wmt"} rq={"Home"}/>
 
                 </div>
                 <div className={`stockArea sp ${expandMain.sp? '' : 'hide'}`} onClick={expandStock} >
 
-                    <Stock name={"ovv"}/>
+                    <Stock ticker={"ovv"} rq={"Home"}/>
 
 
                 </div>
                 <div className={`stockArea nasdaq ${expandMain.nasdaq? '' : 'hide'}`} onClick={expandStock} >
 
-                    <Stock name={"amzn"} />
+                    <Stock ticker={"appl"} rq={"Home"}/>
 
                 </div>
             </div>

@@ -1,20 +1,19 @@
 import React from 'react';
 import Stock from './Stock';
+import News from "./News";
 import socket from "./utils/socket";
 import {useState, useEffect} from 'react';
 
 const Search = () => {
     
-    useEffect(() => {
-      socket.on('searchQuerySocket', (data) => {
-        console.log('S');
-        console.log(data);
-    });
-    }, [null]);
+    if (localStorage.getItem('TickerName')) {
+        console.log('From SEARCHJS\n',localStorage.getItem('TickerName'));
+        socket.emit('searchRequest', localStorage.getItem('TickerName'));
+    }
 
     return(
         <div className="pageHolder">
-            <Stock />
+            <Stock ticker={localStorage.getItem('TickerName')} rq="Search"/>
         </div>
     );
 }
