@@ -45,7 +45,7 @@ const Home = (props) => {
                 <div className={`stockArea dow ${expandMain.dow? '' : 'hide'}`} onClick={expandStock} >
                      
                     <Stock ticker={"wmt"} rq={"Home"}/>
-                    <News ticker={"wmt"} rq={"Home"}/>
+//                     <News ticker={"wmt"} rq={"Home"}/>
 
                 </div>
                 <div className={`stockArea sp ${expandMain.sp? '' : 'hide'}`} onClick={expandStock} >
