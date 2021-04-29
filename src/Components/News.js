@@ -177,6 +177,10 @@ const News = (props) => {
                           {url["description"]} 
                           </p>
                         </div>
+                        
+                        <div class="article-card__meta">
+                            <span class="article-card__timestamp"><i class="ion-clock"></i>{url["publishedAt"].slice(5,10)}</span>
+                        </div>
                       </div>
                     </div>
                      </a>
