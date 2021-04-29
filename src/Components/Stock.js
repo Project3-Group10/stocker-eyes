@@ -6,30 +6,24 @@ import { refreshTokenSetup } from "./utils/refreshToken";
 
 
 export const Stock = (props) => {
-
+  console.log('Stock');
   useEffect(() => {
     socket.on('homeResponse', (groupData) => {
-      console.log(groupData);
       localStorage.setItem('homeStocks', JSON.stringify(groupData['homeStock']));
       localStorage.setItem('homeNews', JSON.stringify(groupData['homeNews']));
       if (props.rq == 'Home') {
         const homeStocks = JSON.parse(JSON.stringify(groupData['homeStock']));
 
         if (props.ticker === "wmt") {
-          console.log('wmt', homeStocks);
           displayGraph(homeStocks['wmtData']);
-          console.log('wmt', homeStocks.wmtData);
-
         }
 
         else if (props.ticker === "ovv") {
           displayGraph(homeStocks.ovvData);
-          console.log(homeStocks.ovvData)
         }
 
         else if (props.ticker === "appl") {
           displayGraph(homeStocks.applData);
-          console.log(homeStocks.applData)
         }
       }
     });
@@ -55,12 +49,6 @@ export const Stock = (props) => {
   };
 
   function displayGraph(data) {
-    console.log('InDIsplay');
-    console.log(data);
-
-    // if(Object.size(data) > 1){
-    //   console.log('ERROR');
-    // } else { 
 
     let stockChartXValuesFunction = [];
     let stockChartYValuesFunction = [];
@@ -73,12 +61,6 @@ export const Stock = (props) => {
     let maxNumberY = Math.max(...stockChartYValuesFunction);
     let indexOfMaxNumberY = stockChartYValuesFunction.indexOf(String(maxNumberY));
     let indexOfMaxNumberX = stockChartXValuesFunction[indexOfMaxNumberY];
-
-    console.log('Max Number: ' + maxNumberY);
-    console.log('Index of Max Number X: ' + indexOfMaxNumberX);
-    console.log('Index of Max Number Y: ' + indexOfMaxNumberY);
-
-    console.log(stockChartYValuesFunction);
 
     let lowNumberY = Math.min(...stockChartYValuesFunction);
     let indexOfMinNumberY = stockChartYValuesFunction.indexOf(String(lowNumberY));
@@ -117,7 +99,7 @@ export const Stock = (props) => {
         pad: 4
       }
     };
-    console.log(props.ticker, document.getElementById("wmtTicker"));
+    
     Plotly.newPlot(document.getElementById(props.ticker), [{
       x: stockChartXValuesFunction,
       y: stockChartYValuesFunction,

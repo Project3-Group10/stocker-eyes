@@ -144,17 +144,6 @@ def getCloseLowStockDic(stocksDic):
 #getCloseLowStockDic({1: ['OVV', '04-18-2021', '4.2', '6.8', '3.5', '5', '3.1', '5000'],2: ['OVV', '04-17-2021', '4.2', '6.8', '3.5', '4.1', '3.1', '5000'],3: ['OVV', '04-16-2021', '4.2', '6.8', '3.5', '5.6', '3.1', '5000'],4: ['OVV', '04-15-2021', '4.2', '6.8', '3.5', '6.8', '3.1', '5000'],5: ['OVV', '04-14-2021', '4.2', '6.8', '3.5', '5.3', '3.1', '5000']})    
 
 
-#adding user, stock to the favorite table 
-def addUserFStock(user_id, stock_id):
-    # Addding the user to the db when login
-    s = models.UserG(user_id = user_id)
-    c = models.Stock(stock_id = stock_id)
-    c.users.append(s)
-    DB.session.add(c)
-    DB.session.commit()
-    DB.session.remove()
-    
-    
 
 @SOCKETIO.on('connect')
 def on_connect():
@@ -169,7 +158,6 @@ def on_connect():
         api_data_good = fetchStockInfoDic[k]
         # print(api_data_good['Meta Data']['2. Symbol'])
         name1= (api_data_good['Meta Data']['2. Symbol'])
-        nRepo = fetchNews(api_data_good['Meta Data']['2. Symbol'])
         # print(api_data_good['Time Series (Daily)'])
         print(name1)
         for key in api_data_good['Time Series (Daily)']:
@@ -270,15 +258,6 @@ def index(filename):
 
 def fetchStockInfo():
     #this is the response
-<<<<<<< HEAD
-    teslaData = searchStock('WMT')
-    ovvData = searchStock('OVV')
-    amznData = searchStock('AAPL')
-   # print(teslaData)
-   # print(ovvData)
-    return {'teslaData': teslaData,'ovvData': ovvData,'amznData': amznData }
-    
-=======
     # teslaData = searchStock('WMT')
     # ovvData = searchStock('OVV')
     # amznData = searchStock('AAPL')
@@ -297,7 +276,6 @@ def fetchNewsInfo():
     return json.loads(f.read())
 
     # return {'wmtData':tslaData,'ovvData':ovvData,'applData':amznData}
->>>>>>> c435e59a3bb0db83b8519956818396e36eb8ad8d
 
 if __name__ == "__main__":
     import functions
