@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import socket from './socket';
 import { useHistory } from "react-router-dom";
 
@@ -12,18 +12,15 @@ const SearchBox = () => {
     const onClick = () => {
         const inputText = inputRef.current.value;
 
-        socket.emit('searchStock', { searchText: inputText })
-        localStorage.setItem('searchBarQuery', 'true');
         localStorage.setItem('TickerName', inputText );
 
-        // socket.emit('newsRequest', inputText);
         let path = `/search`; 
         history.push(path);
     }
 
     return(
         
-        <form action="" class="search-bar">
+        <form action="" className="search-bar">
 	        <input 
 	            placeholder="Search..."
                 ref={inputRef}
@@ -31,8 +28,8 @@ const SearchBox = () => {
                 type="search"
                 name="search"
                 required
-                autocomplete="off"/>
-	        <button class="search-btn" type="submit" onClick={()=>{onClick()}}>
+                autoComplete="off"/>
+	        <button className="search-btn" type="submit" onClick={()=>{onClick()}}>
 	    	    <span>Search</span>
 	        </button>
         </form>

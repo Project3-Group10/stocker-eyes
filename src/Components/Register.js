@@ -5,7 +5,8 @@ import Logout from "./Logout";
 const Register = () => {
     return (
         <div className="pageHolder">
-            <div>
+            <div className="loginContainer" >
+                <h2> Please log in using Google </h2>
                 <Login />
                 <Logout />
             </div>

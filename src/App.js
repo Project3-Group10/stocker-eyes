@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import socket from './Components/utils/socket';
 import './App.css';
 import Home from "./Components/Home";
 import Register from "./Components/Register";
@@ -17,7 +18,7 @@ function App() {
 
   const pageHolder = () => {
     window.location.reload(false);
-  } 
+  }; 
 
   return (
       <Router>

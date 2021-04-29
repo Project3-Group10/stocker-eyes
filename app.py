@@ -87,15 +87,18 @@ def getUsersDB():
     for person in allUsers:
         users[person.user_id] = [person.email, person.name, person.avatar]
     # print(users)
+        DB.session.remove()
     return users
 
 #this method will help any time you need to get a stocks from the DB. From the dictionary you can have everything. 
 def getStocksDB():
     allStocks = models.Stock.query.all()
+    DB.session.remove()
     stocksDic = {}
     for stock in allStocks:
         stocksDic[stock.stock_id] = [stock.name, stock.dateDB, stock.open_price, stock.high_price, stock.low_price,
                                stock.close_price, stock.adjusted_clase_price, stock.volume_price]
+        
     return stocksDic
 
 #This funtion will return a object type UserG in order to use it, for example on favorite list. It is only a query 
@@ -140,24 +143,34 @@ def getCloseLowStockDic(stocksDic):
     
 #getCloseLowStockDic({1: ['OVV', '04-18-2021', '4.2', '6.8', '3.5', '5', '3.1', '5000'],2: ['OVV', '04-17-2021', '4.2', '6.8', '3.5', '4.1', '3.1', '5000'],3: ['OVV', '04-16-2021', '4.2', '6.8', '3.5', '5.6', '3.1', '5000'],4: ['OVV', '04-15-2021', '4.2', '6.8', '3.5', '6.8', '3.1', '5000'],5: ['OVV', '04-14-2021', '4.2', '6.8', '3.5', '5.3', '3.1', '5000']})    
 
-@SOCKETIO.on('newsRequest')
-def newsResults(ticker):    
-    print('\n\nTICKER RECEIVED',ticker,'\n\n')
-    SOCKETIO.emit('newsResponse', fetchNews(ticker), broadcast=True)
 
+#adding user, stock to the favorite table 
+def addUserFStock(user_id, stock_id):
+    # Addding the user to the db when login
+    s = models.UserG(user_id = user_id)
+    c = models.Stock(stock_id = stock_id)
+    c.users.append(s)
+    DB.session.add(c)
+    DB.session.commit()
+    DB.session.remove()
+    
+    
 
 @SOCKETIO.on('connect')
 def on_connect():
     print('User connected!')
     # print(data)
     print('GOOGLE SIGNED IN!')
-    SOCKETIO.emit('stock_data', returnedData, broadcast=True, include_self=True)
+    # print(returnedData)
+    
     # print(api_data['Time Series (Daily)'][yesterday]['1. open'])
     fetchStockInfoDic = fetchStockInfo()
     for k in fetchStockInfoDic.keys():
         api_data_good = fetchStockInfoDic[k]
-        print(api_data_good)
+        # print(api_data_good['Meta Data']['2. Symbol'])
         name1= (api_data_good['Meta Data']['2. Symbol'])
+        nRepo = fetchNews(api_data_good['Meta Data']['2. Symbol'])
+        # print(api_data_good['Time Series (Daily)'])
         print(name1)
         for key in api_data_good['Time Series (Daily)']:
             x = models.Stock.query.filter_by(name=name1, dateDB=key).first()
@@ -165,6 +178,7 @@ def on_connect():
                addStockDB(api_data_good['Time Series (Daily)'][key], name1, key)
             else:
                 continue
+    DB.session.remove()
 
 
 #to send to js favorite list 
@@ -199,6 +213,7 @@ def token_validation(data):
             addNewUserDB(idinfo)
         else:
             print(x)
+        DB.session.remove()
     except ValueError:
         # Invalid token
         print('Login failed')
@@ -224,13 +239,26 @@ def login(data):
     else:
         pass
         # print(x)
+    DB.session.remove()
+    
+    
+@SOCKETIO.on('homeRequest')
+def homeManage():
+    print('Home Requested')
+    SOCKETIO.emit('homeResponse', {'homeStock':returnedData,'homeNews':returnedNews})
+    
+@SOCKETIO.on('searchRequest')
+def searchManage(sQuery):
+    print('Search Requested')
+    SOCKETIO.emit('searchResponse', {'searchStock':fetchStockInfo()['wmtData'],'searchNews':fetchNews(sQuery)});
 
+    
+    
+    
+    
+    
+    
 
-@SOCKETIO.on('searchStock')
-def searchStockFromAPI(data):
-    response = searchStock(data['searchText'])
-    #print(response)
-    SOCKETIO.emit('searchQuerySocket', response, broadcast=True, include_self=True)
 
 @APP.route('/', defaults={"filename": "index.html"})
 @APP.route('/<path:filename>')
@@ -242,6 +270,7 @@ def index(filename):
 
 def fetchStockInfo():
     #this is the response
+<<<<<<< HEAD
     teslaData = searchStock('WMT')
     ovvData = searchStock('OVV')
     amznData = searchStock('AAPL')
@@ -249,12 +278,32 @@ def fetchStockInfo():
    # print(ovvData)
     return {'teslaData': teslaData,'ovvData': ovvData,'amznData': amznData }
     
+=======
+    # teslaData = searchStock('WMT')
+    # ovvData = searchStock('OVV')
+    # amznData = searchStock('AAPL')
+    # print(teslaData,'\n\n')
+    # print(ovvData,'\n\n')
+    # print(amznData,'\n\n')
+    f = open("stock.txt", "r")
+
+    return json.loads(f.read())
+    
+def fetchNewsInfo():
+    # tslaData = fetchNews('WMT')
+    # ovvData = fetchNews('OVV')
+    # amznData = fetchNews('AAPL')
+    f = open("news.txt","r")
+    return json.loads(f.read())
+
+    # return {'wmtData':tslaData,'ovvData':ovvData,'applData':amznData}
+>>>>>>> c435e59a3bb0db83b8519956818396e36eb8ad8d
 
 if __name__ == "__main__":
     import functions
     from functions import searchStock, fetchAPI
     returnedData = fetchStockInfo()
-    api_data = returnedData['ovvData']
+    returnedNews = fetchNewsInfo()
 
     SOCKETIO.run(
         APP,
