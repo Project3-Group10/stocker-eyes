@@ -1,0 +1,800 @@
+{
+   "wmtData":{
+      "status":"ok",
+      "totalResults":317,
+      "articles":[
+         {
+            "source":{
+               "id":"None",
+               "name":"StockNews.com"
+            },
+            "author":"Nimesh Jaiswal",
+            "title":"3 Retailers Gaining on Strong E-Commerce Platforms",
+            "description":"The COVID-19 pandemic has accelerated the pace at which brick-and-mortar retailers are adopting online platforms to compete with the e-commerce giants. Walmart (WMT), Target (TGT), and Best Buy (BBY) are cases in point. They are continuing to make improvement…",
+            "url":"https://stocknews.com/news/wmt-tgt-bby-3-retailers-gaining-on-strong-e-commerce-platforms/",
+            "urlToImage":"https://assets.entrepreneur.com/providers/stocknews/hero-image-stocknews-370538.jpeg",
+            "publishedAt":"2021-04-27T19:19:19Z",
+            "content":"April\r\n27, 2021\r\n7 min read\r\nThis story originally appeared on StockNewsThe COVID-19 pandemic has accelerated the pace at which brick-and-mortar retailers are adopting online platforms to compete wit… [+7835 chars]"
+         },
+         {
+            "source":{
+               "id":"business-insider",
+               "name":"Business Insider"
+            },
+            "author":"Emily Graffeo",
+            "title":"Walmart's Flipkart is targeting a 4th-quarter IPO that could value it at $35 billion, new report says (WMT)",
+            "description":"Summary List PlacementWalmart-owned Indian e-commerce company Flipkart is working towards an initial public offering as soon as the fourth quarter of this year, according to a report from Bloomberg. Flipkart will be aiming for a valuation of at least $35 bill…",
+            "url":"https://markets.businessinsider.com/news/stocks/walmart-flipkart-ipo-ecommerce-india-public-stock-retail-coupang-wmt-2021-4-1030278489",
+            "urlToImage":"https://images2.markets.businessinsider.com/606c989530004b0019b26360?format=jpeg",
+            "publishedAt":"2021-04-06T17:58:56Z",
+            "content":"Reuters\r\nWalmart-owned Indian e-commerce company Flipkart is working towards an initial public offering as soon as the fourth quarter of this year, according to a report from Bloomberg. \r\nFlipkart wi… [+1540 chars]"
+         },
+         {
+            "source":{
+               "id":"business-insider",
+               "name":"Business Insider"
+            },
+            "author":"Allana Akhtar",
+            "title":"Walmart significantly beats out Amazon when it comes to Black and Latino representation in upper management (WMT)",
+            "description":"Summary List PlacementDiversity among underrepresented groups within Walmart\\'s upper management slightly beats Amazon.\nBlack and Latino people accounted for 14% of US \"officers\" last year, the company\\xa0reported. Walmart defines officers as leaders who have pre…",
+            "url":"https://www.businessinsider.com/more-black-and-latino-senior-management-walmart-than-amazon-2021-4",
+            "urlToImage":"https://i.insider.com/6088447b3f0560001881c4d7?width=1200&format=jpeg",
+            "publishedAt":"2021-04-27T20:09:32Z",
+            "content":"Diversity among underrepresented groups within Walmart\\'s upper management slightly beats Amazon.\r\nBlack and Latino people accounted for 14% of US \"officers\" last year, the company\\xa0reported. Walmart d… [+2077 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"MarketBeat"
+            },
+            "author":"Nick Vasco",
+            "title":"McDonald’s Doubles Down on Digital, Delivery, and Drive-Thru",
+            "description":"On McDonald’s (NYSE: MCD) fourth quarter earnings call, CEO Chris Kempczinski talked about the company’s growth pillars, using a “MCDs” acronym.",
+            "url":"https://www.marketbeat.com/originals/mcdonalds-nyse-mcd-doubles-down-on-digital-delivery-and-drive-thru/?utm_source=entrepreneurcom&amp;amp;utm_medium=entrepreneurcom",
+            "urlToImage":"https://assets.entrepreneur.com/providers/marketbeat/hero-image-marketbeat-369144.jpeg",
+            "publishedAt":"2021-04-12T05:00:00Z",
+            "content":"April\r\n12, 2021\r\n4 min read\r\nThis story originally appeared on MarketBeatOn McDonald’s(NYSE: MCD) fourth-quarter earnings call, CEO Chris Kempczinski talked about the company’s growth pillars, using … [+4203 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"MarketWatch"
+            },
+            "author":"Tonya Garcia",
+            "title":": Walmart invests in San Francisco-based autonomous vehicle company, Cruise",
+            "description":"Consumer companies are investing in and partnering with companies that can help them pick up delivery speed",
+            "url":"https://www.marketwatch.com/story/walmart-invests-in-san-francisco-based-autonomous-vehicle-company-cruise-11618503214",
+            "urlToImage":"https://images.mktw.net/im-325527/social",
+            "publishedAt":"2021-04-15T16:13:00Z",
+            "content":"Walmart Inc. \r\n WMT,\r\n +0.47%\r\nannounced an investment in San Francisco-based self-driving vehicle company, Cruise, on Thursday. Walmart did not specify the size of the investment. The two companies … [+2876 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"MarketWatch"
+            },
+            "author":"Tonya Garcia",
+            "title":": Kroger launches hi-tech facility as digital competition among grocers heats up",
+            "description":"Grocers are stepping up their digital capabilities amid soaring online grocery adoption",
+            "url":"https://www.marketwatch.com/story/kroger-launches-hi-tech-facility-as-digital-competition-among-grocers-heats-up-11618423337",
+            "urlToImage":"https://images.mktw.net/im-324869/social",
+            "publishedAt":"2021-04-14T18:02:00Z",
+            "content":"Kroger Co.\r\n KR,\r\n -0.94%\r\nlaunched its newest hi-tech fulfillment center on Tuesday, the first facility in the U.S. powered by Ocado Group PLC, a U.K.-based robotics and software company.Located nor… [+3858 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"MarketWatch"
+            },
+            "author":"Tonya Garcia",
+            "title":": Lowe’s makes a bigger play for pros with launch of new amenities",
+            "description":"Lowe's Bill Boltz says consumers are now more comfortable with tackling big projects that require professional help",
+            "url":"https://www.marketwatch.com/story/lowes-makes-a-bigger-play-for-pros-with-launch-of-new-amenities-11618336500",
+            "urlToImage":"https://images.mktw.net/im-324388/social",
+            "publishedAt":"2021-04-13T17:55:00Z",
+            "content":"Lowes Cos. \r\n LOW,\r\n -0.18%\r\nInc.\r\n has unveiled a number of perks for its professional customers, including a dedicated Pro Zone that will make high-demand items more accessible, free phone charging… [+3252 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"MarketWatch"
+            },
+            "author":"Rachel Koning Beals",
+            "title":": Fossil-fuel mainstay Baker Hughes joins Plug Power in green hydrogen fund",
+            "description":"A trio of companies, including fossil-fuel industry mainstay Baker Hughes Co., plan to back a new fund focused on hydrogen-technology investment, just the latest example of rising investment interest tied to alternative energy sources.",
+            "url":"https://www.marketwatch.com/story/fossil-fuel-mainstay-baker-hughes-joins-plug-power-in-green-hydrogen-fund-11617629145",
+            "urlToImage":"https://images.mktw.net/im-305530/social",
+            "publishedAt":"2021-04-05T13:25:00Z",
+            "content":"A\\xa0trio of companies, including fossil-fuel entity Baker Hughes Co., plan to back a new fund focused on hydrogen-technology investment, just the latest example of rising investment interest tied to al… [+3015 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"MarketWatch"
+            },
+            "author":"Rachel Koning Beals",
+            "title":": Apple, Google and Coca-Cola among 300-plus companies pushing Biden for 50% emissions cut as soon as 2030",
+            "description":"More than 300 businesses and investors, including Apple, Google, Microsoft and Coca-Cola, are calling on the Biden administration to set an ambitious climate change goal that would cut U.S. greenhouse gas emissions by at least 50% below 2005 levels by 2030.",
+            "url":"https://www.marketwatch.com/story/apple-google-and-coca-cola-among-300-plus-companies-pushing-biden-for-50-emissions-cut-as-soon-as-2030-11618346986",
+            "urlToImage":"https://images.mktw.net/im-324560/social",
+            "publishedAt":"2021-04-13T20:50:00Z",
+            "content":"More than 300 businesses and investors, including tech giants and major utilities, are calling on the Biden administration to set an ambitious climate-change goal that would cut U.S. greenhouse gas e… [+3834 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"Seeking Alpha"
+            },
+            "author":"Jim Sloan",
+            "title":"Walmart: Holding Its Own Against Amazon But Little Growth And Not A Bargain",
+            "description":"Walmart's strong stock performance since 2016 has not been accompanied by equivalent improvement in earnings or cash flow. See why WMT stock is no bargain.",
+            "url":"https://seekingalpha.com/article/4419828-walmart-stock-competing-against-amazon-not-bargain?source=feed_all_articles",
+            "urlToImage":"https://static.seekingalpha.com/cdn/s3/uploads/getty_images/1205217071/large_image_1205217071.jpg",
+            "publishedAt":"2021-04-19T17:31:57Z",
+            "content":"Photo by Sundry Photography/iStock Editorial via Getty Images\r\nWalmart (WMT) has earned its place in American business history along with its predecessor Sears and its contemporary Amazon (AMZN). The… [+28692 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"Forbes"
+            },
+            "author":"Maury Brown, Senior Contributor, \n Maury Brown, Senior Contributor\n https://www.forbes.com/sites/sportsmoney/people/bizballmaury/",
+            "title":"Streaming Service ‘Fighting Irish TV’ Shows The Brand Power Of Notre Dame",
+            "description":"Notre Dame has launched \"Fighting Irish TV\" an OTT streaming service that taps not just live games but a treasure trove of archival material.",
+            "url":"https://www.forbes.com/sites/maurybrown/2021/04/13/streaming-service-fighting-irish-tv-shows-the-brand-power-of-notre-dame/",
+            "urlToImage":"https://thumbor.forbes.com/thumbor/fit-in/1200x0/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F607528f90aa51530b9742dce%2F0x0.jpg",
+            "publishedAt":"2021-04-13T11:30:00Z",
+            "content":"Notre Dame shows that it has its own draw by launching Fighting Irish TV, a streaming service for ... [+] game, and more. (Photo by Alika Jenner/Getty Images)\r\nGetty Images\r\nWhen it comes to college … [+2972 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"MarketWatch"
+            },
+            "author":"Ciara Linnane",
+            "title":": U.S. economy will boom into 2023, but inequality must be addressed: Jamie Dimon in his latest letter to JPMorgan shareholders",
+            "description":"JPMorgan Chase & Co.'s Jamie Dimon published his annual letter to shareholders on Wednesday, and as usual offered a broad overview of the state of the world after a year of a global pandemic, honing in on the hardship it has created for many and the widening …",
+            "url":"https://www.marketwatch.com/story/u-s-economy-will-boom-into-2023-but-inequality-must-be-addressed-jamie-dimon-in-his-latest-letter-to-jpmorgan-shareholders-11617801135",
+            "urlToImage":"https://images.mktw.net/im-321582/social",
+            "publishedAt":"2021-04-07T13:12:00Z",
+            "content":"JPMorgan Chase &amp; Co. \r\n JPM,\r\n -0.70%\r\nChairman and Chief Executive Jamie Dimon published his annual letter to shareholders on Wednesday, and, as is his wont, he offered a broad overview of the s… [+5300 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"MarketWatch"
+            },
+            "author":"Eleanor Laise",
+            "title":": How dollar stores could provide a shot in the arm for the U.S.’s COVID vaccination drive",
+            "description":"Research suggests Dollar General and Dollar Tree could be keys to more equitable vaccine distribution.",
+            "url":"https://www.marketwatch.com/story/how-dollar-stores-could-provide-a-shot-in-the-arm-for-the-u-s-s-covid-vaccination-drive-11617993753",
+            "urlToImage":"https://images.mktw.net/im-285575/social",
+            "publishedAt":"2021-04-09T18:42:00Z",
+            "content":"Dollar stores could be powerful allies in the federal governments effort to equitably distribute COVID-19 vaccines, new research suggests.Administering COVID shots at stores operated by Dollar Genera… [+4651 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"Motley Fool"
+            },
+            "author":"newsfeedback@fool.com (Jose Najarro)",
+            "title":"This Is the best Retail Store to Buy now",
+            "description":"Is Walmart, Costco or Home Depot a better buy?",
+            "url":"https://www.fool.com/investing/2021/03/27/this-is-the-best-retail-store-to-buy-now/",
+            "urlToImage":"https://g.foolcdn.com/editorial/images/619529/copy-of-copy-of-copy-of-copy-of-copy-of-copy-of-buy-or-pass-template-2021-03-25t183820275.png",
+            "publishedAt":"2021-03-27T11:52:00Z",
+            "content":"In today's video, I try to find the best-valued retail store stock. The three stocks I'll compare will be Walmart(NYSE:WMT), Costco(NASDAQ:COST) and Home Depot(NYSE:HD).\\xa0\r\nHere's a quick overview of … [+910 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"MarketWatch"
+            },
+            "author":"Jack Denton",
+            "title":": This robot-run fund with a history of predicting Tesla price moves has just made these stock picks",
+            "description":"An exchange-traded fund driven by artificial intelligence has correctly predicted Tesla price movements, and recently shared its most recent portfolio additions and subtractions with MarketWatch.",
+            "url":"https://www.marketwatch.com/story/this-robot-run-fund-with-a-history-of-predicting-tesla-price-moves-has-just-made-these-stock-picks-11618396980",
+            "urlToImage":"https://images.mktw.net/im-324370/social",
+            "publishedAt":"2021-04-14T10:42:00Z",
+            "content":"An exchange-traded fund driven by artificial intelligence has correctly predicted Tesla price movements, and recently shared its most recent portfolio additions and subtractions with MarketWatch.The … [+5463 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"MarketWatch"
+            },
+            "author":"Philip van Doorn",
+            "title":"Deep Dive: These stocks let you tap into the hot housing market",
+            "description":"Many home builders' valuations are still low, while their implied upside potential is in the double digits.",
+            "url":"https://www.marketwatch.com/story/these-stocks-let-you-tap-into-the-hot-housing-market-11618322959",
+            "urlToImage":"https://images.mktw.net/im-324216/social",
+            "publishedAt":"2021-04-13T14:09:00Z",
+            "content":"The U.S. housing market continues to roll along, fed by an increased appeal of suburban and rural living during the COVID-19 pandemic, as well as low interest rates. Home builders and related compani… [+4766 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"MarketWatch"
+            },
+            "author":"Rachel Koning Beals",
+            "title":"IPO Report: ThredUp CEO on IPO day: Don’t tax resale and Amazon’s speed is a fading trend for young shoppers",
+            "description":"Clothing resale site ThredUp Inc. launched its initial public offering at the top end of the projected range Friday, a funding injection that CEO James Reinhart wants to leverage to challenge competitor Amazon.com on the speedy retail giant's environmental re…",
+            "url":"https://www.marketwatch.com/story/thredup-ceo-on-ipo-day-dont-tax-resale-and-amazons-speed-is-a-fading-trend-for-young-shoppers-11616778705",
+            "urlToImage":"https://images.mktw.net/im-317138/social",
+            "publishedAt":"2021-03-26T16:11:00Z",
+            "content":"Clothing resale site ThredUp Inc. launched its initial public offering at the top end of the projected range Friday, a funding injection that CEO James Reinhart wants to leverage to challenge competi… [+4697 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"MarketWatch"
+            },
+            "author":"Tonya Garcia",
+            "title":": Expect ‘eye-popping’ sales numbers from some consumer companies as calendar laps COVID closures",
+            "description":"Investors should expect other \"eye-popping\" sales numbers from retailers in the coming weeks, amid a \"weird\" year in which the COVID-19 pandemic wreaked havoc on the retail and restaurant segments.",
+            "url":"https://www.marketwatch.com/story/expect-eye-popping-sales-numbers-from-some-consumer-companies-as-calendar-laps-covid-closures-11617804878",
+            "urlToImage":"https://images.mktw.net/im-321597/social",
+            "publishedAt":"2021-04-07T14:14:00Z",
+            "content":"Investors should expect other eye-popping sales numbers from retailers in the coming weeks, amid a weird year in which the COVID-19 pandemic wreaked havoc on the retail and restaurant segments.In its… [+5276 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"Yahoo Entertainment"
+            },
+            "author":"Zacks Equity Research",
+            "title":"Walmart (WMT) Stock Sinks As Market Gains: What You Should Know",
+            "description":"Walmart (WMT) closed the most recent trading day at $139.37, moving -0.31% from the previous trading session.",
+            "url":"https://finance.yahoo.com/news/walmart-wmt-stock-sinks-market-214509560.html",
+            "urlToImage":"https://s.yimg.com/uu/api/res/1.2/HIalcDlt7JZPKSITVlxPuw--~B/aD02MDA7dz05MDA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/zacks.com/c2fdcaac033e049c74f38d188afcc9f9",
+            "publishedAt":"2021-04-13T21:45:09Z",
+            "content":"Walmart (WMT) closed the most recent trading day at $139.37, moving -0.31% from the previous trading session. This change lagged the S&amp;P 500's daily gain of 0.33%.\r\nComing into today, shares of t… [+2861 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"MarketWatch"
+            },
+            "author":"Nancy Monson",
+            "title":"Next Avenue: More people over 50 are playing video games. How you can learn to play like a millennial",
+            "description":"You might like it: Beyond shoot 'em up, racing and auto theft games, videogames now feature puzzles, task games, mysteries and even love stories.",
+            "url":"https://www.marketwatch.com/story/more-people-over-50-are-playing-video-games-how-you-can-learn-to-play-like-a-millennial-11618601869",
+            "urlToImage":"https://images.mktw.net/im-325872/social",
+            "publishedAt":"2021-04-20T08:58:00Z",
+            "content":"Videogames are more popular than ever in fact, earnings of videogame makers soared 27% last year, reaching $56.9 billion, according to\\xa0the research firm NPD Group.Historically, game companies targete… [+6467 chars]"
+         }
+      ]
+   },
+   "ovvData":{
+      "status":"ok",
+      "totalResults":36,
+      "articles":[
+         {
+            "source":{
+               "id":"None",
+               "name":"Yahoo Entertainment"
+            },
+            "author":"PR Newswire",
+            "title":"Ovintiv to Host its First Quarter 2021 Results Conference Call and Webcast on April 29, 2021",
+            "description":"Ovintiv Inc. (NYSE: OVV) (TSX: OVV) today announced plans to hold its first quarter 2021 conference call at 9 a.m. MT, on April 29, 2021. The Company plans...",
+            "url":"https://finance.yahoo.com/news/ovintiv-host-first-quarter-2021-211500721.html",
+            "urlToImage":"https://s.yimg.com/uu/api/res/1.2/D0i5bFaXPJuTsLH7UtzdPg--~B/aD0xNjt3PTE2O2FwcGlkPXl0YWNoeW9u/https://media.zenfs.com/en/prnewswire.com/ce1dae1889c7e45a3fe574afd36d5ee5",
+            "publishedAt":"2021-04-07T21:15:00Z",
+            "content":"(Bloomberg) -- Treasury Secretary Janet Yellen unveiled a detailed sales pitch for the Biden administrations proposed new corporate-tax code, a plan that she said would be fairer to all Americans, re… [+6303 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"Yahoo Entertainment"
+            },
+            "author":"Asma UL Husna",
+            "title":"Is OVV Stock A Buy or Sell?",
+            "description":"In this article you are going to find out whether hedge funds think Ovintiv Inc. (NYSE:OVV) is a good investment right now. We like to check what the smart...",
+            "url":"https://finance.yahoo.com/news/ovv-stock-buy-sell-153745170.html",
+            "urlToImage":"https://s.yimg.com/uu/api/res/1.2/nClwIzbwRS9bs0Y8oOC2rw--~B/aD02MDA7dz00NTA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/8ff592813346f4e1d547a73e73cee9d4",
+            "publishedAt":"2021-04-20T15:37:45Z",
+            "content":"In this article you are going to find out whether hedge funds think Ovintiv Inc. (NYSE:OVV) is a good investment right now. We like to check what the smart money thinks first before doing extensive r… [+6219 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"Itmedia.co.jp"
+            },
+            "author":"None",
+            "title":"「事実無根であるということです」\u3000モー娘。譜久村聖、“女性ファンとのつながり”ネット上の臆測をキッパリ否定",
+            "description":"�ӂ������M�������Ȃ��B",
+            "url":"https://nlab.itmedia.co.jp/nl/articles/2104/17/news029.html",
+            "urlToImage":"https://image.itmedia.co.jp/nl/articles/2104/17/cover_news029.jpg",
+            "publishedAt":"2021-04-17T03:15:00Z",
+            "content":"@AChO[vu[jOB'21v[_[Ev416uOXVBlbg\\x82u\\ghvB\r\n@lbgOAvt@g\\x82hgUBRLAvummvA bb\\\\x82A^Ovv^ijIB\r\n@ghvAuRiAo[AlOHOovt@IBOFmAuDe oB |vAtI@{Bvv\\x82ÂB\r\n@lbgAS^AvuAOXF XPW[IL_XKvt@SlqB\r\n@usB~AAChzvgMOBuAo[AyANvBv[Bn[!vWFNg… [+143 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"Nos.nl"
+            },
+            "author":"None",
+            "title":"Nieuw onderzoek naar risico's uitstoot Tata Steel IJmuiden",
+            "description":"De Onderzoeksraad voor Veiligheid (OVV) gaat in kaart brengen wat de gevolgen zijn van de uitstoot van Tata Steel in IJmuiden voor omwonenden. De raad wil weten hoe burgers in het algemeen worden beschermd tegen de risico's van schadelijke uitstoot van de ind…",
+            "url":"https://nos.nl/l/2378324",
+            "urlToImage":"https://cdn.nos.nl/image/2021/04/26/736798/xxl.jpg",
+            "publishedAt":"2021-04-26T12:51:20Z",
+            "content":"De Onderzoeksraad voor Veiligheid (OVV) gaat in kaart brengen wat de gevolgen zijn van de uitstoot van Tata Steel in IJmuiden voor omwonenden. De raad wil weten hoe burgers in het algemeen worden bes… [+1856 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"Itmedia.co.jp"
+            },
+            "author":"�J���M�q�C�˂Ƃ��",
+            "title":"【実録漫画】「じいちゃんの葬式に出れなかった話」\u3000テレビ電話で大好きなおじいさんと最後のお別れ",
+            "description":"�R���i�Ђł̂������̂ЂƂ\\x82̌`�B",
+            "url":"https://nlab.itmedia.co.jp/nl/articles/2103/31/news032.html",
+            "urlToImage":"https://image.itmedia.co.jp/nl/articles/2103/31/cover_news032.jpg",
+            "publishedAt":"2021-03-31T11:00:00Z",
+            "content":"@gOhARiQlAKkXBA[glGs\\[hB\r\n@AVv[i@shampoo0325jqDB{AAVv[q[[B\r\n@Vv[AA]BARiAnAQB\r\n@oVv[erdblqpBVv[oAbZ[WB\r\n@gzVv[B|BAoVv[``B\\\\uAvB@\r\n@Vv[ScAv`AuYvB\r\n@lATwitterudvuvAlB]CcXguDn_vRgB\r\n@AuAvo\\x82vAVuICf{vBACB\r… [+97 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"Www.nu.nl"
+            },
+            "author":"ANP/NU.nl",
+            "title":"Ongeveer 250 geiten omgekomen bij brand op boerderij in Gelderse Achterveld",
+            "description":"Naar schatting 250 geiten zijn maandagmorgen omgekomen door een brand op een boerderij in Achterveld (Gelderland). In dezelfde stal stonden ook veel voertuigen. Die zijn zwaar beschadigd geraakt.",
+            "url":"https://www.nu.nl/binnenland/6125951/ongeveer-250-geiten-omgekomen-bij-brand-op-boerderij-in-gelderse-achterveld.html?redirect=1",
+            "urlToImage":"https://media.nu.nl/m/sm9xvcjafdma_wd1280.jpg/ongeveer-250-geiten-omgekomen-bij-brand-op-boerderij-in-gelderse-achterveld.jpg",
+            "publishedAt":"2021-04-05T07:42:43Z",
+            "content":"Naar schatting 250 geiten zijn maandagmorgen omgekomen door een brand op een boerderij in Achterveld (Gelderland). In dezelfde stal stonden ook veel voertuigen. Die zijn zwaar beschadigd geraakt.\r\nVo… [+1733 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"Www.nu.nl"
+            },
+            "author":"NU.nl",
+            "title":"Onderzoeksraad wil risico’s omwonenden door uitstoot industrie in kaart brengen",
+            "description":"De Onderzoeksraad voor Veiligheid gaat onderzoeken hoe burgers in Nederland worden beschermd tegen de risico's van schadelijke industriële uitstoot en lozingen, waar sommige mensen soms jarenlang aan blootgesteld zijn. Het onderzoek gaat van start in de omgev…",
+            "url":"https://www.nu.nl/binnenland/6129891/onderzoeksraad-wil-risicos-omwonenden-door-uitstoot-industrie-in-kaart-brengen.html?redirect=1",
+            "urlToImage":"https://media.nu.nl/m/1w9xeywa05po_wd1280.jpg/onderzoeksraad-wil-risicos-uitstoot-industrie-voor-burgers-in-kaart-brengen.jpg",
+            "publishedAt":"2021-04-26T10:58:26Z",
+            "content":"De Onderzoeksraad voor Veiligheid (OVV) gaat onderzoeken hoe burgers in Nederland worden beschermd tegen de risico's van schadelijke industriële uitstoot en lozingen. Het onderzoek gaat van start in … [+1008 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"Nos.nl"
+            },
+            "author":"None",
+            "title":"Vrees bij Waddenvereniging voor nieuw drama met containerschip",
+            "description":"De Waddenvereniging roept het kabinet op om eindelijk werk te maken van aanbevelingen van de Onderzoeksraad voor Veiligheid om de zuidelijke route boven de Waddeneilanden in stormachtige omstandigheden uit voorzorg te sluiten. Gisteravond voer er in hoge golv…",
+            "url":"https://nos.nl/l/2375593",
+            "urlToImage":"https://cdn.nos.nl/image/2021/04/06/730451/xxl.jpg",
+            "publishedAt":"2021-04-06T08:56:21Z",
+            "content":"De Waddenvereniging roept het kabinet op om eindelijk werk te maken van aanbevelingen van de Onderzoeksraad voor Veiligheid om de zuidelijke route boven de Waddeneilanden in stormachtige omstandighed… [+2400 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"Www.nrc.nl"
+            },
+            "author":"Anna Herter",
+            "title":"Onderzoeksraad voor Veiligheid onderzoekt gezondheidsrisico’s uitstoot Tata Steel",
+            "description":"Schadelijk: Eerder deze maand meldde het RIVM dat in de omgeving van het staalbedrijf in IJmuiden meer klachten bij de huisarts worden gemeld, zoals benauwdheid en hoofdpijn.",
+            "url":"https://www.nrc.nl/nieuws/2021/04/26/onderzoeksraad-voor-veiligheid-onderzoekt-gezondheidsrisicos-uitstoot-tata-steel-a4041320",
+            "urlToImage":"https://images.nrc.nl/i3URm4jRLktIqR_EErPBvZdNAQs=/1200x627/smart/filters:no_upscale()/s3/static.nrc.nl/wp-content/uploads/2021/04/web-2604bintatasteel.jpg",
+            "publishedAt":"2021-04-26T11:49:25Z",
+            "content":"De Onderzoeksraad voor Veiligheid (OVV) gaat onderzoeken in hoeverre omwonenden van staalbedrijf Tata Steel in IJmuiden worden beschermd tegen schadelijke uitstoot. Dat heeft de raad maandag laten we… [+1120 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"Nos.nl"
+            },
+            "author":"None",
+            "title":"Rechtbank gaat MH17-wrakstukken bekijken in Gilze-Rijen",
+            "description":"Rechters in het MH17-proces gaan op 26 mei kijken bij de wrakstukken van het rampvliegtuig dat is gereconstrueerd in Gilze-Rijen. Volgens rechtbankvoorzitter Hendrik Steenhuis wil de rechtbank zelf een beeld krijgen van de schade die door het neerhalen is aan…",
+            "url":"https://nos.nl/l/2376990",
+            "urlToImage":"https://cdn.nos.nl/image/2021/04/16/733654/xxl.jpg",
+            "publishedAt":"2021-04-16T14:39:44Z",
+            "content":"Rechters in het MH17-proces gaan op 26 mei kijken bij de wrakstukken van het rampvliegtuig dat is gereconstrueerd in Gilze-Rijen. Volgens rechtbankvoorzitter Hendrik Steenhuis wil de rechtbank zelf e… [+1766 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"Www.nu.nl"
+            },
+            "author":"NU.nl",
+            "title":"MH17-hoofdverdachte wist urenlang niet dat Boeing was neergehaald",
+            "description":"Een van de hoofdverdachten in het MH17-proces wist urenlang niet dat separatisten in Oost-Oekraïne een Boeing hadden neergehaald, schrijft Nieuwsuur zondag op basis van afgeluisterde telefoongesprekken in het onderzoek. Het zou gaan om Sergey Dubinsky, die aa…",
+            "url":"https://www.nu.nl/vliegramp-oekraine/6127032/mh17-hoofdverdachte-wist-urenlang-niet-dat-boeing-was-neergehaald.html?redirect=1",
+            "urlToImage":"https://media.nu.nl/m/wthx7gpa0zkx_wd1280.jpg/mh17-hoofdverdachte-wist-urenlang-niet-dat-boeing-was-neergehaald.jpg",
+            "publishedAt":"2021-04-11T08:35:41Z",
+            "content":"Een van de hoofdverdachten in het MH17-proces wist urenlang niet dat separatisten in Oost-Oekraïne een Boeing hadden neergehaald, schrijft Nieuwsuur zondag op basis van afgeluisterde telefoongesprekk… [+1622 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"Seeking Alpha"
+            },
+            "author":"Josh Young",
+            "title":"Pioneer Uses Potentially Overvalued Equity To Buy Permian O&G Company DoublePoint",
+            "description":"Pioneer pays $6.4 billion for private Permian competitor DoublePoint. Even with a bullish oil outlook this seems like it was an expensive deal in the current price environment.",
+            "url":"https://seekingalpha.com/article/4417473-pioneer-uses-potentially-overvalued-equity-to-buy-doublepoint?source=feed_all_articles",
+            "urlToImage":"https://static.seekingalpha.com/cdn/s3/uploads/getty_images/92118335/medium_image_92118335.jpg",
+            "publishedAt":"2021-04-04T17:51:39Z",
+            "content":"Photo by andrepra/iStock via Getty Images\r\nPioneer Uses Equity to Buy Permian O&amp;G Company DoublePoint\r\n Amid waves of consolidation of North American oil and gas assets, and in the West Texas and… [+2945 chars]"
+         },
+         {
+            "source":{
+               "id":"rtl-nieuws",
+               "name":"RTL Nieuws"
+            },
+            "author":"None",
+            "title":"Onderzoeksraad waarschuwt vissers: kotters kunnen kapseizen",
+            "description":"De Onderzoeksraad voor Veiligheid (OVV) waarschuwt vissers: hun kotters kunnen buitengewoon instabiel zijn. Daardoor gebeurden er in de afgelopen jaren zeker twee zeer ernstige ongelukken, terwijl het gevaar nauwelijks bekend is.",
+            "url":"https://www.rtlnieuws.nl/nieuws/nederland/artikel/5224341/onderzoeksraad-veiligheid-urker-kotters-vissers-netten-belading",
+            "urlToImage":"https://www.rtlnieuws.nl/sites/default/files/styles/liggend_hoge_resolutie/public/content/images/2021/04/09/ANP-414218206.jpg?h=a9edb586&itok=v4N8Lqsw",
+            "publishedAt":"2021-04-08T23:24:18Z",
+            "content":"\"We hebben de vissers in de appgroepen een bericht gestuurd\", vertelt Visser. \"Ze moeten voorkomen dat zij in deze situatie terechtkomen. Een oplossing is om twee netten overboord te gooien zodat de … [+586 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"Nos.nl"
+            },
+            "author":"None",
+            "title":"Hoge golven en harde wind teisteren strandhuisjes aan Noord-Hollandse kust",
+            "description":"Harde wind en hoge golven veroorzaken problemen aan de Nederlandse kust. Tussen Castricum aan Zee en Wijk aan Zee zijn strandhutten kapotgewaaid en in zee verdwenen. Ook strandhuisjes zijn beschadigd. Een strandpaviljoen in aanbouw is grotendeels weggespoeld.…",
+            "url":"https://nos.nl/l/2375520",
+            "urlToImage":"https://cdn.nos.nl/image/2021/04/05/730312/xxl.jpg",
+            "publishedAt":"2021-04-05T16:01:45Z",
+            "content":"Harde wind en hoge golven veroorzaken problemen aan de Nederlandse kust. Tussen Castricum aan Zee en Wijk aan Zee zijn strandhutten kapotgewaaid en in zee verdwenen. Ook strandhuisjes zijn beschadigd… [+2131 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"Tuttomercatoweb.com"
+            },
+            "author":"Pierpaolo Matrone",
+            "title":"Napoli, riecco il tandem Mertens-Osimhen: Zielinski falso positivo, ma Gattuso lo risparmia",
+            "description":"Falso allarme per Piotr Zielinski, risultato positivo ad un test antigenico al rientro in Italia, ma poi negativo ad altri tre, di cui due molecolari per togliere ogni dubbio. Il polacco ci sarà, ovv",
+            "url":"https://www.tuttomercatoweb.com/serie-a/napoli-riecco-il-tandem-mertens-osimhen-zielinski-falso-positivo-ma-gattuso-lo-risparmia-1516490",
+            "urlToImage":"https://tmw-storage.tccstatic.com/storage/tuttomercatoweb.com/img_notizie/thumb3/fa4fedc3f7bb4143cc6b00d238cee197-02268-95723157c8ebcac4750156d2b21ac04e.jpeg",
+            "publishedAt":"2021-04-03T09:08:51Z",
+            "content":"Falso allarme per Piotr Zielinski, risultato positivo ad un test antigenico al rientro in Italia, ma poi negativo ad altri tre, di cui due molecolari per togliere ogni dubbio. Il polacco ci sarà, ovv… [+631 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"Seeking Alpha"
+            },
+            "author":"Carl Surran",
+            "title":"Ovintiv upped at Goldman on outlook for cost cuts, strong debt reduction",
+            "description":"Ovintiv <<OVV>> trades lower despite winning an upgrade to Buy from Neutral with a $29 price target, raised from $26.75, at Goldman Sachs, after shares have long...",
+            "url":"https://seekingalpha.com/news/3677320-ovintiv-upped-at-goldman-on-outlook-for-cost-cuts-strong-debt-reduction?utm_source=feed_news_all&utm_medium=referral",
+            "urlToImage":"https://static3.seekingalpha.com/assets/og_image_192-59bfd51c9fe6af025b2f9f96c807e46f8e2f06c5ae787b15bf1423e6c676d4db.png",
+            "publishedAt":"2021-03-29T18:59:27Z",
+            "content":"<ul><li>Ovintiv (OVV -1.8%\r\n) trades lower despite winning an upgrade to Buy from Neutral with a $29 price target, raised from $26.75, at Goldman Sachs, after shares have long underperformed peers du… [+873 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"24/7 Wall St."
+            },
+            "author":"247lee",
+            "title":"Top Analyst Upgrades and Downgrades: Alphabet, American Air, Domino’s, DXC, Toyota, ViacomCBS, Yelp and More",
+            "description":"Tuesday's top analyst upgrades and downgrades included Alphabet, American Airlines, Domino's Pizza, DXC Technology, RH, Toyota, ViacomCBS and Yelp.",
+            "url":"https://247wallst.com/investing/2021/03/30/top-analyst-upgrades-and-downgrades-alphabet-american-air-dominos-dxc-toyota-viacomcbs-yelp-and-more/",
+            "urlToImage":"https://247wallst.com/wp-content/uploads/2019/10/imageforentry13-gxq.jpg",
+            "publishedAt":"2021-03-30T12:51:00Z",
+            "content":"The futures were lower on Tuesday after the momentum sellers returned on Monday. Both the S&amp;P 500 and the Nasdaq closed down while the Dow Jones industrials closed higher. The end of the month an… [+2450 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"24/7 Wall St."
+            },
+            "author":"247lee",
+            "title":"Friday’s Top Analyst Upgrades and Downgrades: Activision, Adobe, American Airlines, Electronic Arts, Harley-Davidson, Kraft Heinz, Skillz and More",
+            "description":"Friday's top analyst upgrades and downgrades included Activision Blizzard, Adobe, American Airlines, Electronic Arts, Harley-Davidson, Kraft Heinz and Skillz.",
+            "url":"https://247wallst.com/investing/2021/04/23/fridays-top-analyst-upgrades-and-downgrades-activision-adobe-american-airlines-electronic-arts-harley-davidson-kraft-heinz-skillz-and-more/",
+            "urlToImage":"https://247wallst.com/wp-content/uploads/2018/07/thumbs-up-thumbs-down.jpg",
+            "publishedAt":"2021-04-23T12:55:49Z",
+            "content":"The futures were mixed on Friday following a late afternoon sell-off Thursday that some feel was triggered by President Bidens proposal for raising capital gains taxes to as high as 43.4% on the weal… [+2439 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"Yahoo Entertainment"
+            },
+            "author":"Debasis Saha",
+            "title":"Is MTSI Stock A Buy or Sell?",
+            "description":"While the market driven by short-term sentiment influenced by the accommodative interest rate environment in the US, virus news and stimulus spending, many...",
+            "url":"https://finance.yahoo.com/news/mtsi-stock-buy-sell-053927529.html",
+            "urlToImage":"https://s.yimg.com/uu/api/res/1.2/vNWTS6QMkmUDM1AXhrAHKg--~B/aD04MDA7dz02MDA7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/insidermonkey.com/579734478f9218ba217635fdad9aa675",
+            "publishedAt":"2021-04-26T05:39:27Z",
+            "content":"While the market driven by short-term sentiment influenced by the accommodative interest rate environment in the US, virus news and stimulus spending, many smart money investors are starting to get c… [+7023 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"24/7 Wall St."
+            },
+            "author":"Paul Ausick",
+            "title":"4 New Standout Stocks From Goldman Sachs Analysts",
+            "description":"Analysts at Goldman Sachs have upgraded their ratings and price targets on an oil company, a drug maker, and two new health care companies. Here's a rundown.",
+            "url":"https://247wallst.com/investing/2021/03/29/4-new-standout-stocks-from-goldman-sachs-analysts/",
+            "urlToImage":"https://247wallst.com/wp-content/uploads/2020/09/imageForEntry23-iIP.jpg",
+            "publishedAt":"2021-03-29T16:08:48Z",
+            "content":"Analysts at Goldman Sachs are out with four new Buy recommendations on companies in the oil, biotech and health care businesses. The researchers see reasons to like all four stocks, primarily because… [+3299 chars]"
+         }
+      ]
+   },
+   "applData":{
+      "status":"ok",
+      "totalResults":1811,
+      "articles":[
+         {
+            "source":{
+               "id":"business-insider",
+               "name":"Business Insider"
+            },
+            "author":"Avery Hartmans",
+            "title":"Apple will host WWDC entirely online for the second year in a row (AAPL)",
+            "description":"Summary List PlacementApple will host WWDC entirely online for the second year in a row.\\xa0\nThe iPhone-maker announced Tuesday that its annual developers conference will take place from June 7 to June 11. The conference, which is free and open to all developers…",
+            "url":"https://www.businessinsider.com/apple-wwdc-2021-june-7-11-event-entirely-online-again-2021-3",
+            "urlToImage":"https://i.insider.com/60632e0467187800184ad428?width=1200&format=jpeg",
+            "publishedAt":"2021-03-30T14:36:23Z",
+            "content":"Apple will host WWDC entirely online for the second year in a row.\\xa0\r\nThe iPhone-maker announced Tuesday that its annual developers conference will take place from June 7 to June 11. The conference, w… [+1079 chars]"
+         },
+         {
+            "source":{
+               "id":"business-insider",
+               "name":"Business Insider"
+            },
+            "author":"Will Daniel",
+            "title":"Apple, Microsoft, and Nuance Communications are the top 3 tech stocks heading into earnings season, Wedbush says (AAPL, MSFT, NUAN)",
+            "description":"Summary List PlacementApple, Microsoft, and Nuance Communications are the top three tech buys heading into earnings season, according to Wedbush.\nIn a note to clients on Wednesday, analyst Dan Ives said that he believes tech stocks have \"an upward 25%-30% mov…",
+            "url":"https://markets.businessinsider.com/news/stocks/apple-microsoft-nuance-communications-top-3-tech-stocks-earnings-wedbush-2021-4-1030281706",
+            "urlToImage":"https://images2.markets.businessinsider.com/606daba830004b0019b265d3?format=jpeg",
+            "publishedAt":"2021-04-07T13:38:53Z",
+            "content":"Reuters / Brendan McDermid\r\nApple, Microsoft, and Nuance Communications are the top three tech buys heading into earnings season, according to Wedbush.\r\nIn a note to clients on Wednesday, analyst Dan… [+2268 chars]"
+         },
+         {
+            "source":{
+               "id":"business-insider",
+               "name":"Business Insider"
+            },
+            "author":"Emily Graffeo",
+            "title":"Apple's stock price doesn't reflect the 12% upside offered by its growing autonomous-vehicle ambitions, UBS says (AAPL)",
+            "description":"Summary List PlacementApple's current stock price doesn't reflect the tech giant's budding autonomous-vehicle ambitions, according to a team of UBS equity analysts led by David Vogt.\\xa0\\xa0\nThe analysts have a price target of $142 for Apple, a roughly 12% gain fro…",
+            "url":"https://markets.businessinsider.com/news/stocks/apple-stock-price-aapl-target-self-driving-autonomous-vehicle-patent-2021-4-1030286444",
+            "urlToImage":"https://images2.markets.businessinsider.com/606effd74d3e410018b6ff15?format=jpeg",
+            "publishedAt":"2021-04-08T14:58:33Z",
+            "content":"Apple CEO Tim Cook.\r\nKarl Mondon/Digital First Media/The Mercury News via Getty Images\r\nApple's current stock price doesn't reflect the tech giant's budding autonomous-vehicle ambitions, according to… [+2035 chars]"
+         },
+         {
+            "source":{
+               "id":"business-insider",
+               "name":"Business Insider"
+            },
+            "author":"Katie Canales",
+            "title":"Apple Music reportedly said it will pay artists a penny per stream — double what Spotify pays (AAPL, SPOT)",
+            "description":"Summary List PlacementApple Music is telling artists that it will start paying them one cent per stream, per a Friday report from the Wall Street Journal.\nThe company told artists the news in a letter, which was viewed by the outlet, that will be posted on th…",
+            "url":"https://www.businessinsider.com/spotify-pays-artists-half-apple-penny-per-stream-2021-4",
+            "urlToImage":"https://i.insider.com/60799fa874da0300181e2136?width=1200&format=jpeg",
+            "publishedAt":"2021-04-16T15:28:48Z",
+            "content":"Apple Music is telling artists that it will start paying them one cent per stream, per a Friday report from the Wall Street Journal.\r\nThe company told artists the news in a letter, which was viewed b… [+1941 chars]"
+         },
+         {
+            "source":{
+               "id":"business-insider",
+               "name":"Business Insider"
+            },
+            "author":"Lisa Eadicicco",
+            "title":"Apple's new iPad Pro is the best explanation for why we'll never see a touchscreen MacBook (AAPL)",
+            "description":"Summary List PlacementApple's iPad Pro has always seemed like an alternative to the laptop. After all, it has a laptop-sized screen, it's designed to work best with a keyboard, and it now supports trackpad input.\nBut the company took that idea a step further …",
+            "url":"https://www.businessinsider.com/apple-new-ipad-pro-future-of-the-laptop-macbook-2021-4",
+            "urlToImage":"https://i.insider.com/607f479a44f4540019207d6d?width=1200&format=jpeg",
+            "publishedAt":"2021-04-20T21:52:31Z",
+            "content":"Apple's iPad Pro has always seemed like an alternative to the laptop. After all, it has a laptop-sized screen, it's designed to work best with a keyboard, and it now supports trackpad input.\r\nBut the… [+3922 chars]"
+         },
+         {
+            "source":{
+               "id":"business-insider",
+               "name":"Business Insider"
+            },
+            "author":"Avery Hartmans",
+            "title":"Tim Cook says Facebook's objections to letting people pick whether or not to be tracked are 'flimsy arguments' (AAPL, FB)",
+            "description":"Summary List PlacementTim Cook isn't buying Facebook's arguments against Apple's upcoming privacy changes.\nIn a new podcast interview with The New York Times' Kara Swisher, published Monday, the Apple CEO discussed Facebook's reaction to Apple's new privacy f…",
+            "url":"https://www.businessinsider.com/tim-cook-facebook-objections-over-privacy-feature-flimsy-2021-4",
+            "urlToImage":"https://i.insider.com/5f4967427ffa48002894cf7d?width=1200&format=jpeg",
+            "publishedAt":"2021-04-05T15:15:41Z",
+            "content":"Tim Cook isn't buying Facebook's arguments against Apple's upcoming privacy changes.\r\nIn a new podcast interview with The New York Times' Kara Swisher, published Monday, the Apple CEO discussed Faceb… [+2503 chars]"
+         },
+         {
+            "source":{
+               "id":"business-insider",
+               "name":"Business Insider"
+            },
+            "author":"Matthew DeBord",
+            "title":"Apple can definitely build a car — but it wouldn't want to sell it in the US (AAPL)",
+            "description":"Summary List PlacementSince the Apple Car rumor mill fired back up again a few months ago, the renewed notion that Cupertino might actually, seriously, for reals be thinking about building an actual, serious for reals vehicle has refused to fade. And that's d…",
+            "url":"https://www.businessinsider.com/apple-can-build-a-car-cant-sell-in-the-us-2021-4",
+            "urlToImage":"https://i.insider.com/5f9b214269331a0011bc62ad?width=1200&format=jpeg",
+            "publishedAt":"2021-04-17T11:07:00Z",
+            "content":"Since the Apple Car rumor mill fired back up again a few months ago, the renewed notion that Cupertino might actually, seriously, for reals be thinking about building an actual, serious for reals veh… [+5264 chars]"
+         },
+         {
+            "source":{
+               "id":"cnn",
+               "name":"CNN"
+            },
+            "author":"Anneken Tappe, CNN Business",
+            "title":"Next week's earnings could boost tech stocks once again",
+            "description":"Investors are getting ready to reposition their portfolios for the post-pandemic world. That means moving money out of big tech, which did amazingly well in the work-from-home economy, and into more cyclical sectors, like manufacturing.",
+            "url":"https://www.cnn.com/2021/04/24/investing/tech-earnings-google-apple-amazon/index.html",
+            "urlToImage":"https://cdn.cnn.com/cnnnext/dam/assets/210424140427-tech-earnings-google-apple-amazon-super-tease.jpg",
+            "publishedAt":"2021-04-24T19:04:24Z",
+            "content":"New York (CNN Business)Investors are getting ready to reposition their portfolios for the post-pandemic world. That means moving money out of big tech, which did amazingly well in the work-from-home … [+2394 chars]"
+         },
+         {
+            "source":{
+               "id":"business-insider",
+               "name":"Business Insider"
+            },
+            "author":"Matthew DeBord",
+            "title":"Apple will never deliver a car because it can't figure out how to work with the automakers who could make it happen (AAPL)",
+            "description":"Summary List PlacementThe single biggest problem with the Apple Car is that Apple has no idea how to manufacture an automobile.\\xa0\nIt\\'s not ever clear that Apple knows how to so much as design a vehicle: The oft-rumored vehicle project, codenamed \"Project Titan…",
+            "url":"https://www.businessinsider.com/never-be-apple-car-because-apple-cant-work-with-automakers-2021-3",
+            "urlToImage":"https://i.insider.com/54f0cf3b6bb3f7d674cb781a?width=1200&format=jpeg",
+            "publishedAt":"2021-03-27T12:21:00Z",
+            "content":"The single biggest problem with the Apple Car is that Apple has no idea how to manufacture an automobile.\\xa0\r\nIt's not ever clear that Apple knows how to so much as design a vehicle: The oft-rumored ve… [+6567 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"9to5Mac"
+            },
+            "author":"Ben Lovejoy",
+            "title":"AAPL fall amid wider sell-off as investors unmoved by event",
+            "description":"Apple’s Spring Loaded event was a fast-paced one with plenty of good news, but it wasn’t enough to reverse an AAPL fall seen on the day, and continuing into after-market trading.\nThe day saw AAPL fall 1.28% during trading, and it continued to fall (albeit at …",
+            "url":"https://9to5mac.com/2021/04/21/aapl-fall-despite-event/",
+            "urlToImage":"https://i2.wp.com/9to5mac.com/wp-content/uploads/sites/6/2021/04/AAPL-fall-despite-event.jpg?resize=1200%2C628&quality=82&strip=all&ssl=1",
+            "publishedAt":"2021-04-21T11:19:42Z",
+            "content":"Apple’s Spring Loaded event was a fast-paced one with plenty of good news, but it wasn’t enough to reverse an AAPL fall seen on the day, and continuing into after-market trading.\r\nThe day saw AAPL fa… [+2637 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"9to5Mac"
+            },
+            "author":"José Adorno",
+            "title":"AAPL stock upgraded at UBS despite lack of iPhone supercycle",
+            "description":"Today, Apple was upgraded to a “buy” rating by analysts at UBS and given a $142 price, as reported by Business Insider.\n more…\nThe post AAPL stock upgraded at UBS despite lack of iPhone supercycle appeared first on 9to5Mac.",
+            "url":"https://9to5mac.com/2021/03/31/ubs-rates-apple-stocks-to-buy/",
+            "urlToImage":"https://i2.wp.com/9to5mac.com/wp-content/uploads/sites/6/2020/09/Tim-Cook-stock-award.jpg?resize=1200%2C628&quality=82&strip=all&ssl=1",
+            "publishedAt":"2021-03-31T18:22:35Z",
+            "content":"Today, Apple was upgraded to a “buy” rating by analysts at UBS and given a $142 price, as reported by Business Insider.\r\nUBS affirms the Apple stocks represent a potential 18% surge in the value of i… [+1199 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"9to5Mac"
+            },
+            "author":"Ben Lovejoy",
+            "title":"AAPL Q2 2021 earnings: Analysts expect dramatic revenue growth",
+            "description":"Tomorrow will reveal AAPL Q2 2021 earnings for Apple’s fiscal Q2/calendar Q1. Apple is known to have continued to benefit from the continued boost in spending on technology during the pandemic, and analysts are expecting big things.\nThe consensus view among a…",
+            "url":"https://9to5mac.com/2021/04/27/aapl-q2-2021-earnings-estimates/",
+            "urlToImage":"https://i1.wp.com/9to5mac.com/wp-content/uploads/sites/6/2021/04/AAPL-Q2-2021-earnings-analyst-expectations.jpg?resize=1200%2C628&quality=82&strip=all&ssl=1",
+            "publishedAt":"2021-04-27T12:02:04Z",
+            "content":"Tomorrow will reveal AAPL Q2 2021 earnings for Apple’s fiscal Q2/calendar Q1. Apple is known to have continued to benefit from the continued boost in spending on technology during the pandemic, and a… [+2188 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"9to5Mac"
+            },
+            "author":"Ben Lovejoy",
+            "title":"Buy AAPL, suggests Wedbush, suggesting tech stocks could climb 25-30% by year end",
+            "description":"Wedbush analyst Dan Ives has said that now would be a good time to buy AAPL, naming it as the best investment among tech stocks that could climb 25-30% by the year end.\nWedbush recommends three tech stocks that offer a “compelling risk/reward” ratio … \n more……",
+            "url":"https://9to5mac.com/2021/04/07/buy-aapl-suggests-wedbush/",
+            "urlToImage":"https://i0.wp.com/9to5mac.com/wp-content/uploads/sites/6/2021/04/Buy-AAPL-–-Wedbush.jpg?resize=1200%2C628&quality=82&strip=all&ssl=1",
+            "publishedAt":"2021-04-07T14:16:59Z",
+            "content":"Wedbush analyst Dan Ives has said that now would be a good time to buy AAPL, naming it as the best investment among tech stocks that could climb 25-30% by the year end.\r\nWedbush recommends three tech… [+1861 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"9to5Mac"
+            },
+            "author":"Ben Lovejoy",
+            "title":"AAPL revenue will continue to grow, says analyst, as pandemic sees people buying better tech",
+            "description":"AAPL revenue grew a remarkable 21% in the holiday quarter, the company setting new records for both revenue and profit. One notable Apple analyst suggests that the good news is set to continue, and is forecasting 15% year-on-year growth when the company repor…",
+            "url":"https://9to5mac.com/2021/04/09/aapl-revenue-will-continue-to-grow-says-analyst-as-pandemic-sees-people-buying-better-tech/",
+            "urlToImage":"https://i0.wp.com/9to5mac.com/wp-content/uploads/sites/6/2021/04/AAPL-revenue-will-continue-to-grow.jpg?resize=1200%2C628&quality=82&strip=all&ssl=1",
+            "publishedAt":"2021-04-09T13:17:30Z",
+            "content":"AAPL revenue grew a remarkable 21% in the holiday quarter, the company setting new records for both revenue and profit. One notable Apple analyst suggests that the good news is set to continue, and i… [+2079 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"AppleInsider"
+            },
+            "author":"news@appleinsider.com (Mike Peterson)",
+            "title":"UBS upgrades AAPL to 'Buy,' raises price target on iPhone stability & auto opportunity",
+            "description":"Investment bank UBS has upgraded AAPL to a \"Buy\" and raised its price target to $142, based on a stable iPhone backdrop and the possibility of Apple entering the car market.Credit: AppleInsiderIn a note to investors seen by AppleInsider, lead analyst David Vo…",
+            "url":"https://appleinsider.com/articles/21/03/31/ubs-upgrades-aapl-to-buy-raises-price-target-on-iphone-stability-auto-opportunity",
+            "urlToImage":"https://photos5.appleinsider.com/gallery/41126-79594-39472-75578-39261-75098-Apple-Car-xl-xl-xl.jpg",
+            "publishedAt":"2021-03-31T14:41:15Z",
+            "content":"Investment bank UBS has upgraded AAPL to a \"Buy\" and raised its price target to $142, based on a stable iPhone backdrop and the possibility of Apple entering the car market.\r\nIn a note to investors s… [+2099 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"Entrepreneur"
+            },
+            "author":"Entrepreneur en Español",
+            "title":"The investor who missed the chance to make millions with Netflix",
+            "description":"Despite this \"mistake\", Carl Icahn does not regret his decision. This is the reason.",
+            "url":"https://www.entrepreneur.com/article/368748",
+            "urlToImage":"https://assets.entrepreneur.com/content/3x2/2000/1617721940-carl-icahn.jpeg",
+            "publishedAt":"2021-04-06T15:13:00Z",
+            "content":"This article was translated from our Spanish edition using AI technologies. Errors may exist due to this process.\r\nIt was October 2013 when famous Wall Streetinvestor Carl Icahn began selling his sha… [+1587 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"AppleInsider"
+            },
+            "author":"news@appleinsider.com (Mike Peterson)",
+            "title":"Morgan Stanley cuts AAPL price target to $156 over stagnant peer stock prices",
+            "description":"Morgan Stanley has raised its 2021 and 2022 Apple Services revenue forecast, but has revised its AAPL price target down to $156 to reflect warier investor outlooks surrounding the company's peers.Credit: Andrew O'Hara, AppleInsiderIn a note to investors seen …",
+            "url":"https://appleinsider.com/articles/21/04/06/morgan-stanley-cuts-aapl-price-target-to-156-over-stagnant-peer-stock-prices",
+            "urlToImage":"https://photos5.appleinsider.com/gallery/41215-79900-50532869181_ee5d0cdc67_k-xl.jpg",
+            "publishedAt":"2021-04-06T14:19:02Z",
+            "content":"Morgan Stanley has raised its 2021 and 2022 Apple Services revenue forecast, but has revised its AAPL price target down to $156 to reflect warier investor outlooks surrounding the company's peers.\r\nI… [+2981 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"AppleInsider"
+            },
+            "author":"news@appleinsider.com (Mike Peterson)",
+            "title":"Wedbush names AAPL one of top three tech stocks on iPhone 12 supercycle",
+            "description":"With Apple predicted to sell a record-breaking 240 million iPhones in 2021, Wedbush has named AAPL one of its top technology stocks heading into the earnings report season.Credit: Andrew O'Hara, AppleInsiderIn a note to investors seen by AppleInsider, lead an…",
+            "url":"https://appleinsider.com/articles/21/04/07/wedbush-names-aapl-one-of-top-three-tech-stocks-on-iphone-12-supercycle",
+            "urlToImage":"https://photos5.appleinsider.com/gallery/41244-79992-50521773592_943bbb19e2_k-xl.jpg",
+            "publishedAt":"2021-04-07T15:26:22Z",
+            "content":"With Apple predicted to sell a record-breaking 240 million iPhones in 2021, Wedbush has named AAPL one of its top technology stocks heading into the earnings report season.\r\nIn a note to investors se… [+2010 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"9to5Mac"
+            },
+            "author":"Ben Lovejoy",
+            "title":"Apple Services still growing strongly, but a tough market – Morgan Stanley",
+            "description":"Apple Services revenue is still growing strongly, says Morgan Stanley, but the performance of some of its competitors shows that the market is a tough one.\nThe bank has downgraded its price target for AAPL from $164 to $156 …\n more…\nThe post Apple Services st…",
+            "url":"https://9to5mac.com/2021/04/06/apple-services-growth/",
+            "urlToImage":"https://i1.wp.com/9to5mac.com/wp-content/uploads/sites/6/2021/04/Morgan-Stanley-on-Apple-Services.jpg?resize=1200%2C628&quality=82&strip=all&ssl=1",
+            "publishedAt":"2021-04-06T14:08:24Z",
+            "content":"Apple Services revenue is still growing strongly, says Morgan Stanley, but the performance of some of its competitors shows that the market is a tough one.\r\nThe bank has downgraded its price target f… [+2326 chars]"
+         },
+         {
+            "source":{
+               "id":"None",
+               "name":"Benzinga"
+            },
+            "author":"Shivdeep Dhaliwal",
+            "title":"Apple, Facebook's Frosty Relations Have Origins In Cook Confronting Zuckerberg Over Data Privacy Back In 2019: NYT - Benzinga",
+            "description":"<ol><li>Apple, Facebook's Frosty Relations Have Origins In Cook Confronting Zuckerberg Over Data Privacy Back In 2019: NYT\\xa0\\xa0Benzinga\r\n</li><li>Apple users can say no to being tracked with new software update\\xa0\\xa0CBC.ca\r\n</li><li>iOS 14.5: How to Unlock iPhone wi…",
+            "url":"https://www.benzinga.com/news/21/04/20805594/apple-facebooks-frosty-relations-have-origins-in-cook-confronting-zuckerberg-over-data-privacy-back",
+            "urlToImage":"https://cdn.benzinga.com/files/imagecache/og_image_social_share_1200x630/images/story/2012/obi-onyeador-0hogsrewlrg-unsplash.jpg",
+            "publishedAt":"2021-04-27T08:38:00Z",
+            "content":"Apple Inc (NASDAQ: AAPL) CEO Tim Cook warned his Facebook Inc (NASDAQ: FB) counterpart to delete third-party data about users in 2019, The New York Times reported Monday.\r\nWhat Happened: The conversa… [+2098 chars]"
+         }
+      ]
+   }
+}

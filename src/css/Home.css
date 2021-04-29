@@ -54,14 +54,11 @@ body {
     margin-left: -37px;
   }
 
-  .stck {
-    pointer-events:none;
-  }
 
   .stockArea {
     height:100%;
     width: 100%;
-    background-color: #004266;
+    background-color: #00426a;
     display: inline-block;
     position: absolute;
     transition: all 1s ease;
@@ -84,8 +81,8 @@ body {
     left:calc(2*(100%/3));
   }
 
-  .stockArea:hover {
-    background-color: red;
+  .stockArea:hover{
+    background-color: lightblue;
   }
 
   .newsContainer {
@@ -105,13 +102,8 @@ body {
     position: absolute;
     left: calc(100%/3);
     top: 40px;
-    overflow: scroll;
+    overflow-y: scroll;
   }
-
-  .newsArea:hover {
-    background-color: red;
-  }
-
   .stock {
     background-color:darkgreen;
     height: 80%;
