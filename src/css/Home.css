@@ -112,3 +112,13 @@ body {
     margin-left: calc((100.01%/3 - 500px)/2);
   }
 
+  .stockTitle {
+    margin-left: calc((100.01%/3 - 500px)/2);
+    width: 500px;
+    text-align: center;
+    color: white;
+  }
+  
+  .stockArea:hover .stockTitle {
+    color:black;
+  }

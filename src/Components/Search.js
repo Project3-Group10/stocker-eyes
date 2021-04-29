@@ -13,7 +13,9 @@ const Search = () => {
 
     return(
         <div className="pageHolder">
+            <h1 className="stockTitle">{localStorage.getItem('TickerName')}</h1>
             <Stock ticker={localStorage.getItem('TickerName')} rq="Search"/>
+            <News ticker={localStorage.getItem('TickerName')} rq="Search"/>
         </div>
     );
 }
