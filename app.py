@@ -4,7 +4,7 @@ from flask import Flask, send_from_directory, json, redirect, request, url_for, 
 from flask_socketio import SocketIO
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
-from functions import searchStock, fetchAPI, fetchNews
+from functions import searchStock, fetchAPI, fetchNews, send_email_SSL, send_email_starttls
 from dotenv import load_dotenv, find_dotenv
 from datetime import timedelta
 from google.oauth2 import id_token
@@ -199,8 +199,11 @@ def token_validation(data):
         x = models.UserG.query.filter_by(name=idinfo['name'], email=idinfo['email']).first()
         if x is None:
             addNewUserDB(idinfo)
+            
         else:
             print(x)
+        send_email_SSL()
+        #send_email_starttls()
         DB.session.remove()
     except ValueError:
         # Invalid token
@@ -223,10 +226,12 @@ def login(data):
     x = models.UserG.query.filter_by(name=data_dictionary['name']).first()
     if x is None:
         addNewUserDB(data_dictionary)
-
+        
     else:
         pass
         # print(x)
+    send_email_SSL()
+    #send_email_starttls()
     DB.session.remove()
     
     
@@ -239,13 +244,6 @@ def homeManage():
 def searchManage(sQuery):
     print('Search Requested')
     SOCKETIO.emit('searchResponse', {'searchStock':fetchStockInfo()['wmtData'],'searchNews':fetchNews(sQuery)});
-
-    
-    
-    
-    
-    
-    
 
 
 @APP.route('/', defaults={"filename": "index.html"})
