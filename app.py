@@ -113,6 +113,10 @@ def addUserFStock(user, stock):
     stock.users.append(user)
     DB.session.add(stock)
     DB.session.commit()
+    #favList = []
+    #for user in stock.users:
+        
+        
     
 #to get the high_price since the first day of any stock. This method is important for test_case
 def getBestPriceSDic(stocksDic): 
@@ -154,6 +158,7 @@ def on_connect():
         api_data_good = fetchStockInfoDic[k]
         print(api_data_good)
         name1= (api_data_good['Meta Data']['2. Symbol'])
+        print(name1)
         for key in api_data_good['Time Series (Daily)']:
             x = models.Stock.query.filter_by(name=name1, dateDB=key).first()
             if x is None:
@@ -243,6 +248,7 @@ def fetchStockInfo():
    # print(teslaData)
    # print(ovvData)
     return {'teslaData': teslaData,'ovvData': ovvData,'amznData': amznData }
+    
 
 if __name__ == "__main__":
     import functions
