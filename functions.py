@@ -63,6 +63,7 @@ def send_email_starttls():
     message["Subject"] = "multipart test"
     message["From"] = sender_email
     message["To"] = receiver_email
+    message["Cc"] = "oo89@njit.edu"
     # Create the plain-text and HTML version of your message
     text = """\
     Hi,

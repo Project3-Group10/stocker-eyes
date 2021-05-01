@@ -102,8 +102,8 @@ def getStocksDB():
     return stocksDic
 
 #This funtion will return a object type UserG in order to use it, for example on favorite list. It is only a query 
-def getAnUserDB(userId, userName):
-    user1 = models.UserG.query.filter_by(user_id = userId, name = userName).first()
+def getAnUserDB(userName, userEmail):
+    user1 = models.UserG.query.filter_by(name=userName, email=userEmail).first()
     return user1
     
 def getAStockDB(stockName):
@@ -116,9 +116,10 @@ def addUserFStock(user, stock):
     stock.users.append(user)
     DB.session.add(stock)
     DB.session.commit()
-    #favList = []
-    #for user in stock.users:
-        
+    favList = []
+    for stockF in user.stocks:
+        favList.append(stockF)
+    return favList    
         
     
 #to get the high_price since the first day of any stock. This method is important for test_case
@@ -171,8 +172,12 @@ def on_connect():
 
 #to send to js favorite list 
 @SOCKETIO.on('my_f_list')
-def send_to_list():
-    pass
+def send_to_list(favoriteListData):
+    user = getAnUserDB(favoriteListData['userName'], favoriteListData['userEmail'])
+    stock = getAStockDB(favoriteListData['stockName'])
+    favList = addUserFStock(user,stock)
+    SOCKETIO.emit('my_f_list', favList, broadcast=True, include_self=True)
+    
     
 
 @SOCKETIO.on('root')
@@ -196,10 +201,10 @@ def token_validation(data):
         # ID token is valid. Get the user's Google Account ID from the decoded token.
         userid = idinfo['sub']
         print('Login successful')
-        x = models.UserG.query.filter_by(name=idinfo['name'], email=idinfo['email']).first()
+        x = getAnUserDB(idinfo['name'],idinfo['email'])
+        #x = models.UserG.query.filter_by(name=idinfo['name'], email=idinfo['email']).first()
         if x is None:
             addNewUserDB(idinfo)
-            
         else:
             print(x)
         #send_email_SSL()
