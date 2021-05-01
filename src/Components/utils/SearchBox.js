@@ -12,7 +12,7 @@ const SearchBox = () => {
     const onClick = () => {
         const inputText = inputRef.current.value;
 
-        localStorage.setItem('TickerName', inputText );
+        sessionStorage.setItem('TickerName', inputText );
 
         let path = `/search`; 
         history.push(path);

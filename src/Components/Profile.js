@@ -13,16 +13,16 @@ export const Profile = (props) => {
 
 
     useEffect(() => {
-        const temp = localStorage.getItem('isLoggedIn');
+        const temp = sessionStorage.getItem('isLoggedIn');
         if (temp === 'true')
         {
             setIsLoggedIn(tempIsLoggedIn => temp);
         } else {
             setIsLoggedIn(tempIsLoggedIn => false);
         }
-      setImageUri(localStorage.getItem('imageUrl'));
-      setName(localStorage.getItem('name'));
-      setEmailAddress(localStorage.getItem('email'));
+      setImageUri(sessionStorage.getItem('imageUrl'));
+      setName(sessionStorage.getItem('name'));
+      setEmailAddress(sessionStorage.getItem('email'));
 
 
     }, [])

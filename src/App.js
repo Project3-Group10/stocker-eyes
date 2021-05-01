@@ -6,6 +6,7 @@ import Register from "./Components/Register";
 import Profile from "./Components/Profile";
 import SearchBox from "./Components/utils/SearchBox";
 import Search from "./Components/Search";
+import Dashboard from "./Components/Dashboard";
 
 import {
   BrowserRouter as Router,
@@ -27,6 +28,7 @@ function App() {
                 <SearchBox />
                 <div className="menuItem" onClick={()=>{pageHolder()}}> <Link to="/"> <p>Home </p></Link> </div>
                 <div className="menuItem"> <Link to="/register"><p>Register</p></Link> </div>
+                <div className="menuItem"> <Link to="/myStock"><p>My Stock</p></Link></div>
                 <div className="menuItem"> <Link to="/profile"><p>Profile</p></Link> </div>
               </nav>
               {/* To add links to other directories, follow this guide https://reactrouter.com/web/guides/quick-start*/}
@@ -45,6 +47,9 @@ function App() {
                   </Route>
                   <Route path="/search">
                       <Search />
+                  </Route>
+                  <Route path="/myStock">
+                      <Dashboard />
                   </Route>
               </Switch>
           </div>

@@ -6,7 +6,7 @@ const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID
 
 function Logout() {
     const onSuccess = () => {
-        localStorage.clear();
+        sessionStorage.clear();
         alert('Successfully logged out');
         window.location.reload(false);
     };

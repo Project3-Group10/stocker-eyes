@@ -245,6 +245,13 @@ def searchManage(sQuery):
     print('Search Requested')
     SOCKETIO.emit('searchResponse', {'searchStock':fetchStockInfo()['wmtData'],'searchNews':fetchNews(sQuery)});
 
+@SOCKETIO.on('favListAdd')
+def favListAdd(data):
+    print('Favorite List Item Added')
+    print(data)
+
+
+
 
 @APP.route('/', defaults={"filename": "index.html"})
 @APP.route('/<path:filename>')
@@ -262,7 +269,7 @@ def fetchStockInfo():
     # print(teslaData,'\n\n')
     # print(ovvData,'\n\n')
     # print(amznData,'\n\n')
-    f = open("stock.txt", "r")
+    f = open("stock.txt", "r", encoding="utf-8")
 
     return json.loads(f.read())
     
@@ -270,7 +277,7 @@ def fetchNewsInfo():
     # tslaData = fetchNews('WMT')
     # ovvData = fetchNews('OVV')
     # amznData = fetchNews('AAPL')
-    f = open("news.txt","r")
+    f = open("news.txt","r", encoding="utf-8")
     return json.loads(f.read())
 
     # return {'wmtData':tslaData,'ovvData':ovvData,'applData':amznData}

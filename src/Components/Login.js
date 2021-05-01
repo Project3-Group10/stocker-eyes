@@ -1,7 +1,7 @@
+
 import React from 'react';
 import { GoogleLogin } from 'react-google-login';
 import { refreshTokenSetup } from './utils/refreshToken';
-import io from 'socket.io-client';
 import socket from "./utils/socket";
 
 const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
@@ -13,10 +13,10 @@ function Login() {
         const id_token = res.getAuthResponse().id_token;
         socket.emit('Login',{ id_token: id_token });
         console.log(res);
-        localStorage.setItem('name', res.profileObj['name']);
-        localStorage.setItem('email', res.profileObj['email']);
-        localStorage.setItem('imageUrl', res.profileObj['imageUrl']);
-        localStorage.setItem('isLoggedIn', 'true');
+        sessionStorage.setItem('name', res.profileObj['name']);
+        sessionStorage.setItem('email', res.profileObj['email']);
+        sessionStorage.setItem('imageUrl', res.profileObj['imageUrl']);
+        sessionStorage.setItem('isLoggedIn', 'true');
     };
 
     const onFailure = (res) => {

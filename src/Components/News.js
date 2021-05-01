@@ -12,8 +12,8 @@ const News = (props) => {
     useEffect(() => {
         socket.on('homeResponse', (groupData) => {
 
-            localStorage.setItem('homeStocks', JSON.stringify(groupData['homeStock']));
-            localStorage.setItem('homeNews', JSON.stringify(groupData['homeNews']));
+            sessionStorage.setItem('homeStocks', JSON.stringify(groupData['homeStock']));
+            sessionStorage.setItem('homeNews', JSON.stringify(groupData['homeNews']));
 
             const replace = JSON.parse(JSON.stringify(groupData['homeNews']))[props.ticker + 'Data']['articles'];
              
@@ -22,8 +22,8 @@ const News = (props) => {
         
         socket.on('searchResponse', (groupData) => {
 
-            localStorage.setItem('searchStocks', JSON.stringify(groupData['searchStock']));
-            localStorage.setItem('searchNews', JSON.stringify(groupData['searchNews']));
+            sessionStorage.setItem('searchStocks', JSON.stringify(groupData['searchStock']));
+            sessionStorage.setItem('searchNews', JSON.stringify(groupData['searchNews']));
 
             const replace = JSON.parse(JSON.stringify(groupData['searchNews']))['articles'];
 
