@@ -173,10 +173,11 @@ def on_connect():
 #to send to js favorite list 
 @SOCKETIO.on('my_f_list')
 def send_to_list(favoriteListData):
+    print(favoriteListData)
     user = getAnUserDB(favoriteListData['userName'], favoriteListData['userEmail'])
-    stock = getAStockDB(favoriteListData['stockName'])
+    stock = getAStockDB(favoriteListData['tickerName'])
     favList = addUserFStock(user,stock)
-    SOCKETIO.emit('my_f_list', favList, broadcast=True, include_self=True)
+    SOCKETIO.emit('my_f_list', favoriteListData, broadcast=True, include_self=True)
     
     
 
@@ -250,12 +251,6 @@ def searchManage(sQuery):
     print('Search Requested')
     SOCKETIO.emit('searchResponse', {'searchStock':fetchStockInfo()['wmtData'],'searchNews':fetchNews(sQuery)});
 
-@SOCKETIO.on('favListAdd')
-def favListAdd(data):
-    print('Favorite List Item Added')
-    print(data)
-
-
 
 
 @APP.route('/', defaults={"filename": "index.html"})
@@ -295,6 +290,7 @@ if __name__ == "__main__":
 
     SOCKETIO.run(
         APP,
+        debug=True,
         host=os.getenv('IP', '0.0.0.0'),
         port=8081 if os.getenv('C9_PORT') else int(os.getenv('PORT', 8081)),
     )

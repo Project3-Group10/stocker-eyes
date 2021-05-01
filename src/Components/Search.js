@@ -14,8 +14,9 @@ const Search = () => {
     const favListBtn = () => {
         //console.log('Button Clicked')
         setFavList(sessionStorage.getItem('TickerName'));
-        socket.emit('favListAdd', sessionStorage.getItem('TickerName'));
-        sessionStorage.setItem('FavList', sessionStorage.getItem('TickerName'))
+        var data = {'userName': sessionStorage.getItem('name'), 'userEmail':sessionStorage.getItem('email'), 'tickerName': sessionStorage.getItem('TickerName')}
+        socket.emit('my_f_list', data);
+        
     }
 
     return(
