@@ -87,40 +87,70 @@ def getUsersDB():
     for person in allUsers:
         users[person.user_id] = [person.email, person.name, person.avatar]
     # print(users)
-        DB.session.close()
+    DB.session.close()   
     return users
 
 #this method will help any time you need to get a stocks from the DB. From the dictionary you can have everything. 
 def getStocksDB():
     allStocks = models.Stock.query.all()
-    #DB.session.close()
     stocksDic = {}
     for stock in allStocks:
         stocksDic[stock.stock_id] = [stock.name, stock.dateDB, stock.open_price, stock.high_price, stock.low_price,
                                stock.close_price, stock.adjusted_clase_price, stock.volume_price]
-        
+    DB.session.close()   
     return stocksDic
 
 #This funtion will return a object type UserG in order to use it, for example on favorite list. It is only a query 
 def getAnUserDB(userName, userEmail):
     user1 = models.UserG.query.filter_by(name=userName, email=userEmail).first()
+    print(user1)
     return user1
     
 def getAStockDB(stockName):
-    stock1 = models.Stock.query.filter_by(name=stockName).first()
+    stock1 = models.Stock.query.filter_by(name=stockName, dateDB = '2020-11-25').first()
     return stock1
 
 #adding user, stock to the favorite table / The var user is an object type UserG and stock is an object type Stock 
-def addUserFStock(user, stock):
+def addUserFStock(user, stock1):
+    print(user.name)
+    print(stock1.name)
     # Addding the user to the db when login
-    stock.users.append(user)
-    #DB.session.add(stock)
+    stock1.users.append(user)
+    DB.session.add(stock1)
     DB.session.commit()
     DB.session.remove()
     favList = []
     for stockF in user.stocks:
         favList.append(stockF)
-    return favList    
+    print(favList)
+    DB.session.close()
+    return favList  
+
+#TEsting session problem 
+def addUserFavStock(userName, userEmail, stockName):
+    user1 = models.UserG.query.filter_by(name=userName, email=userEmail).first()
+    print(user1)
+    print(user1.name)
+    stock1 = models.Stock.query.filter_by(name=stockName, dateDB = '2020-12-02').first()
+    print(stock1)
+    print(stock1.name)
+    # Addding the user to the db when login
+    stock1.users.append(user1)
+    print("Aqui")
+    #DB.session.add(stock1)
+    local_object = DB.session.merge(stock1)
+    DB.session.add(local_object)
+    DB.session.commit()
+    favList = []
+    for stockF in user1.stocks:
+        favList.append(stockF)
+    print(favList)
+    favDicReturn = {}
+    for stock_R in favList:
+        favDicReturn[stockF.name] = [stockF.dateDB, stockF.close_price]
+    print(favDicReturn)    
+    DB.session.close()
+    return favDicReturn  
         
     
 #to get the high_price since the first day of any stock. This method is important for test_case
@@ -168,18 +198,20 @@ def on_connect():
                addStockDB(api_data_good['Time Series (Daily)'][key], name1, key)
             else:
                 continue
-    #DB.session.close()
+    DB.session.close()
 
 
 #to send to js favorite list 
 @SOCKETIO.on('my_f_list')
 def send_to_list(favoriteListData):
     print(favoriteListData)
-    user = getAnUserDB(favoriteListData['userName'], favoriteListData['userEmail'])
-    stock = getAStockDB(favoriteListData['tickerName'])
-    favList = addUserFStock(user,stock)
+    #user = getAnUserDB(favoriteListData['userName'], favoriteListData['userEmail'])
+    #print(user)
+    #stock = getAStockDB(favoriteListData['tickerName'])
+    #print(stock)
+    favList = addUserFavStock(favoriteListData['userName'], favoriteListData['userEmail'], favoriteListData['tickerName'])
     print(favList)
-    SOCKETIO.emit('my_f_list', favoriteListData, broadcast=True, include_self=True)
+    SOCKETIO.emit('my_f_list', favList, broadcast=True, include_self=True)
     
     
 
