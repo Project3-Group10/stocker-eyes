@@ -80,6 +80,18 @@ def addStockDB(stock_data, name1, key):
     DB.session.commit()
     DB.session.close()
 
+#Add FavariteStock 
+def addStockDBFav(name1):
+    x = models.FavariteStock.query.filter_by(name=name1).first()
+    if x is None:
+        newStock = models.FavariteStock(name=name1)
+        DB.session.add(newStock)
+        DB.session.commit()
+        DB.session.close()
+    else:
+        pass
+    
+
 # GET from DB users with all the information. It is a dictionary where key is also the user_id. 
 def getUsersDB():
     allUsers = models.UserG.query.all()
@@ -101,36 +113,36 @@ def getStocksDB():
     return stocksDic
 
 #This funtion will return a object type UserG in order to use it, for example on favorite list. It is only a query 
-def getAnUserDB(userName, userEmail):
-    user1 = models.UserG.query.filter_by(name=userName, email=userEmail).first()
-    print(user1)
-    return user1
+#def getAnUserDB(userName, userEmail):
+#    user1 = models.UserG.query.filter_by(name=userName, email=userEmail).first()
+#    print(user1)
+ #   return user1
     
-def getAStockDB(stockName):
-    stock1 = models.Stock.query.filter_by(name=stockName, dateDB = '2020-11-25').first()
-    return stock1
+#def getAStockDB(stockName):
+ #   stock1 = models.Stock.query.filter_by(name=stockName, dateDB = '2020-11-25').first()
+  #  return stock1
 
 #adding user, stock to the favorite table / The var user is an object type UserG and stock is an object type Stock 
-def addUserFStock(user, stock1):
-    print(user.name)
-    print(stock1.name)
-    # Addding the user to the db when login
-    stock1.users.append(user)
-    DB.session.add(stock1)
-    DB.session.commit()
-    favList = []
-    for stockF in user.stocks:
-        favList.append(stockF)
-    print(favList)
-    DB.session.close()
-    return favList  
+#def addUserFStock(user, stock1):
+#    print(user.name)
+#    print(stock1.name)
+#    # Addding the user to the db when login
+#    stock1.users.append(user)
+#    DB.session.add(stock1)
+#    DB.session.commit()
+#    favList = []
+#    for stockF in user.stocks:
+#        favList.append(stockF)
+#    print(favList)
+#    DB.session.close()
+#    return favList  
 
 #TEsting session problem 
 def addUserFavStock(userName, userEmail, stockName):
     user1 = models.UserG.query.filter_by(name=userName, email=userEmail).first()
     print(user1)
     print(user1.name)
-    stock1 = models.Stock.query.filter_by(name=stockName, dateDB = '2020-12-02').first()
+    stock1 = models.FavariteStock.query.filter_by(name=stockName).first()
     print(stock1)
     print(stock1.name)
     # Addding the user to the db when login
@@ -141,15 +153,11 @@ def addUserFavStock(userName, userEmail, stockName):
     DB.session.add(local_object)
     DB.session.commit()
     favList = []
-    for stockF in user1.stocks:
-        favList.append(stockF)
+    for stockF in user1.favaritestock:
+        favList.append(stockF.name)
     print(favList)
-    favDicReturn = {}
-    for stock_R in favList:
-        favDicReturn[stockF.name] = [stockF.dateDB, stockF.close_price]
-    print(favDicReturn)    
     DB.session.close()
-    return favDicReturn  
+    return favList  
         
     
 #to get the high_price since the first day of any stock. This method is important for test_case
@@ -208,6 +216,7 @@ def send_to_list(favoriteListData):
     #print(user)
     #stock = getAStockDB(favoriteListData['tickerName'])
     #print(stock)
+    addStockDBFav(favoriteListData['tickerName'])
     favList = addUserFavStock(favoriteListData['userName'], favoriteListData['userEmail'], favoriteListData['tickerName'])
     print(favList)
     SOCKETIO.emit('my_f_list', favList, broadcast=True, include_self=True)
@@ -235,8 +244,8 @@ def token_validation(data):
         # ID token is valid. Get the user's Google Account ID from the decoded token.
         userid = idinfo['sub']
         print('Login successful')
-        x = getAnUserDB(idinfo['name'],idinfo['email'])
-        #x = models.UserG.query.filter_by(name=idinfo['name'], email=idinfo['email']).first()
+        #x = getAnUserDB(idinfo['name'],idinfo['email'])
+        x = models.UserG.query.filter_by(name=idinfo['name'], email=idinfo['email']).first()
         if x is None:
             addNewUserDB(idinfo)
         else:
