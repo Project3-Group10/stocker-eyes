@@ -264,7 +264,7 @@ def token_validation(data):
         #This will have the highest price stock of all the time
         values_view = sortedStockDic.values()
         value_iterator = iter(values_view)
-        lowestPriceStock = next(value_iterator)
+        lowestPriceStock = next(value_iterator) # you can uses this to show in the UI the lowest price
         print(lowestPriceStock)
         textEmailLowStock = """\
         Hi,
