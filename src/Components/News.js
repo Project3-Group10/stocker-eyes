@@ -33,87 +33,6 @@ const News = (props) => {
 
 
     if (props.rq == "Home") {
-        // if (props.ticker == "wmt") {
-        //     return (
-
-        //         <div className={`newsArea ${props.ticker}`}>
-        //             <div className="gridContainer">
-
-        //             {
-                    
-        //             homeNews == null?'Empty':homeNews.map((url)=>
-                    
-        //             <div class="iframely-embed">
-        //                 <a href={url['url']}>
-        //                     <div class="iframely-responsive" >
-        //                         <img src={url['urlToImage']}/>
-    
-        //                          <p className="headline">{url['title']}</p>
-    
-        //                     </div>
-        //                 </a>
-        //             </div>
-                    
-        //             )
-        //             }
-        //             </div>
-        //         </div>
-        //     );
-        // }
-        // if (props.ticker == "ovv") {
-        //     return (
-
-        //         <div className={`newsArea ${props.ticker}`}>
-        //             <div className="gridContainer">
-
-        //             {
-                    
-        //             homeNews == null?'Empty':homeNews.map((url)=>
-                    
-        //             <div class="iframely-embed">
-        //                 <a href={url['url']}>
-        //                     <div class="iframely-responsive" >
-        //                         <img src={url['urlToImage']}/>
-    
-        //                          <p className="headline">{url['title']}</p>
-    
-        //                     </div>
-        //                 </a>
-        //             </div>
-                    
-        //             )
-        //             }
-        //             </div>
-        //         </div>
-        //     );
-        // }
-        // if (props.ticker == "appl") {
-        //     return (
-
-        //         <div className={`newsArea ${props.ticker}`}>
-        //             <div className="gridContainer">
-
-        //             {
-                    
-        //             homeNews == null?'Empty':homeNews.map((url)=>
-                    
-        //             <div class="iframely-embed">
-        //                 <a href={url['url']}>
-        //                     <div class="iframely-responsive" >
-        //                         <img src={url['urlToImage']}/>
-    
-        //                          <p className="headline">{url['title']}</p>
-    
-        //                     </div>
-        //                 </a>
-        //             </div>
-                    
-        //             )
-        //             }
-        //             </div>
-        //         </div>
-        //     );
-        // }
         
         return (
 
@@ -125,22 +44,22 @@ const News = (props) => {
                     homeNews == null?'':homeNews.map((url)=>
                     
                     <a href={url["url"]}>
-                    <div class="article-card">
-                      <div class="article-card__thumbnail">
+                    <div className="article-card">
+                      <div className="article-card__thumbnail">
                         <img src={url["urlToImage"]} alt="" />
                       </div>
                       
-                      <div class="article-card__content">
-                        <h2 class="article-card__title">{url["title"]}</h2>
+                      <div className="article-card__content">
+                        <h2 className="article-card__title">{url["title"]}</h2>
                         
-                        <div class="article-card__excerpt">
+                        <div className="article-card__excerpt">
                           <p>
                           {url["description"]} 
                           </p>
                         </div>
                         
-                        <div class="article-card__meta">
-                            <span class="article-card__timestamp"><i class="ion-clock"></i>{url["publishedAt"].slice(5,10)}</span>
+                        <div className="article-card__meta">
+                            <span className="article-card__timestamp"><i className="ion-clock"></i>{url["publishedAt"].slice(5,10)}</span>
                         </div>
                       </div>
                     </div>
@@ -164,22 +83,22 @@ const News = (props) => {
                     
                     searchNews == null?'Empty':searchNews.map((url)=>
                     <a href={url["url"]}>
-                    <div class="article-card">
-                      <div class="article-card__thumbnail">
+                    <div className="article-card">
+                      <div className="article-card__thumbnail">
                         <img src={url["urlToImage"]} alt="" />
                       </div>
                       
-                      <div class="article-card__content">
-                        <h2 class="article-card__title">{url["title"]}</h2>
+                      <div className="article-card__content">
+                        <h2 className="article-card__title">{url["title"]}</h2>
                         
-                        <div class="article-card__excerpt">
+                        <div className="article-card__excerpt">
                           <p>
                           {url["description"]} 
                           </p>
                         </div>
                         
-                        <div class="article-card__meta">
-                            <span class="article-card__timestamp"><i class="ion-clock"></i>{url["publishedAt"].slice(5,10)}</span>
+                        <div className="article-card__meta">
+                            <span className="article-card__timestamp"><i className="ion-clock"></i>{url["publishedAt"].slice(5,10)}</span>
                         </div>
                       </div>
                     </div>
