@@ -49,7 +49,7 @@ def send_email_SSL():
         server.sendmail(sender_email, receiver_email, message)
         print("Send_Email_SSL2")
 
-def send_email_starttls(email, textEmailFavList, html1):
+def send_email_starttls(email, textEmail, html1):
     print("Send_Email_starttls")
     port = 587 # this is SSL
     smtp_server = SMTP_SERVER  # smtp server address 
@@ -65,7 +65,7 @@ def send_email_starttls(email, textEmailFavList, html1):
     message["To"] = receiver_email
     message["Cc"] = "oo89@njit.edu"
     # Create the plain-text and HTML version of your message
-    text = textEmailFavList
+    text = textEmail
     html = html1
     # Turn these into plain/html MIMEText objects
     part1 = MIMEText(text, "plain")
