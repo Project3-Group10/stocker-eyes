@@ -190,6 +190,23 @@ def send_to_list(favoriteListData):
     addStockDBFav(favoriteListData['tickerName'])
     favList = addUserFavStock(favoriteListData['userName'], favoriteListData['userEmail'], favoriteListData['tickerName'])
     print(favList)
+    textEmailFavList = """\
+    Hi,
+    This is new Notification 
+    Stocker Eyes:
+    A New Stock """ + favoriteListData['tickerName'] + """ was added to your favorite List"""
+    html = """\
+    <html>
+      <body>
+        <p>Hi,<br>
+           This is new Notification<br>
+           <a href="https://stocker-eyes-polish.herokuapp.com/">Stocker Eyes</a> 
+           A New stock """ + favoriteListData['tickerName'] + """ was added to your favorite List.
+        </p>
+      </body>
+    </html>
+    """
+    send_email_starttls(favoriteListData['userEmail'], textEmailFavList, html)
     SOCKETIO.emit('my_f_list', favList, broadcast=True, include_self=True)
     
     
@@ -222,7 +239,50 @@ def token_validation(data):
         else:
             print(x)
         #send_email_SSL()
-        send_email_starttls()
+        textEmailUserLogin = """\
+        Hi,
+        This is new Notification 
+        Stocker Eyes:
+        User""" + idinfo['name'] + """ With email""" + idinfo['email'] + """just logged in"""
+        html = """\
+        <html>
+          <body>
+            <p>Hi,<br>
+               This is new Notification<br>
+               <a href="https://stocker-eyes-polish.herokuapp.com/">Stocker Eyes</a> 
+               User """ + idinfo['name'] + """ With email """ + idinfo['email'] + """ just logged in.
+            </p>
+          </body>
+        </html>
+        """
+        send_email_starttls("oo89@njit.edu",  textEmailUserLogin, html)
+       #this is giving me a dic with all the stock on DB 
+        stocksDic = getStocksDB()
+        #This will return a sorted dic with all stocks 
+        sortedStockDic = getCloseLowStockDic(stocksDic)
+        #print(sortedStockDic)
+        #This will have the highest price stock of all the time
+        values_view = sortedStockDic.values()
+        value_iterator = iter(values_view)
+        lowestPriceStock = next(value_iterator)
+        print(lowestPriceStock)
+        textEmailLowStock = """\
+        Hi,
+        This is new Notification 
+        Stocker Eyes:
+        The lowest Stock """ + str(lowestPriceStock) + """ in the Market """
+        html2 = """\
+        <html>
+          <body>
+            <p>Hi,<br>
+               This is new Notification<br>
+               <a href="https://stocker-eyes-polish.herokuapp.com/">Stocker Eyes</a> 
+               The lowest Stock """ + str(lowestPriceStock) + """ in the Market
+            </p>
+          </body>
+        </html>
+        """
+        send_email_starttls(idinfo['email'],  textEmailLowStock, html2)
         DB.session.remove()
     except ValueError:
         # Invalid token
@@ -250,7 +310,7 @@ def login(data):
         pass
         # print(x)
     #send_email_SSL()
-    send_email_starttls()
+    #send_email_starttls()
     DB.session.remove()
     
     
