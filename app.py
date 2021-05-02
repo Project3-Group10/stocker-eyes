@@ -249,32 +249,7 @@ def token_validation(data):
         # Invalid token
         print('Login failed')
         pass
-
-
-@SOCKETIO.on('logged_in')
-def login(data):
-    # print(data)
-    # print(data['Qs'])
-    # print(data['Qs']['oT'])
-    data_dictionary = {
-        'name': data['Qs']['oT'],  # + data['Qs']['kR'],
-        'imageUri': data['Qs']['EI'],
-        'emailAddress': data['Qs']['zt'],
-        'status': True
-    }
-    SOCKETIO.emit('logged_in', data_dictionary, broadcast=True, include_self=True)
-    x = models.UserG.query.filter_by(name=data_dictionary['name']).first()
-    if x is None:
-        addNewUserDB(data_dictionary)
-        
-    else:
-        pass
-        # print(x)
-    #send_email_SSL()
-    send_email_starttls()
-    DB.session.close()
-    
-    
+ 
 @SOCKETIO.on('homeRequest')
 def homeManage():
     print('Home Requested')
@@ -295,8 +270,6 @@ def dashBoard():
 def index(filename):
     """ index function """
     return send_from_directory('./build', filename)
-
-
 
 def fetchStockInfo():
     #this is the response
