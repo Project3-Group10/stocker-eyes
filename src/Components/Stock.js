@@ -6,15 +6,18 @@ import { refreshTokenSetup } from "./utils/refreshToken";
 
 export const Stock = (props) => {
   console.log('Stock');
+  
   useEffect(() => {
+
     socket.on('homeResponse', (groupData) => {
       sessionStorage.setItem('homeStocks', JSON.stringify(groupData['homeStock']));
       sessionStorage.setItem('homeNews', JSON.stringify(groupData['homeNews']));
+      
       if (props.rq == 'Home') {
         const homeStocks = JSON.parse(JSON.stringify(groupData['homeStock']));
 
         if (props.ticker === "wmt") {
-          displayGraph(homeStocks['wmtData']);
+          displayGraph(homeStocks.wmtData);
         }
 
         else if (props.ticker === "ovv") {
@@ -30,22 +33,25 @@ export const Stock = (props) => {
     socket.on('searchResponse', (groupData) => {
       sessionStorage.setItem('searchStocks', JSON.stringify(groupData['searchStock']));
       sessionStorage.setItem('searchNews', JSON.stringify(groupData['searchNews']));
-      
-      
       if (props.rq == 'Search') {
         displayGraph(JSON.parse(JSON.stringify(groupData['searchStock'])));
       }
     });
+
+    socket.on('dashboardResponse', (groupData) => {
+      sessionStorage.setItem('dashboardStock', JSON.stringify(groupData['dashboardStock']));
+      sessionStorage.setItem('dashboardNews', JSON.stringify(groupData['dashboardNews']));
+
+      if(props.rq == 'Dashboard'){
+        const dashboardStock = JSON.parse(JSON.stringify(groupData['dashboardStock']));
+
+        if(props.ticker === ""){
+
+        }
+      }
+    });
   }, []);
 
-  Object.size = function(obj) {
-    var size = 0,
-      key;
-    for (key in obj) {
-      if (obj.hasOwnProperty(key)) size++;
-    }
-    return size;
-  };
 
   function displayGraph(data) {
 

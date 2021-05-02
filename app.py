@@ -62,7 +62,7 @@ def addNewUserDB(user_data):
                           avatar=user_data['picture'])
     DB.session.add(newUser)
     DB.session.commit()
-    DB.session.remove()
+    DB.session.close()
     users_dic_return = getUsersDB()
     return users_dic_return
     
@@ -78,7 +78,7 @@ def addStockDB(stock_data, name1, key):
                             close_price=closeP, adjusted_clase_price=adjustedClaseP, volume_price=volumeP)
     DB.session.add(newStock)
     DB.session.commit()
-    DB.session.remove()
+    DB.session.close()
 
 # GET from DB users with all the information. It is a dictionary where key is also the user_id. 
 def getUsersDB():
@@ -87,13 +87,13 @@ def getUsersDB():
     for person in allUsers:
         users[person.user_id] = [person.email, person.name, person.avatar]
     # print(users)
-        DB.session.remove()
+        DB.session.close()
     return users
 
 #this method will help any time you need to get a stocks from the DB. From the dictionary you can have everything. 
 def getStocksDB():
     allStocks = models.Stock.query.all()
-    DB.session.remove()
+    #DB.session.close()
     stocksDic = {}
     for stock in allStocks:
         stocksDic[stock.stock_id] = [stock.name, stock.dateDB, stock.open_price, stock.high_price, stock.low_price,
@@ -114,8 +114,9 @@ def getAStockDB(stockName):
 def addUserFStock(user, stock):
     # Addding the user to the db when login
     stock.users.append(user)
-    DB.session.add(stock)
+    #DB.session.add(stock)
     DB.session.commit()
+    DB.session.remove()
     favList = []
     for stockF in user.stocks:
         favList.append(stockF)
@@ -167,7 +168,7 @@ def on_connect():
                addStockDB(api_data_good['Time Series (Daily)'][key], name1, key)
             else:
                 continue
-    DB.session.remove()
+    #DB.session.close()
 
 
 #to send to js favorite list 
@@ -177,6 +178,7 @@ def send_to_list(favoriteListData):
     user = getAnUserDB(favoriteListData['userName'], favoriteListData['userEmail'])
     stock = getAStockDB(favoriteListData['tickerName'])
     favList = addUserFStock(user,stock)
+    print(favList)
     SOCKETIO.emit('my_f_list', favoriteListData, broadcast=True, include_self=True)
     
     
@@ -210,7 +212,7 @@ def token_validation(data):
             print(x)
         #send_email_SSL()
         send_email_starttls()
-        DB.session.remove()
+        #DB.session.close()
     except ValueError:
         # Invalid token
         print('Login failed')
@@ -238,7 +240,7 @@ def login(data):
         # print(x)
     #send_email_SSL()
     send_email_starttls()
-    DB.session.remove()
+    DB.session.close()
     
     
 @SOCKETIO.on('homeRequest')
@@ -251,8 +253,11 @@ def searchManage(sQuery):
     print('Search Requested')
     SOCKETIO.emit('searchResponse', {'searchStock':fetchStockInfo()['wmtData'],'searchNews':fetchNews(sQuery)});
 
-
-
+@SOCKETIO.on('dashBoardRequest')
+def dashBoard():
+    print('Dashboard Requested')
+    SOCKETIO.emit
+    
 @APP.route('/', defaults={"filename": "index.html"})
 @APP.route('/<path:filename>')
 def index(filename):

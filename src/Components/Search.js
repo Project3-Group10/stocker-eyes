@@ -16,7 +16,6 @@ const Search = () => {
         setFavList(sessionStorage.getItem('TickerName'));
         var data = {'userName': sessionStorage.getItem('name'), 'userEmail':sessionStorage.getItem('email'), 'tickerName': sessionStorage.getItem('TickerName')}
         socket.emit('my_f_list', data);
-        
     }
 
     return(
@@ -30,3 +29,4 @@ const Search = () => {
 }
 
 export default Search;
+

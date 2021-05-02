@@ -35,7 +35,6 @@ const Home = (props) => {
             setexpandMain({ dow: 1, sp: 1, nasdaq: 1 });
             ele.target.style.left = null;
         }
-
     }
     
 
@@ -45,7 +44,7 @@ const Home = (props) => {
                 <div className={`stockArea dow ${expandMain.dow? '' : 'hide'}`} onClick={expandStock} >
                     <h1 className="stockTitle">WMT</h1>
                     <Stock ticker={"wmt"} rq={"Home"}/>
-//                     <News ticker={"wmt"} rq={"Home"}/>
+                    <News ticker={"wmt"} rq={"Home"}/>
 
                 </div>
                 <div className={`stockArea sp ${expandMain.sp? '' : 'hide'}`} onClick={expandStock} >
