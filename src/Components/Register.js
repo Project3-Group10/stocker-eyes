@@ -2,35 +2,43 @@ import React from 'react';
 import Login from "./Login";
 import Logout from "./Logout";
 import Modal from 'react-modal';
-import { useState, useRef } from 'react';
-import "../css/LogIn.css";
+import { useState, useRef, useEffect } from 'react';
+import socket from "./utils/socket";
+import "../css/Register.css"
 
 if (process.env.NODE_ENV !== 'test') Modal.setAppElement('#root');
 
 const Register = () => {
     const [modalShow, setModalShow] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [favStock, setFavStock] = useState(
-      {master:{
-        ticker1: "",
-        ticker1: "",
-        ticker3: "" 
-        }
-    });
+    // const [favStock, setFavStock] = useState(
+    //   {master:{
+    //     ticker1: "",
+    //     ticker1: "",
+    //     ticker3: "" 
+    //     }
+    // });
     const stockTicker1 = useRef(null);
     const stockTicker2 = useRef(null);
     const stockTicker3 = useRef(null);
+    const [firstTimeUser, setFirstTimeUser] = useState(false);
 
+    useEffect(() => {
+        console.log('useEffect maa aaivu Register.js')
+        socket.on('firstTimeUser', (data) => {
+            setFirstTimeUser(data['firstTimeUser']);
+        });
+    }, []);
 
     const style = {
         overlay: {
-            background: 'grey',
+            background: 'white',
             height: '500px',
             width: '500px',
             top: '200px',
             left: '773px',
             fontSize: '12px',
-            inset: '141px 0px 0px 552px',
+            inset: '141px 0px 0px 721px',
         },
         content: {
             color: 'orange'
@@ -39,18 +47,28 @@ const Register = () => {
 
     const fetchStockTicker = () => {
         if(stockTicker1 != null && stockTicker2 != null && stockTicker3 != null){
-            const temp1 = stockTicker1.current.value;
-            const temp2 = stockTicker1.current.value;
-            const temp3 = stockTicker1.current.value;
+            var temp1 = stockTicker1.current.value;
+            var temp2 = stockTicker2.current.value;
+            var temp3 = stockTicker3.current.value;
 
-            setFavStock({...favStock,  master: {
-                ticker1: temp1,
-                ticker2: temp2,
-                ticker3: temp3
-                },
-           })
+        //     setFavStock({...favStock,  master: {
+        //         ticker1: temp1,
+        //         ticker2: temp2,
+        //         ticker3: temp3
+        //         },
+        //    })
+        }
 
-
+        var data1 = {'userName': sessionStorage.getItem('name'), 'userEmail':sessionStorage.getItem('email'), 'tickerName': temp1}
+        var data2 = {'userName': sessionStorage.getItem('name'), 'userEmail':sessionStorage.getItem('email'), 'tickerName': temp2}
+        var data3 = {'userName': sessionStorage.getItem('name'), 'userEmail':sessionStorage.getItem('email'), 'tickerName': temp3}
+        if(sessionStorage.getItem('isLoggedIn') != 'true'){
+            alert("You are not logged in. Please sign in to use this feature");
+        }
+        else{
+            socket.emit('my_f_list', data1);
+            socket.emit('my_f_list', data2);
+            socket.emit('my_f_list', data3);
         }
     }
 
@@ -63,18 +81,18 @@ const Register = () => {
                 </div>
             </div>
 
-        {isLoggedIn? 
+        {(isLoggedIn&&firstTimeUser)? 
                 <div className='LogIn'> 
                     <center>
                     <Modal className='modalLogIn' isOpen={isLoggedIn} style={style} > 
                     <center>
                         <h2> Please Add three of your favorite stocks with its ticker name </h2>
                             <div class="container">
-                                <div> <input ref={stockTicker1} type="text" placeholder="Enter Stock 1" required/> </div>
-                                <div><input ref={stockTicker2} type="text" placeholder="Enter Stock 2" required/> </div>
-                                <div><input ref={stockTicker3} type="text" placeholder="Enter Stock 3" required/> </div>
+                                <div className="inputStock"> <input ref={stockTicker1} type="text" placeholder="Enter Stock 1" required/> </div>
+                                <div className="inputStock"><input ref={stockTicker2} type="text" placeholder="Enter Stock 2" required/> </div>
+                                <div className="inputStock"><input ref={stockTicker3} type="text" placeholder="Enter Stock 3" required/> </div>
                             </div>
-                        <button className="logInButton" onClick={fetchStockTicker}> Submit </button>
+                        <button className="submitButton" onClick={fetchStockTicker}> Submit </button>
                     </center>
                     </Modal>
                     </center>
