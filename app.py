@@ -76,6 +76,18 @@ def addStockDB(stock_data, name1, key):
     DB.session.commit()
     DB.session.close()
 
+#Add FavariteStock 
+def addStockDBFav(name1):
+    x = models.FavariteStock.query.filter_by(name=name1).first()
+    if x is None:
+        newStock = models.FavariteStock(name=name1)
+        DB.session.add(newStock)
+        DB.session.commit()
+        DB.session.close()
+    else:
+        pass
+    
+
 # GET from DB users with all the information. It is a dictionary where key is also the user_id. 
 def getUsersDB():
     allUsers = models.UserG.query.all()
@@ -101,7 +113,7 @@ def addUserFavStock(userName, userEmail, stockName):
     user1 = models.UserG.query.filter_by(name=userName, email=userEmail).first()
     print(user1)
     print(user1.name)
-    stock1 = models.Stock.query.filter_by(name=stockName, dateDB = '2020-12-02').first()
+    stock1 = models.FavariteStock.query.filter_by(name=stockName).first()
     print(stock1)
     print(stock1.name)
     # Addding the user to the db when login
@@ -112,15 +124,11 @@ def addUserFavStock(userName, userEmail, stockName):
     DB.session.add(local_object)
     DB.session.commit()
     favList = []
-    for stockF in user1.stocks:
-        favList.append(stockF)
+    for stockF in user1.favaritestock:
+        favList.append(stockF.name)
     print(favList)
-    favDicReturn = {}
-    for stock_R in favList:
-        favDicReturn[stockF.name] = [stockF.dateDB, stockF.close_price]
-    print(favDicReturn)    
     DB.session.close()
-    return favDicReturn  
+    return favList  
         
     
 #to get the high_price since the first day of any stock. This method is important for test_case
@@ -145,7 +153,15 @@ def getCloseLowStockDic(stocksDic):
     
 #getCloseLowStockDic({1: ['OVV', '04-18-2021', '4.2', '6.8', '3.5', '5', '3.1', '5000'],2: ['OVV', '04-17-2021', '4.2', '6.8', '3.5', '4.1', '3.1', '5000'],3: ['OVV', '04-16-2021', '4.2', '6.8', '3.5', '5.6', '3.1', '5000'],4: ['OVV', '04-15-2021', '4.2', '6.8', '3.5', '6.8', '3.1', '5000'],5: ['OVV', '04-14-2021', '4.2', '6.8', '3.5', '5.3', '3.1', '5000']})    
 
-
+def sendFavlistData(userName, userEmail):
+    user1 = models.UserG.query.filter_by(name=userName, email=userEmail).first()
+    favList = []
+    for stockF in user1.favaritestock:
+        favList.append(stockF.name)
+    #print(favList)
+    DB.session.close()
+    print('emitting the sendFavListData')
+    SOCKETIO.emit('sendFavlistData', favList) 
 
 @SOCKETIO.on('connect')
 def on_connect():
@@ -179,6 +195,7 @@ def send_to_list(favoriteListData):
     #print(user)
     #stock = getAStockDB(favoriteListData['tickerName'])
     #print(stock)
+    addStockDBFav(favoriteListData['tickerName'])
     favList = addUserFavStock(favoriteListData['userName'], favoriteListData['userEmail'], favoriteListData['tickerName'])
     print(favList)
     textEmailFavList = """\
@@ -223,12 +240,18 @@ def token_validation(data):
         # ID token is valid. Get the user's Google Account ID from the decoded token.
         userid = idinfo['sub']
         print('Login successful')
-        x = getAnUserDB(idinfo['name'],idinfo['email'])
-        #x = models.UserG.query.filter_by(name=idinfo['name'], email=idinfo['email']).first()
+        #x = getAnUserDB(idinfo['name'],idinfo['email'])
+        x = models.UserG.query.filter_by(name=idinfo['name'], email=idinfo['email']).first()
         if x is None:
             addNewUserDB(idinfo)
+            SOCKETIO.emit('firstTimeUser', {'firstTimeUser': True})
         else:
-            print(x)
+            #print(x)
+            #SOCKETIO.emit('firstTimeUser', {'firstTimeUser': True})
+            sendFavlistData(idinfo['name'], idinfo['email'])
+
+
+
         #send_email_SSL()
         textEmailUserLogin = """\
         Hi,
@@ -246,7 +269,7 @@ def token_validation(data):
           </body>
         </html>
         """
-        send_email_starttls("oo89@njit.edu",  textEmailUserLogin, html)
+        send_email_starttls(idinfo['email'],  textEmailUserLogin, html)
        #this is giving me a dic with all the stock on DB 
         stocksDic = getStocksDB()
         #This will return a sorted dic with all stocks 
@@ -279,7 +302,32 @@ def token_validation(data):
         # Invalid token
         print('Login failed')
         pass
- 
+
+
+@SOCKETIO.on('logged_in')
+def login(data):
+    # print(data)
+    # print(data['Qs'])
+    # print(data['Qs']['oT'])
+    data_dictionary = {
+        'name': data['Qs']['oT'],  # + data['Qs']['kR'],
+        'imageUri': data['Qs']['EI'],
+        'emailAddress': data['Qs']['zt'],
+        'status': True
+    }
+    SOCKETIO.emit('logged_in', data_dictionary, broadcast=True, include_self=True)
+    x = models.UserG.query.filter_by(name=data_dictionary['name']).first()
+    if x is None:
+        addNewUserDB(data_dictionary)
+        
+    else:
+        pass
+        # print(x)
+    #send_email_SSL()
+    #send_email_starttls()
+    DB.session.remove()
+    
+    
 @SOCKETIO.on('homeRequest')
 def homeManage():
     print('Home Requested')
@@ -290,16 +338,15 @@ def searchManage(sQuery):
     print('Search Requested')
     SOCKETIO.emit('searchResponse', {'searchStock':fetchStockInfo()['wmtData'],'searchNews':fetchNews(sQuery)});
 
-@SOCKETIO.on('dashBoardRequest')
-def dashBoard():
-    print('Dashboard Requested')
-    SOCKETIO.emit
-    
+
+
 @APP.route('/', defaults={"filename": "index.html"})
 @APP.route('/<path:filename>')
 def index(filename):
     """ index function """
     return send_from_directory('./build', filename)
+
+
 
 def fetchStockInfo():
     #this is the response

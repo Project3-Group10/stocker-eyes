@@ -1,5 +1,6 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import socket from "./utils/socket";
 import "../css/Dashboard.css";
 import "../css/Home.css";
 
@@ -22,25 +23,27 @@ const Dashboard = (props) => {
         }
     }
 
+
+//{favStock['master']['ticker1']}
     return(
     <div className="home">
             <div className="mainContainer">
 
                 <div className={`stockArea dow ${expandMain.dow? '' : 'hide'}`} onClick={expandStock} >
-                    <h1 className="stockTitle">WMT</h1>
+                    <h1 className="stockTitle">{props.favStock['master']['ticker1']}</h1>
                     {/* <Stock ticker={"wmt"} rq={"Dashboard"}/>
                     <News ticker={"wmt"} rq={"Dashboard"}/> */}
 
                 </div>
 
                 <div className={`stockArea sp ${expandMain.sp? '' : 'hide'}`} onClick={expandStock} >
-                    <h1 className="stockTitle">OVV</h1>
+                    <h1 className="stockTitle">{props.favStock['master']['ticker2']}</h1>
                     {/* <Stock ticker={"ovv"} rq={"Dashboard"}/>
                     <News ticker={"ovv"} rq={"Dashboard"}/> */}
                 </div>
 
                 <div className={`stockArea nasdaq ${expandMain.nasdaq? '' : 'hide'}`} onClick={expandStock} >
-                    <h1 className="stockTitle">APPL</h1>
+                    <h1 className="stockTitle">{props.favStock['master']['ticker3']}</h1>
                     {/* <Stock ticker={"appl"} rq={"Dashboard"}/>
                     <News ticker={"appl"} rq={"Dashboard"}/> */}
                 </div>
