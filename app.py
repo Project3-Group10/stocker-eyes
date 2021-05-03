@@ -51,10 +51,6 @@ today_long = datetime.now(timezone('US/Eastern'))
 today = str(date.fromtimestamp(datetime.now(timezone('US/Eastern')).timestamp()))
 yesterday = str(date.fromtimestamp(datetime.now(timezone('US/Eastern')).timestamp()) - timedelta(1))
 
-
-# print(today)
-# print(yesterday)
-
 # DB Funtion section
 def addNewUserDB(user_data):
     # Addding the user to the db when login
@@ -100,33 +96,7 @@ def getStocksDB():
     DB.session.close()   
     return stocksDic
 
-#This funtion will return a object type UserG in order to use it, for example on favorite list. It is only a query 
-def getAnUserDB(userName, userEmail):
-    user1 = models.UserG.query.filter_by(name=userName, email=userEmail).first()
-    print(user1)
-    return user1
-    
-def getAStockDB(stockName):
-    stock1 = models.Stock.query.filter_by(name=stockName, dateDB = '2020-11-25').first()
-    return stock1
-
-#adding user, stock to the favorite table / The var user is an object type UserG and stock is an object type Stock 
-def addUserFStock(user, stock1):
-    print(user.name)
-    print(stock1.name)
-    # Addding the user to the db when login
-    stock1.users.append(user)
-    DB.session.add(stock1)
-    DB.session.commit()
-    DB.session.remove()
-    favList = []
-    for stockF in user.stocks:
-        favList.append(stockF)
-    print(favList)
-    DB.session.close()
-    return favList  
-
-#TEsting session problem 
+#This method uses user from the user table, stock name from FavariteStock and 
 def addUserFavStock(userName, userEmail, stockName):
     user1 = models.UserG.query.filter_by(name=userName, email=userEmail).first()
     print(user1)
@@ -211,6 +181,23 @@ def send_to_list(favoriteListData):
     #print(stock)
     favList = addUserFavStock(favoriteListData['userName'], favoriteListData['userEmail'], favoriteListData['tickerName'])
     print(favList)
+    textEmailFavList = """\
+    Hi,
+    This is new Notification 
+    Stocker Eyes:
+    A New Stock """ + favoriteListData['tickerName'] + """ was added to your favorite List"""
+    html = """\
+    <html>
+      <body>
+        <p>Hi,<br>
+           This is new Notification<br>
+           <a href="https://stocker-eyes-polish.herokuapp.com/">Stocker Eyes</a> 
+           A New stock """ + favoriteListData['tickerName'] + """ was added to your favorite List.
+        </p>
+      </body>
+    </html>
+    """
+    send_email_starttls(favoriteListData['userEmail'], textEmailFavList, html)
     SOCKETIO.emit('my_f_list', favList, broadcast=True, include_self=True)
     
     
@@ -243,8 +230,51 @@ def token_validation(data):
         else:
             print(x)
         #send_email_SSL()
-        send_email_starttls()
-        #DB.session.close()
+        textEmailUserLogin = """\
+        Hi,
+        This is new Notification 
+        Stocker Eyes:
+        User""" + idinfo['name'] + """ With email""" + idinfo['email'] + """just logged in"""
+        html = """\
+        <html>
+          <body>
+            <p>Hi,<br>
+               This is new Notification<br>
+               <a href="https://stocker-eyes-polish.herokuapp.com/">Stocker Eyes</a> 
+               User """ + idinfo['name'] + """ With email """ + idinfo['email'] + """ just logged in.
+            </p>
+          </body>
+        </html>
+        """
+        send_email_starttls("oo89@njit.edu",  textEmailUserLogin, html)
+       #this is giving me a dic with all the stock on DB 
+        stocksDic = getStocksDB()
+        #This will return a sorted dic with all stocks 
+        sortedStockDic = getCloseLowStockDic(stocksDic)
+        #print(sortedStockDic)
+        #This will have the highest price stock of all the time
+        values_view = sortedStockDic.values()
+        value_iterator = iter(values_view)
+        lowestPriceStock = next(value_iterator) # you can uses this to show in the UI the lowest price
+        print(lowestPriceStock)
+        textEmailLowStock = """\
+        Hi,
+        This is new Notification 
+        Stocker Eyes:
+        The lowest Stock """ + str(lowestPriceStock) + """ in the Market """
+        html2 = """\
+        <html>
+          <body>
+            <p>Hi,<br>
+               This is new Notification<br>
+               <a href="https://stocker-eyes-polish.herokuapp.com/">Stocker Eyes</a> 
+               The lowest Stock """ + str(lowestPriceStock) + """ in the Market
+            </p>
+          </body>
+        </html>
+        """
+        send_email_starttls(idinfo['email'],  textEmailLowStock, html2)
+        DB.session.remove()
     except ValueError:
         # Invalid token
         print('Login failed')
