@@ -117,7 +117,7 @@ body {
     width: 500px;
     text-align: center;
     color: white;
-    text-transform: capitalize;
+    text-transform: uppercase;
   }
   
   .stockArea:hover .stockTitle {
