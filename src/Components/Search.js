@@ -23,7 +23,12 @@ const Search = () => {
         <div className="pageHolder">
             <h1 className="stockTitle">{sessionStorage.getItem('TickerName')}</h1>
             <Stock ticker={sessionStorage.getItem('TickerName')} rq="Search"/>
-            <button className="favListButton" onClick={()=>{favListBtn()}}> ADD </button>
+            <div class="favListButton centered" onClick={()=>{favListBtn()}}>
+              <div class="plus" id="plus">
+                <div class="plus__line plus__line--v"></div>
+                <div class="plus__line plus__line--h"></div>
+              </div>
+            </div>
             <News ticker={sessionStorage.getItem('TickerName')} rq="Search"/>
         </div>
     );
