@@ -51,10 +51,6 @@ today_long = datetime.now(timezone('US/Eastern'))
 today = str(date.fromtimestamp(datetime.now(timezone('US/Eastern')).timestamp()))
 yesterday = str(date.fromtimestamp(datetime.now(timezone('US/Eastern')).timestamp()) - timedelta(1))
 
-
-# print(today)
-# print(yesterday)
-
 # DB Funtion section
 def addNewUserDB(user_data):
     # Addding the user to the db when login
@@ -62,7 +58,7 @@ def addNewUserDB(user_data):
                           avatar=user_data['picture'])
     DB.session.add(newUser)
     DB.session.commit()
-    DB.session.remove()
+    DB.session.close()
     users_dic_return = getUsersDB()
     return users_dic_return
     
@@ -78,7 +74,19 @@ def addStockDB(stock_data, name1, key):
                             close_price=closeP, adjusted_clase_price=adjustedClaseP, volume_price=volumeP)
     DB.session.add(newStock)
     DB.session.commit()
-    DB.session.remove()
+    DB.session.close()
+
+#Add FavariteStock 
+def addStockDBFav(name1):
+    x = models.FavariteStock.query.filter_by(name=name1).first()
+    if x is None:
+        newStock = models.FavariteStock(name=name1)
+        DB.session.add(newStock)
+        DB.session.commit()
+        DB.session.close()
+    else:
+        pass
+    
 
 # GET from DB users with all the information. It is a dictionary where key is also the user_id. 
 def getUsersDB():
@@ -87,39 +95,40 @@ def getUsersDB():
     for person in allUsers:
         users[person.user_id] = [person.email, person.name, person.avatar]
     # print(users)
-        DB.session.remove()
+    DB.session.close()   
     return users
 
 #this method will help any time you need to get a stocks from the DB. From the dictionary you can have everything. 
 def getStocksDB():
     allStocks = models.Stock.query.all()
-    DB.session.remove()
     stocksDic = {}
     for stock in allStocks:
         stocksDic[stock.stock_id] = [stock.name, stock.dateDB, stock.open_price, stock.high_price, stock.low_price,
                                stock.close_price, stock.adjusted_clase_price, stock.volume_price]
-        
+    DB.session.close()   
     return stocksDic
 
-#This funtion will return a object type UserG in order to use it, for example on favorite list. It is only a query 
-def getAnUserDB(userName, userEmail):
+#This method uses user from the user table, stock name from FavariteStock and 
+def addUserFavStock(userName, userEmail, stockName):
     user1 = models.UserG.query.filter_by(name=userName, email=userEmail).first()
-    return user1
-    
-def getAStockDB(stockName):
-    stock1 = models.Stock.query.filter_by(name=stockName).first()
-    return stock1
-
-#adding user, stock to the favorite table / The var user is an object type UserG and stock is an object type Stock 
-def addUserFStock(user, stock):
+    print(user1)
+    print(user1.name)
+    stock1 = models.FavariteStock.query.filter_by(name=stockName).first()
+    print(stock1)
+    print(stock1.name)
     # Addding the user to the db when login
-    stock.users.append(user)
-    DB.session.add(stock)
+    stock1.users.append(user1)
+    print("Aqui")
+    #DB.session.add(stock1)
+    local_object = DB.session.merge(stock1)
+    DB.session.add(local_object)
     DB.session.commit()
     favList = []
-    for stockF in user.stocks:
-        favList.append(stockF)
-    return favList    
+    for stockF in user1.favaritestock:
+        favList.append(stockF.name)
+    print(favList)
+    DB.session.close()
+    return favList  
         
     
 #to get the high_price since the first day of any stock. This method is important for test_case
@@ -167,15 +176,37 @@ def on_connect():
                addStockDB(api_data_good['Time Series (Daily)'][key], name1, key)
             else:
                 continue
-    DB.session.remove()
+    DB.session.close()
 
 
 #to send to js favorite list 
 @SOCKETIO.on('my_f_list')
 def send_to_list(favoriteListData):
-    user = getAnUserDB(favoriteListData['userName'], favoriteListData['userEmail'])
-    stock = getAStockDB(favoriteListData['stockName'])
-    favList = addUserFStock(user,stock)
+    print(favoriteListData)
+    #user = getAnUserDB(favoriteListData['userName'], favoriteListData['userEmail'])
+    #print(user)
+    #stock = getAStockDB(favoriteListData['tickerName'])
+    #print(stock)
+    addStockDBFav(favoriteListData['tickerName'])
+    favList = addUserFavStock(favoriteListData['userName'], favoriteListData['userEmail'], favoriteListData['tickerName'])
+    print(favList)
+    textEmailFavList = """\
+    Hi,
+    This is new Notification 
+    Stocker Eyes:
+    A New Stock """ + favoriteListData['tickerName'] + """ was added to your favorite List"""
+    html = """\
+    <html>
+      <body>
+        <p>Hi,<br>
+           This is new Notification<br>
+           <a href="https://stocker-eyes-polish.herokuapp.com/">Stocker Eyes</a> 
+           A New stock """ + favoriteListData['tickerName'] + """ was added to your favorite List.
+        </p>
+      </body>
+    </html>
+    """
+    send_email_starttls(favoriteListData['userEmail'], textEmailFavList, html)
     SOCKETIO.emit('my_f_list', favList, broadcast=True, include_self=True)
     
     
@@ -201,14 +232,57 @@ def token_validation(data):
         # ID token is valid. Get the user's Google Account ID from the decoded token.
         userid = idinfo['sub']
         print('Login successful')
-        x = getAnUserDB(idinfo['name'],idinfo['email'])
-        #x = models.UserG.query.filter_by(name=idinfo['name'], email=idinfo['email']).first()
+        #x = getAnUserDB(idinfo['name'],idinfo['email'])
+        x = models.UserG.query.filter_by(name=idinfo['name'], email=idinfo['email']).first()
         if x is None:
             addNewUserDB(idinfo)
         else:
             print(x)
         #send_email_SSL()
-        send_email_starttls()
+        textEmailUserLogin = """\
+        Hi,
+        This is new Notification 
+        Stocker Eyes:
+        User""" + idinfo['name'] + """ With email""" + idinfo['email'] + """just logged in"""
+        html = """\
+        <html>
+          <body>
+            <p>Hi,<br>
+               This is new Notification<br>
+               <a href="https://stocker-eyes-polish.herokuapp.com/">Stocker Eyes</a> 
+               User """ + idinfo['name'] + """ With email """ + idinfo['email'] + """ just logged in.
+            </p>
+          </body>
+        </html>
+        """
+        send_email_starttls("oo89@njit.edu",  textEmailUserLogin, html)
+       #this is giving me a dic with all the stock on DB 
+        stocksDic = getStocksDB()
+        #This will return a sorted dic with all stocks 
+        sortedStockDic = getCloseLowStockDic(stocksDic)
+        #print(sortedStockDic)
+        #This will have the highest price stock of all the time
+        values_view = sortedStockDic.values()
+        value_iterator = iter(values_view)
+        lowestPriceStock = next(value_iterator) # you can uses this to show in the UI the lowest price
+        print(lowestPriceStock)
+        textEmailLowStock = """\
+        Hi,
+        This is new Notification 
+        Stocker Eyes:
+        The lowest Stock """ + str(lowestPriceStock) + """ in the Market """
+        html2 = """\
+        <html>
+          <body>
+            <p>Hi,<br>
+               This is new Notification<br>
+               <a href="https://stocker-eyes-polish.herokuapp.com/">Stocker Eyes</a> 
+               The lowest Stock """ + str(lowestPriceStock) + """ in the Market
+            </p>
+          </body>
+        </html>
+        """
+        send_email_starttls(idinfo['email'],  textEmailLowStock, html2)
         DB.session.remove()
     except ValueError:
         # Invalid token
@@ -236,7 +310,7 @@ def login(data):
         pass
         # print(x)
     #send_email_SSL()
-    send_email_starttls()
+    #send_email_starttls()
     DB.session.remove()
     
     
@@ -249,6 +323,7 @@ def homeManage():
 def searchManage(sQuery):
     print('Search Requested')
     SOCKETIO.emit('searchResponse', {'searchStock':fetchStockInfo()['wmtData'],'searchNews':fetchNews(sQuery)});
+
 
 
 @APP.route('/', defaults={"filename": "index.html"})
@@ -267,7 +342,7 @@ def fetchStockInfo():
     # print(teslaData,'\n\n')
     # print(ovvData,'\n\n')
     # print(amznData,'\n\n')
-    f = open("stock.txt", "r")
+    f = open("stock.txt", "r", encoding="utf-8")
 
     return json.loads(f.read())
     
@@ -275,7 +350,7 @@ def fetchNewsInfo():
     # tslaData = fetchNews('WMT')
     # ovvData = fetchNews('OVV')
     # amznData = fetchNews('AAPL')
-    f = open("news.txt","r")
+    f = open("news.txt","r", encoding="utf-8")
     return json.loads(f.read())
 
     # return {'wmtData':tslaData,'ovvData':ovvData,'applData':amznData}
@@ -288,6 +363,7 @@ if __name__ == "__main__":
 
     SOCKETIO.run(
         APP,
+        debug=True,
         host=os.getenv('IP', '0.0.0.0'),
         port=8081 if os.getenv('C9_PORT') else int(os.getenv('PORT', 8081)),
     )

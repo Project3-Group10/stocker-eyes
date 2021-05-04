@@ -5,17 +5,26 @@ import socket from "./utils/socket";
 import {useState, useEffect} from 'react';
 
 const Search = () => {
-    
-    if (localStorage.getItem('TickerName')) {
-        console.log('From SEARCHJS\n',localStorage.getItem('TickerName'));
-        socket.emit('searchRequest', localStorage.getItem('TickerName'));
+    const [favList, setFavList] = useState('');
+    if (sessionStorage.getItem('TickerName')) {
+        console.log('From SEARCHJS\n',sessionStorage.getItem('TickerName'));
+        socket.emit('searchRequest', sessionStorage.getItem('TickerName'));
+    }
+
+    const favListBtn = () => {
+        //console.log('Button Clicked')
+        setFavList(sessionStorage.getItem('TickerName'));
+        var data = {'userName': sessionStorage.getItem('name'), 'userEmail':sessionStorage.getItem('email'), 'tickerName': sessionStorage.getItem('TickerName')}
+        socket.emit('my_f_list', data);
+        
     }
 
     return(
         <div className="pageHolder">
-            <h1 className="stockTitle">{localStorage.getItem('TickerName')}</h1>
-            <Stock ticker={localStorage.getItem('TickerName')} rq="Search"/>
-            <News ticker={localStorage.getItem('TickerName')} rq="Search"/>
+            <h1 className="stockTitle">{sessionStorage.getItem('TickerName')}</h1>
+            <Stock ticker={sessionStorage.getItem('TickerName')} rq="Search"/>
+            <button className="favListButton" onClick={()=>{favListBtn()}}> ADD </button>
+            <News ticker={sessionStorage.getItem('TickerName')} rq="Search"/>
         </div>
     );
 }

@@ -12,6 +12,13 @@
 	font-size: calc(16px + (24 - 16) * (100vw - 320px) / (1920 - 320));
 }
 
+.favListButton{
+	font-size: calc(16px + (24 - 16) * (100vw - 320px) / (1920 - 320));
+	background-color: blue;
+	color: white;
+	height: 31px;
+}
+
 button,
 input {
 	font: 1em Hind, sans-serif;

@@ -2,7 +2,7 @@ from app import DB
 
 #Many to many relationship table User and Stocks
 user_identifie = DB.Table('user_identifie',
-    DB.Column('stock_id', DB.Integer, DB.ForeignKey('stocks.stock_id')),
+    DB.Column('stock_id2', DB.Integer, DB.ForeignKey('favaritestock.stock_id2')),
     DB.Column('user_id', DB.String(200), DB.ForeignKey('users.user_id'))
 )
 #User table 
@@ -31,9 +31,9 @@ class Stock(DB.Model):
     close_price = DB.Column(DB.String(100))
     adjusted_clase_price = DB.Column(DB.String(100))
     volume_price = DB.Column(DB.String(100))
-    users = DB.relationship("UserG",
-                               secondary=user_identifie, 
-                               backref=DB.backref('stocks', lazy='dynamic'))
+    #users = DB.relationship("UserG",
+    #                           secondary=user_identifie, 
+    #                          backref=DB.backref('stocks', lazy='dynamic'))
     def __repr__(self):
         return f"Stock('{self.stock_id}', '{self.name}', '{self.dateDB}', '{self.open_price}','{self.high_price}', '{self.low_price}', '{self.close_price}', '{self.adjusted_clase_price}','{self.volume_price}')"
 
@@ -46,4 +46,15 @@ class Crypto(DB.Model):
     
     def __repr__(self):
         return f"Crypto('{self.name}', '{self.closeprice}')"
+
+class FavariteStock(DB.Model):
+    __tablename__ = "favaritestock"
+    stock_id2 = DB.Column(DB.Integer, primary_key=True)
+    name = DB.Column(DB.String(20), nullable=False)
+    users = DB.relationship("UserG",
+                               secondary=user_identifie, 
+                               backref=DB.backref('favaritestock', lazy='dynamic'))
+    def __repr__(self):
+        return f"FavariteStock('{self.stock_id2}', '{self.name}')"
+        
 

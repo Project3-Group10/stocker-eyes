@@ -4,13 +4,12 @@ import Plotly from 'plotly.js-finance-dist';
 import socket from "./utils/socket";
 import { refreshTokenSetup } from "./utils/refreshToken";
 
-
 export const Stock = (props) => {
   console.log('Stock');
   useEffect(() => {
     socket.on('homeResponse', (groupData) => {
-      localStorage.setItem('homeStocks', JSON.stringify(groupData['homeStock']));
-      localStorage.setItem('homeNews', JSON.stringify(groupData['homeNews']));
+      sessionStorage.setItem('homeStocks', JSON.stringify(groupData['homeStock']));
+      sessionStorage.setItem('homeNews', JSON.stringify(groupData['homeNews']));
       if (props.rq == 'Home') {
         const homeStocks = JSON.parse(JSON.stringify(groupData['homeStock']));
         const homeNews = JSON.parse(JSON.stringify(groupData['homeNews']));
@@ -30,10 +29,10 @@ export const Stock = (props) => {
     });
 
     socket.on('searchResponse', (groupData) => {
-      localStorage.setItem('searchStocks', JSON.stringify(groupData['searchStock']));
-      localStorage.setItem('searchNews', JSON.stringify(groupData['searchNews']));
-
-
+      sessionStorage.setItem('searchStocks', JSON.stringify(groupData['searchStock']));
+      sessionStorage.setItem('searchNews', JSON.stringify(groupData['searchNews']));
+      
+      
       if (props.rq == 'Search') {
         displayGraph(JSON.parse(JSON.stringify(groupData['searchStock'])),JSON.parse(JSON.stringify(groupData['searchNews'])));
       }

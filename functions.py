@@ -49,38 +49,24 @@ def send_email_SSL():
         server.sendmail(sender_email, receiver_email, message)
         print("Send_Email_SSL2")
 
-def send_email_starttls():
+def send_email_starttls(email, textEmail, html1):
     print("Send_Email_starttls")
     port = 587 # this is SSL
     smtp_server = SMTP_SERVER  # smtp server address 
     sender_email = "caballoscuba@gmail.com" # Enter your email
     password = EMAIL_PASSWORD 
-    receiver_email = "osky.op@gmail.com" 
+    receiver_email = email 
     #message = """\
     #Subject: Stocker Eyes
    # New Notification. A user just logged in"""
     message = MIMEMultipart("alternative")
-    message["Subject"] = "multipart test"
+    message["Subject"] = "Stocker-Eyes Notification"
     message["From"] = sender_email
     message["To"] = receiver_email
     message["Cc"] = "oo89@njit.edu"
     # Create the plain-text and HTML version of your message
-    text = """\
-    Hi,
-    This is new Notification 
-    Stocker Eyes:
-    A user just logged in"""
-    html = """\
-    <html>
-      <body>
-        <p>Hi,<br>
-           This is new Notification<br>
-           <a href="https://stocker-eyes-polish.herokuapp.com/">Stocker Eyes</a> 
-           A user just logged in.
-        </p>
-      </body>
-    </html>
-    """
+    text = textEmail
+    html = html1
     # Turn these into plain/html MIMEText objects
     part1 = MIMEText(text, "plain")
     part2 = MIMEText(html, "html")
