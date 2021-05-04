@@ -6,33 +6,41 @@ const News = (props) => {
 
     const [homeNews, sethomeNews] = useState(null);
     const [searchNews, setsearchNews] = useState(null);
-    const [myStockNews, setMyStockNews] = useState(null);
+    const [dashNews, setDashNews] = useState(null);
+    
     
 
     useEffect(() => {
         socket.on('homeResponse', (groupData) => {
-
-            sessionStorage.setItem('homeStocks', JSON.stringify(groupData['homeStock']));
-            sessionStorage.setItem('homeNews', JSON.stringify(groupData['homeNews']));
-
             const replace = JSON.parse(JSON.stringify(groupData['homeNews']))[props.ticker + 'Data']['articles'];
-             
+            
             sethomeNews(replace);
         });
         
         socket.on('searchResponse', (groupData) => {
-
-            sessionStorage.setItem('searchStocks', JSON.stringify(groupData['searchStock']));
-            sessionStorage.setItem('searchNews', JSON.stringify(groupData['searchNews']));
-
+            console.log(groupData);
             const replace = JSON.parse(JSON.stringify(groupData['searchNews']))['articles'];
-
             setsearchNews(replace);
         });
 
-        // socket.on('dashboardResponse', (groupData) => {
+        socket.on('dashboardResponse', (groupData) => {
+          console.log(props.name)
           
-        // });
+
+            if (props.ticker === sessionStorage.getItem('myStockName1')) {
+              const replace = JSON.parse(JSON.stringify(groupData['newsData']))[props.ticker]['articles'];
+              setsearchNews(replace);
+            }
+            else if (props.ticker === sessionStorage.getItem('myStockName2')) {
+              const replace = JSON.parse(JSON.stringify(groupData['newsData']))[props.ticker]['articles'];
+              setsearchNews(replace);
+            }
+            else if (props.ticker === sessionStorage.getItem('myStockName3')) {
+              const replace = JSON.parse(JSON.stringify(groupData['newsData']))[props.ticker]['articles'];
+              setsearchNews(replace);
+            }
+       
+      });
 
     }, []);
 
@@ -115,13 +123,13 @@ const News = (props) => {
         );
     }
 
-    if (props.rq == "Search") {
+    if (props.rq == "Dashboard") {
       return (
 
           <div className={`newsArea ${props.ticker}`}>
                   <div className="gridContainer">
                   
-                  
+
                   {
                   
                   searchNews == null?'Empty':searchNews.map((url)=>

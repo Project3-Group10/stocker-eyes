@@ -4,7 +4,8 @@ from flask import Flask, send_from_directory, json, redirect, request, url_for, 
 from flask_socketio import SocketIO
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
-from functions import searchStock, fetchAPI, fetchNews, send_email_SSL, send_email_starttls, myStockInfo, myStockNewsInfo
+import functions
+from functions import searchStock, fetchNews, send_email_SSL, send_email_starttls, myStockInfo, myStockNewsInfo
 from dotenv import load_dotenv, find_dotenv
 from datetime import timedelta
 from google.oauth2 import id_token
@@ -248,9 +249,9 @@ def token_validation(data):
             SOCKETIO.emit('firstTimeUser', {'firstTimeUser': True})
         else:
             #print(x)
-            SOCKETIO.emit('firstTimeUser', {'firstTimeUser': True})
-            data = sendFavlistData(idinfo['name'], idinfo['email'])
-            SOCKETIO.emit('sendFavlistData', data)
+            #SOCKETIO.emit('firstTimeUser', {'firstTimeUser': True})
+            print('emittign the favlist data to the react')
+            SOCKETIO.emit('sendFavlistData', sendFavlistData(idinfo['name'], idinfo['email']))
 
 
         #send_email_SSL()
@@ -337,7 +338,7 @@ def homeManage():
 @SOCKETIO.on('searchRequest')
 def searchManage(sQuery):
     print('Search Requested')
-    SOCKETIO.emit('searchResponse', {'searchStock':fetchStockInfo()['wmtData'],'searchNews':fetchNews(sQuery)});
+    SOCKETIO.emit('searchResponse', {'searchStock':searchStock(sQuery),'searchNews':fetchNews(sQuery)});
 
 @SOCKETIO.on('DashBoardEmit')
 def DashboardManage(data):
@@ -347,7 +348,7 @@ def DashboardManage(data):
     for stockF in user1.favaritestock:
         favList.append(stockF.name)
     NewsData = myStockNewsInfo(favList[0], favList[1], favList[2])
-    SOCKETIO.emit('dashboardResponse', {StockData, NewsData})
+    SOCKETIO.emit('dashboardResponse', {'stockData': StockData, 'newsData': NewsData})
 
 
 @APP.route('/', defaults={"filename": "index.html"})
@@ -360,15 +361,10 @@ def index(filename):
 
 def fetchStockInfo():
     #this is the response
-    # teslaData = searchStock('WMT')
-    # ovvData = searchStock('OVV')
-    # amznData = searchStock('AAPL')
-    # print(teslaData,'\n\n')
-    # print(ovvData,'\n\n')
-    # print(amznData,'\n\n')
-    f = open("stock.txt", "r", encoding="utf-8")
-
-    return json.loads(f.read())
+    teslaData = searchStock('TSLA')
+    ovvData = searchStock('OVV')
+    amznData = searchStock('AAPL')
+    return {'wmtData':teslaData,'ovvData':ovvData,'applData':amznData}
     
 def fetchNewsInfo():
     # tslaData = fetchNews('WMT')
@@ -380,8 +376,6 @@ def fetchNewsInfo():
     # return {'wmtData':tslaData,'ovvData':ovvData,'applData':amznData}
 
 if __name__ == "__main__":
-    import functions
-    from functions import searchStock, fetchAPI
     returnedData = fetchStockInfo()
     returnedNews = fetchNewsInfo()
 

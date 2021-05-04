@@ -29,18 +29,18 @@ export const Stock = (props) => {
       }
     });
 
-    socket.on('dashboardResponse', (data) => {
+    socket.on('dashboardResponse', (groupData) => {
       console.log('dashboardReponse socket is on');
-      console.log(data);
+      console.log(groupData);
       if (props.rq == 'Dashboard') {
         if (props.ticker === sessionStorage.getItem('myStockName1')) {
-          displayGraph(data['myStockChartData'][0]);
+          displayGraph(groupData['stockData']['myStockChartData'][0]);
         }
         else if (props.ticker === sessionStorage.getItem('myStockName2')) {
-          displayGraph(data['myStockChartData'][1]);
+          displayGraph(groupData['stockData']['myStockChartData'][1]);
         }
         else if (props.ticker === sessionStorage.getItem('myStockName3')) {
-          displayGraph(data['myStockChartData'][2]);
+          displayGraph(groupData['stockData']['myStockChartData'][2]);
         }
       }
     });

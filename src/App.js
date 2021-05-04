@@ -25,8 +25,9 @@ function App() {
   });
 
   useEffect(() => {
-    console.log('useEffect maa aaivu App.js')
+    
     socket.on('sendFavlistData', (data) => {
+      console.log('useEffect maa aaivu App.js')
       console.log(data);
         setFavStock({...favStock,  master: {
             ticker1: data['favList'][0],
@@ -42,8 +43,6 @@ function App() {
        sessionStorage.setItem('myStockData1', JSON.stringify(data['myStockChartData'][0]));
        sessionStorage.setItem('myStockData2', JSON.stringify(data['myStockChartData'][1]));
        sessionStorage.setItem('myStockData3', JSON.stringify(data['myStockChartData'][2]));
-
-       sessionStorage.getItem('myStockName1')
     });
 
 

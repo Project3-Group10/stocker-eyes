@@ -32,6 +32,7 @@ const Dashboard = (props) => {
     useEffect(() => { 
         if(sessionStorage.getItem('isLoggedIn') === 'true') {
             setIsLoggedIn(true);
+            
         }
 
         if(!dashboardData){
@@ -55,20 +56,20 @@ const Dashboard = (props) => {
                         <h1 className="stockTitle">{props.favStock['master']['ticker1']}</h1>
                     
                         <Stock ticker={sessionStorage.getItem('myStockName1')} rq={"Dashboard"}/>
-                        {/* <News ticker={sessionStorage.getItem('myStockName1')} rq={"Dashboard"}/> */}
+                        <News ticker={sessionStorage.getItem('myStockName1')} rq={"Dashboard"}/>
 
                     </div>
 
                     <div className={`stockArea sp ${expandMain.sp? '' : 'hide'}`} onClick={expandStock} >
                         <h1 className="stockTitle">{props.favStock['master']['ticker2']}</h1>
                         <Stock ticker={sessionStorage.getItem('myStockName2')} rq={"Dashboard"}/>
-                        {/* <News ticker={sessionStorage.getItem('myStockName2')} rq={"Dashboard"}/> */}
+                        <News ticker={sessionStorage.getItem('myStockName2')} rq={"Dashboard"}/>
                     </div>
 
                     <div className={`stockArea nasdaq ${expandMain.nasdaq? '' : 'hide'}`} onClick={expandStock} >
                         <h1 className="stockTitle">{props.favStock['master']['ticker3']}</h1>
                         <Stock ticker={sessionStorage.getItem('myStockName3')} rq={"Dashboard"}/>
-                        {/* <News ticker={sessionStorage.getItem('myStockName3')} rq={"Dashboard"}/> */}
+                        <News ticker={sessionStorage.getItem('myStockName3')} rq={"Dashboard"}/>
                     </div>
 
                 </div>
