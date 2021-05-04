@@ -38,8 +38,8 @@ export const Profile = (props) => {
             <div className="profilePicture-container">
               <img className="profilePicture" src={imageUri} alt="new"/>
             </div>
-            <h1 className="username" > Name: {name} </h1>
-            <h2 className="user-email" > Email Address: {emailAddress} </h2>
+            <h1 className="username" > {name} </h1>
+            <h2 className="user-email" > <p className="usertitle">Email Address:</p> <p className="useremail">{emailAddress}</p> </h2>
             <Logout />
           </div>
             : <div><h1> You are not logged in </h1></div>
