@@ -4,11 +4,12 @@ import socket from "./utils/socket";
 
 const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID
 
-function Logout() {
+function Logout(props) {
     const onSuccess = () => {
         sessionStorage.clear();
         alert('Successfully logged out');
         window.location.reload(false);
+        props.setIsLoggedIn(false);
     };
 
     return (

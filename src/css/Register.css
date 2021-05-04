@@ -7,7 +7,23 @@
     top: 90px;
     overflow: hidden;
   }
-  
+
+.submitButton{
+    position: absolute;
+    margin: auto;
+    background-color: #f44336;
+    border: aliceblue;
+    color: white;
+    padding: 5px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    margin-Top: 10px;
+    margin-left: -34px;
+}
+
 .loginContainer {
     height: 30%;
     width: 40%;
@@ -31,4 +47,12 @@
     height: 20%;
     left: calc((100% - 30%)/2);
     position: absolute;
+}
+
+.modalLogIn{
+    background: white;
+}
+
+.inputStock{
+    padding-bottom: 10px;
 }

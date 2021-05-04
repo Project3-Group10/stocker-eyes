@@ -3,10 +3,12 @@ import React from 'react';
 import { GoogleLogin } from 'react-google-login';
 import { refreshTokenSetup } from './utils/refreshToken';
 import socket from "./utils/socket";
+import {useEffect} from 'react';
+
 
 const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
-function Login() {
+function Login(props) {
     const onSuccess = (res) => {
         console.log('Login successful')
         refreshTokenSetup(res);
@@ -17,11 +19,19 @@ function Login() {
         sessionStorage.setItem('email', res.profileObj['email']);
         sessionStorage.setItem('imageUrl', res.profileObj['imageUrl']);
         sessionStorage.setItem('isLoggedIn', 'true');
+        props.setIsLoggedIn(true);
     };
 
     const onFailure = (res) => {
         console.log('Login failed:', res);
     };
+
+    useEffect(() => {
+        console.log('useEffect maa aaivu LogIn.js')
+        socket.on('firstTimeUser', (data) => {
+            console.log(data)
+        });
+    }, [onSuccess]);
 
     return (
         <div className="login">
