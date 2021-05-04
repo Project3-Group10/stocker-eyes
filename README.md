@@ -1,6 +1,6 @@
 # Flask and create-react-app
 
-Heroku link: https://stocker-eyes.herokuapp.com/
+Heroku link: https://stocker-eyes-polish.herokuapp.com/
 
 ## Requirements
 1. `npm install`
