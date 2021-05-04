@@ -6,9 +6,8 @@ import { refreshTokenSetup } from "./utils/refreshToken";
 
 export const Stock = (props) => {
   console.log('Stock');
-  
-  useEffect(() => {
 
+  useEffect(() => {
     socket.on('homeResponse', (groupData) => {
       sessionStorage.setItem('homeStocks', JSON.stringify(groupData['homeStock']));
       sessionStorage.setItem('homeNews', JSON.stringify(groupData['homeNews']));
@@ -30,6 +29,22 @@ export const Stock = (props) => {
       }
     });
 
+    socket.on('dashboardResponse', (data) => {
+      console.log('dashboardReponse socket is on');
+      console.log(data);
+      if (props.rq == 'Dashboard') {
+        if (props.ticker === sessionStorage.getItem('myStockName1')) {
+          displayGraph(data['myStockChartData'][0]);
+        }
+        else if (props.ticker === sessionStorage.getItem('myStockName2')) {
+          displayGraph(data['myStockChartData'][1]);
+        }
+        else if (props.ticker === sessionStorage.getItem('myStockName3')) {
+          displayGraph(data['myStockChartData'][2]);
+        }
+      }
+    });
+
     socket.on('searchResponse', (groupData) => {
       sessionStorage.setItem('searchStocks', JSON.stringify(groupData['searchStock']));
       sessionStorage.setItem('searchNews', JSON.stringify(groupData['searchNews']));
@@ -37,21 +52,7 @@ export const Stock = (props) => {
         displayGraph(JSON.parse(JSON.stringify(groupData['searchStock'])));
       }
     });
-
-    socket.on('dashboardResponse', (groupData) => {
-      sessionStorage.setItem('dashboardStock', JSON.stringify(groupData['dashboardStock']));
-      sessionStorage.setItem('dashboardNews', JSON.stringify(groupData['dashboardNews']));
-
-      if(props.rq == 'Dashboard'){
-        const dashboardStock = JSON.parse(JSON.stringify(groupData['dashboardStock']));
-
-        if(props.ticker === ""){
-
-        }
-      }
-    });
   }, []);
-
 
   function displayGraph(data) {
 

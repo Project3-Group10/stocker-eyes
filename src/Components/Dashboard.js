@@ -3,9 +3,15 @@ import { useState, useEffect } from 'react';
 import socket from "./utils/socket";
 import "../css/Dashboard.css";
 import "../css/Home.css";
+import Stock from "./Stock";
+import News from "./News";
 
 const Dashboard = (props) => {
     const [expandMain, setexpandMain] = useState({ dow: 1, sp: 1, nasdaq: 1 });
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [dashboardData, setDashboardData] = useState(false);
+
+
 
     function expandStock(ele) {
         const box = ele.target.classList[1];
@@ -23,33 +29,57 @@ const Dashboard = (props) => {
         }
     }
 
+    useEffect(() => { 
+        if(sessionStorage.getItem('isLoggedIn') === 'true') {
+            setIsLoggedIn(true);
+        }
 
-//{favStock['master']['ticker1']}
+        if(!dashboardData){
+            var data = { 'name': sessionStorage.getItem('name'), 'email': sessionStorage.getItem('email') };
+            console.log('DashboardEmit');
+            socket.emit('DashBoardEmit', data);
+        }
+
+    }, []);
+
+
+
+
     return(
-    <div className="home">
-            <div className="mainContainer">
+    <div>
+        { isLoggedIn?
+        <div className="home">
+                <div className="mainContainer">
 
-                <div className={`stockArea dow ${expandMain.dow? '' : 'hide'}`} onClick={expandStock} >
-                    <h1 className="stockTitle">{props.favStock['master']['ticker1']}</h1>
-                    {/* <Stock ticker={"wmt"} rq={"Dashboard"}/>
-                    <News ticker={"wmt"} rq={"Dashboard"}/> */}
+                    <div className={`stockArea dow ${expandMain.dow? '' : 'hide'}`} onClick={expandStock} >
+                        <h1 className="stockTitle">{props.favStock['master']['ticker1']}</h1>
+                    
+                        <Stock ticker={sessionStorage.getItem('myStockName1')} rq={"Dashboard"}/>
+                        {/* <News ticker={sessionStorage.getItem('myStockName1')} rq={"Dashboard"}/> */}
+
+                    </div>
+
+                    <div className={`stockArea sp ${expandMain.sp? '' : 'hide'}`} onClick={expandStock} >
+                        <h1 className="stockTitle">{props.favStock['master']['ticker2']}</h1>
+                        <Stock ticker={sessionStorage.getItem('myStockName2')} rq={"Dashboard"}/>
+                        {/* <News ticker={sessionStorage.getItem('myStockName2')} rq={"Dashboard"}/> */}
+                    </div>
+
+                    <div className={`stockArea nasdaq ${expandMain.nasdaq? '' : 'hide'}`} onClick={expandStock} >
+                        <h1 className="stockTitle">{props.favStock['master']['ticker3']}</h1>
+                        <Stock ticker={sessionStorage.getItem('myStockName3')} rq={"Dashboard"}/>
+                        {/* <News ticker={sessionStorage.getItem('myStockName3')} rq={"Dashboard"}/> */}
+                    </div>
 
                 </div>
-
-                <div className={`stockArea sp ${expandMain.sp? '' : 'hide'}`} onClick={expandStock} >
-                    <h1 className="stockTitle">{props.favStock['master']['ticker2']}</h1>
-                    {/* <Stock ticker={"ovv"} rq={"Dashboard"}/>
-                    <News ticker={"ovv"} rq={"Dashboard"}/> */}
+        </div> : 
+                <div className="home">
+                    <div className="mainContainer">
+                        <p> You are not logged in! </p>
+                    </div>
                 </div>
-
-                <div className={`stockArea nasdaq ${expandMain.nasdaq? '' : 'hide'}`} onClick={expandStock} >
-                    <h1 className="stockTitle">{props.favStock['master']['ticker3']}</h1>
-                    {/* <Stock ticker={"appl"} rq={"Dashboard"}/>
-                    <News ticker={"appl"} rq={"Dashboard"}/> */}
-                </div>
-
-            </div>
-        </div>
+        }
+    </div>
     );
 }
 

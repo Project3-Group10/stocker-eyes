@@ -29,15 +29,26 @@ function App() {
     socket.on('sendFavlistData', (data) => {
       console.log(data);
         setFavStock({...favStock,  master: {
-            ticker1: data[0],
-            ticker2: data[1],
-            ticker3: data[2]
+            ticker1: data['favList'][0],
+            ticker2: data['favList'][1],
+            ticker3: data['favList'][2]
             },
        })
+       
+       sessionStorage.setItem('myStockName1', data['favList'][0]);
+       sessionStorage.setItem('myStockName2', data['favList'][1]);
+       sessionStorage.setItem('myStockName3', data['favList'][2]);
+
+       sessionStorage.setItem('myStockData1', JSON.stringify(data['myStockChartData'][0]));
+       sessionStorage.setItem('myStockData2', JSON.stringify(data['myStockChartData'][1]));
+       sessionStorage.setItem('myStockData3', JSON.stringify(data['myStockChartData'][2]));
+
+       sessionStorage.getItem('myStockName1')
     });
 
 
 }, []);
+
   const pageHolder = () => {
     window.location.reload(false);
   }; 

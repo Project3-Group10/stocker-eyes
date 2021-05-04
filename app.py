@@ -4,7 +4,7 @@ from flask import Flask, send_from_directory, json, redirect, request, url_for, 
 from flask_socketio import SocketIO
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
-from functions import searchStock, fetchAPI, fetchNews, send_email_SSL, send_email_starttls
+from functions import searchStock, fetchAPI, fetchNews, send_email_SSL, send_email_starttls, myStockInfo, myStockNewsInfo
 from dotenv import load_dotenv, find_dotenv
 from datetime import timedelta
 from google.oauth2 import id_token
@@ -13,6 +13,7 @@ import models
 from datetime import datetime, date
 from pytz import timezone
 from flask_caching import Cache
+import requests_cache
 
 cache = Cache()
 
@@ -160,8 +161,8 @@ def sendFavlistData(userName, userEmail):
         favList.append(stockF.name)
     #print(favList)
     DB.session.close()
-    print('emitting the sendFavListData')
-    SOCKETIO.emit('sendFavlistData', favList) 
+    myStockChartData = myStockInfo(favList[0], favList[1], favList[2])
+    return { 'favList': favList, 'myStockChartData': myStockChartData}
 
 @SOCKETIO.on('connect')
 def on_connect():
@@ -247,9 +248,9 @@ def token_validation(data):
             SOCKETIO.emit('firstTimeUser', {'firstTimeUser': True})
         else:
             #print(x)
-            #SOCKETIO.emit('firstTimeUser', {'firstTimeUser': True})
-            sendFavlistData(idinfo['name'], idinfo['email'])
-
+            SOCKETIO.emit('firstTimeUser', {'firstTimeUser': True})
+            data = sendFavlistData(idinfo['name'], idinfo['email'])
+            SOCKETIO.emit('sendFavlistData', data)
 
 
         #send_email_SSL()
@@ -338,6 +339,15 @@ def searchManage(sQuery):
     print('Search Requested')
     SOCKETIO.emit('searchResponse', {'searchStock':fetchStockInfo()['wmtData'],'searchNews':fetchNews(sQuery)});
 
+@SOCKETIO.on('DashBoardEmit')
+def DashboardManage(data):
+    StockData = sendFavlistData(data['name'], data['email'])
+    user1 = models.UserG.query.filter_by(name=data['name'], email=data['email']).first()
+    favList = []
+    for stockF in user1.favaritestock:
+        favList.append(stockF.name)
+    NewsData = myStockNewsInfo(favList[0], favList[1], favList[2])
+    SOCKETIO.emit('dashboardResponse', {StockData, NewsData})
 
 
 @APP.route('/', defaults={"filename": "index.html"})
