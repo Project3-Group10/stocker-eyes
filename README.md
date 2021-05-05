@@ -83,6 +83,9 @@
 [![Product Name Screen Shot][product-screenshot]](https://stocker-eyes-polish.herokuapp.com/)
 
 
+You’ll be able to keep track of your stocks anytime, anywhere. With stock price notifications, favorite lists, and the latest headlines, you’ll be able to keep up with the fast moving world of stock trading.
+
+
 
 ### Built With
 
