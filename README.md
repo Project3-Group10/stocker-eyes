@@ -40,8 +40,6 @@
   <p align="center">
 You’ll be able to keep track of your stocks anytime, anywhere. With stock price notifications, favorite lists, and the latest headlines, you’ll be able to keep up with the fast moving world of stock trading.
     <br />
-    <a href="https://github.com/Project3-Group10/stocker-eyes"><strong>Explore the docs »</strong></a>
-    <br />
     <br />
     <a href="https://stocker-eyes-polish.herokuapp.com/">View Demo</a>
     ·
