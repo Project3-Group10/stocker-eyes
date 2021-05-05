@@ -168,7 +168,16 @@ def sendFavlistData(userName, userEmail):
 @SOCKETIO.on('deleteStockFavList')
 def deleteStock(data):
     print("DELETE STOCK FROM FAV LIST")
-    print(data)
+    user1 = models.UserG.query.filter_by(name=data['name'], email=data['email']).first()
+    stockDelete = user1.favaritestock.query.filter_by(name=data['tickerName'], email=data['email']).first()
+    print(stockDelete)
+    #try:
+     #   DB.session.delete(stockDelete)
+      #  DB.session.commit()
+       # DB.session.close()
+    #except:
+     #   print('ERROR DELETING THE STOCK')
+    #print(data)
 
 @SOCKETIO.on('connect')
 def on_connect():
@@ -315,9 +324,6 @@ def token_validation(data):
 
 @SOCKETIO.on('logged_in')
 def login(data):
-    # print(data)
-    # print(data['Qs'])
-    # print(data['Qs']['oT'])
     data_dictionary = {
         'name': data['Qs']['oT'],  # + data['Qs']['kR'],
         'imageUri': data['Qs']['EI'],
