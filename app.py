@@ -4,7 +4,8 @@ from flask import Flask, send_from_directory, json, redirect, request, url_for, 
 from flask_socketio import SocketIO
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
-from functions import searchStock, fetchAPI, fetchNews, send_email_SSL, send_email_starttls
+import functions
+from functions import searchStock, fetchNews, send_email_SSL, send_email_starttls, myStockInfo, myStockNewsInfo
 from dotenv import load_dotenv, find_dotenv
 from datetime import timedelta
 from google.oauth2 import id_token
@@ -13,6 +14,7 @@ import models
 from datetime import datetime, date
 from pytz import timezone
 from flask_caching import Cache
+import requests_cache
 
 cache = Cache()
 
@@ -153,7 +155,15 @@ def getCloseLowStockDic(stocksDic):
     
 #getCloseLowStockDic({1: ['OVV', '04-18-2021', '4.2', '6.8', '3.5', '5', '3.1', '5000'],2: ['OVV', '04-17-2021', '4.2', '6.8', '3.5', '4.1', '3.1', '5000'],3: ['OVV', '04-16-2021', '4.2', '6.8', '3.5', '5.6', '3.1', '5000'],4: ['OVV', '04-15-2021', '4.2', '6.8', '3.5', '6.8', '3.1', '5000'],5: ['OVV', '04-14-2021', '4.2', '6.8', '3.5', '5.3', '3.1', '5000']})    
 
-
+def sendFavlistData(userName, userEmail):
+    user1 = models.UserG.query.filter_by(name=userName, email=userEmail).first()
+    favList = []
+    for stockF in user1.favaritestock:
+        favList.append(stockF.name)
+    #print(favList)
+    DB.session.close()
+    myStockChartData = myStockInfo(favList[0], favList[1], favList[2])
+    return { 'favList': favList, 'myStockChartData': myStockChartData}
 
 @SOCKETIO.on('connect')
 def on_connect():
@@ -236,8 +246,14 @@ def token_validation(data):
         x = models.UserG.query.filter_by(name=idinfo['name'], email=idinfo['email']).first()
         if x is None:
             addNewUserDB(idinfo)
+            SOCKETIO.emit('firstTimeUser', {'firstTimeUser': True})
         else:
-            print(x)
+            #print(x)
+            #SOCKETIO.emit('firstTimeUser', {'firstTimeUser': True})
+            print('emittign the favlist data to the react')
+            SOCKETIO.emit('sendFavlistData', sendFavlistData(idinfo['name'], idinfo['email']))
+
+
         #send_email_SSL()
         textEmailUserLogin = """\
         Hi,
@@ -255,7 +271,7 @@ def token_validation(data):
           </body>
         </html>
         """
-        send_email_starttls("oo89@njit.edu",  textEmailUserLogin, html)
+        send_email_starttls(idinfo['email'],  textEmailUserLogin, html)
        #this is giving me a dic with all the stock on DB 
         stocksDic = getStocksDB()
         #This will return a sorted dic with all stocks 
@@ -322,8 +338,17 @@ def homeManage():
 @SOCKETIO.on('searchRequest')
 def searchManage(sQuery):
     print('Search Requested')
-    SOCKETIO.emit('searchResponse', {'searchStock':fetchStockInfo()['wmtData'],'searchNews':fetchNews(sQuery)});
+    SOCKETIO.emit('searchResponse', {'searchStock':searchStock(sQuery),'searchNews':fetchNews(sQuery)});
 
+@SOCKETIO.on('DashBoardEmit')
+def DashboardManage(data):
+    StockData = sendFavlistData(data['name'], data['email'])
+    user1 = models.UserG.query.filter_by(name=data['name'], email=data['email']).first()
+    favList = []
+    for stockF in user1.favaritestock:
+        favList.append(stockF.name)
+    NewsData = myStockNewsInfo(favList[0], favList[1], favList[2])
+    SOCKETIO.emit('dashboardResponse', {'stockData': StockData, 'newsData': NewsData})
 
 
 @APP.route('/', defaults={"filename": "index.html"})
@@ -336,15 +361,10 @@ def index(filename):
 
 def fetchStockInfo():
     #this is the response
-    # teslaData = searchStock('WMT')
-    # ovvData = searchStock('OVV')
-    # amznData = searchStock('AAPL')
-    # print(teslaData,'\n\n')
-    # print(ovvData,'\n\n')
-    # print(amznData,'\n\n')
-    f = open("stock.txt", "r", encoding="utf-8")
-
-    return json.loads(f.read())
+    teslaData = searchStock('TSLA')
+    ovvData = searchStock('OVV')
+    amznData = searchStock('AAPL')
+    return {'wmtData':teslaData,'ovvData':ovvData,'applData':amznData}
     
 def fetchNewsInfo():
     # tslaData = fetchNews('WMT')
@@ -356,8 +376,6 @@ def fetchNewsInfo():
     # return {'wmtData':tslaData,'ovvData':ovvData,'applData':amznData}
 
 if __name__ == "__main__":
-    import functions
-    from functions import searchStock, fetchAPI
     returnedData = fetchStockInfo()
     returnedNews = fetchNewsInfo()
 

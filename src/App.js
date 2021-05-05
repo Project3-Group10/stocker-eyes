@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import socket from './Components/utils/socket';
 import './App.css';
 import Home from "./Components/Home";
@@ -16,6 +16,37 @@ import {
 } from "react-router-dom";
 
 function App() {
+  const [favStock, setFavStock] = useState(
+    {master:{
+      ticker1: "",
+      ticker1: "",
+      ticker3: "" 
+      }
+  });
+
+  useEffect(() => {
+    
+    socket.on('sendFavlistData', (data) => {
+      console.log('useEffect maa aaivu App.js')
+      console.log(data);
+        setFavStock({...favStock,  master: {
+            ticker1: data['favList'][0],
+            ticker2: data['favList'][1],
+            ticker3: data['favList'][2]
+            },
+       })
+       
+       sessionStorage.setItem('myStockName1', data['favList'][0]);
+       sessionStorage.setItem('myStockName2', data['favList'][1]);
+       sessionStorage.setItem('myStockName3', data['favList'][2]);
+
+       sessionStorage.setItem('myStockData1', JSON.stringify(data['myStockChartData'][0]));
+       sessionStorage.setItem('myStockData2', JSON.stringify(data['myStockChartData'][1]));
+       sessionStorage.setItem('myStockData3', JSON.stringify(data['myStockChartData'][2]));
+    });
+
+
+}, []);
 
   const pageHolder = () => {
     window.location.reload(false);
@@ -49,7 +80,7 @@ function App() {
                       <Search />
                   </Route>
                   <Route path="/myStock">
-                      <Dashboard />
+                      <Dashboard favStock={favStock}/>
                   </Route>
               </Switch>
           </div>

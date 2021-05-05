@@ -38,7 +38,6 @@ const Home = (props) => {
                 ele.target.style.left = null;
             }
         }
-
     }
     
 
@@ -49,22 +48,16 @@ const Home = (props) => {
                     <h1 className="stockTitle">WMT</h1>
                     <Stock ticker={"wmt"} rq={"Home"}/>
                     <News ticker={"wmt"} rq={"Home"}/>
-
                 </div>
                 <div id="home2" className={`stockArea sp ${expandMain.sp? '' : 'hide'}`} onClick={expandStock} >
                     <h1 className="stockTitle">OVV</h1>
                     <Stock ticker={"ovv"} rq={"Home"}/>
                     <News ticker={"ovv"} rq={"Home"}/>
-
-
-
                 </div>
                 <div id="home3" className={`stockArea nasdaq ${expandMain.nasdaq? '' : 'hide'}`} onClick={expandStock} >
                     <h1 className="stockTitle">APPL</h1>
                     <Stock ticker={"appl"} rq={"Home"}/>
                     <News ticker={"appl"} rq={"Home"}/>
-
-
                 </div>
             </div>
         </div>

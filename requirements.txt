@@ -13,3 +13,4 @@ pylint-flask-sqlalchemy
 pylint-plugin-utils
 pylint-plugin-utils
 Flask-Caching
+requests-cache

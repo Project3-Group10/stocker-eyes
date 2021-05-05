@@ -15,8 +15,12 @@ const Search = () => {
         //console.log('Button Clicked')
         setFavList(sessionStorage.getItem('TickerName'));
         var data = {'userName': sessionStorage.getItem('name'), 'userEmail':sessionStorage.getItem('email'), 'tickerName': sessionStorage.getItem('TickerName')}
-        socket.emit('my_f_list', data);
-        
+        if(sessionStorage.getItem('isLoggedIn') != 'true'){
+            alert("You are not logged in. Please sign in to use this feature");
+        }
+        else{
+            socket.emit('my_f_list', data);
+        }
     }
 
     return(
@@ -35,3 +39,4 @@ const Search = () => {
 }
 
 export default Search;
+

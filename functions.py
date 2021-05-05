@@ -4,6 +4,7 @@ import requests
 import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+import requests_cache
 
 
 load_dotenv(find_dotenv())
@@ -12,21 +13,58 @@ NEWS_API = os.getenv('GET_NEWS_KEY')
 EMAIL_PASSWORD = os.getenv('EMAIL_ACCOUNT_PASSWORD')
 SMTP_SERVER = os.getenv('SMTP_SERVER')
 
-def fetchAPI():
-    SYMBOL = 'OVV'
-    URL = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=' + SYMBOL + '&outputsize&apikey=' + ALPHA_API_KEY
-    r = requests.get(URL)
-    r = r.json()
-    return r
+def myStockInfo(StockSymbol_1, StockSymbol_2, StockSymbol_3): 
+    URL_1 = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=' + StockSymbol_1 + '&apikey=' + ALPHA_API_KEY
+    URL_2 = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=' + StockSymbol_2 + '&apikey=' + ALPHA_API_KEY
+    URL_3 = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=' + StockSymbol_3 + '&apikey=' + ALPHA_API_KEY
+    
+    requests_cache.install_cache('myStock1', expire_after=86400)
+    response_1 = requests.get(URL_1)
+
+    requests_cache.install_cache('myStock2', expire_after=86400)
+    response_2 = requests.get(URL_2)
+
+    requests_cache.install_cache('myStock3', expire_after=86400)
+    response_3 = requests.get(URL_3)
+    
+    response_1 = response_1.json()
+    response_2 = response_2.json()
+    response_3 = response_3.json()
+
+    return [response_1, response_2, response_3]
+	
+def myStockNewsInfo (StockSymbol_1, StockSymbol_2, StockSymbol_3):
+    URL_1 = 'https://newsapi.org/v2/everything?q=' + StockSymbol_1 + '&apiKey=' + NEWS_API
+    URL_2 = 'https://newsapi.org/v2/everything?q=' + StockSymbol_2 + '&apiKey=' + NEWS_API
+    URL_3 = 'https://newsapi.org/v2/everything?q=' + StockSymbol_3 + '&apiKey=' + NEWS_API
+    
+    requests_cache.install_cache('myStockNews1', expire_after=86400)
+    response_1 = requests.get(URL_1)
+    
+    requests_cache.install_cache('myStockNews2', expire_after=86400)
+    response_2 = requests.get(URL_2)
+
+    requests_cache.install_cache('myStockNews3', expire_after=86400)
+    response_3 = requests.get(URL_3)
+    
+    response_1 = response_1.json()
+    response_2 = response_2.json()
+    response_3 = response_3.json()
+
+    return {StockSymbol_1: response_1, StockSymbol_2: response_2, StockSymbol_3: response_3}
 
 def searchStock(symbol):
-    URL = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=' + symbol + '&outputsize&apikey=' + ALPHA_API_KEY
-    r = requests.get(URL)
-    r = r.json()
-    return r
+    URL = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=' + symbol + '&apikey=' + ALPHA_API_KEY
+    cacheName = "{}StockDataFromSearch".format(symbol)
+    requests_cache.install_cache(cacheName, expire_after=86400)
+    response = requests.get(URL)
+    response = response.json()
+    return response
     
 def fetchNews(symbol):
     URL = 'https://newsapi.org/v2/everything?q=' + symbol + '&apiKey=' + NEWS_API
+    cacheName = "{}NewsData".format(symbol)
+    requests_cache.install_cache(cacheName, expire_after=86400)
     r = requests.get(URL)
     r = r.json()
     return r

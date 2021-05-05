@@ -6,16 +6,22 @@ import { refreshTokenSetup } from "./utils/refreshToken";
 
 export const Stock = (props) => {
   console.log('Stock');
+
   useEffect(() => {
     socket.on('homeResponse', (groupData) => {
       sessionStorage.setItem('homeStocks', JSON.stringify(groupData['homeStock']));
       sessionStorage.setItem('homeNews', JSON.stringify(groupData['homeNews']));
+      
       if (props.rq == 'Home') {
         const homeStocks = JSON.parse(JSON.stringify(groupData['homeStock']));
         const homeNews = JSON.parse(JSON.stringify(groupData['homeNews']));
 
         if (props.ticker === "wmt") {
+<<<<<<< HEAD
           displayGraph(homeStocks['wmtData'], homeNews['wmtData']);
+=======
+          displayGraph(homeStocks.wmtData);
+>>>>>>> 9ab91450998298a5fcfd7f21cfa41ed5cd009d15
         }
 
         else if (props.ticker === "ovv") {
@@ -28,25 +34,31 @@ export const Stock = (props) => {
       }
     });
 
+    socket.on('dashboardResponse', (groupData) => {
+      console.log('dashboardReponse socket is on');
+      console.log(groupData);
+      if (props.rq == 'Dashboard') {
+        if (props.ticker === sessionStorage.getItem('myStockName1')) {
+          displayGraph(groupData['stockData']['myStockChartData'][0]);
+        }
+        else if (props.ticker === sessionStorage.getItem('myStockName2')) {
+          displayGraph(groupData['stockData']['myStockChartData'][1]);
+        }
+        else if (props.ticker === sessionStorage.getItem('myStockName3')) {
+          displayGraph(groupData['stockData']['myStockChartData'][2]);
+        }
+      }
+    });
+
     socket.on('searchResponse', (groupData) => {
       sessionStorage.setItem('searchStocks', JSON.stringify(groupData['searchStock']));
       sessionStorage.setItem('searchNews', JSON.stringify(groupData['searchNews']));
-      
-      
       if (props.rq == 'Search') {
         displayGraph(JSON.parse(JSON.stringify(groupData['searchStock'])),JSON.parse(JSON.stringify(groupData['searchNews'])));
       }
     });
   }, []);
 
-  Object.size = function(obj) {
-    var size = 0,
-      key;
-    for (key in obj) {
-      if (obj.hasOwnProperty(key)) size++;
-    }
-    return size;
-  };
 
   function displayGraph(data, nData) {
 
