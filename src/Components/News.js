@@ -41,7 +41,6 @@ const News = (props) => {
             }
        
       });
-
     }, []);
 
 
@@ -56,22 +55,22 @@ const News = (props) => {
                     homeNews == null?'':homeNews.map((url)=>
                     
                     <a href={url["url"]}>
-                    <div class="article-card">
-                      <div class="article-card__thumbnail">
+                    <div className="article-card">
+                      <div className="article-card__thumbnail">
                         <img src={url["urlToImage"]} alt="" />
                       </div>
                       
-                      <div class="article-card__content">
-                        <h2 class="article-card__title">{url["title"]}</h2>
+                      <div className="article-card__content">
+                        <h2 className="article-card__title">{url["title"]}</h2>
                         
-                        <div class="article-card__excerpt">
+                        <div className="article-card__excerpt">
                           <p>
                           {url["description"]} 
                           </p>
                         </div>
                         
-                        <div class="article-card__meta">
-                            <span class="article-card__timestamp"><i class="ion-clock"></i>{url["publishedAt"].slice(5,10)}</span>
+                        <div className="article-card__meta">
+                            <span className="article-card__timestamp"><i className="ion-clock"></i>{url["publishedAt"].slice(5,10)}</span>
                         </div>
                       </div>
                     </div>
@@ -95,22 +94,22 @@ const News = (props) => {
                     
                     searchNews == null?'Empty':searchNews.map((url)=>
                     <a href={url["url"]}>
-                    <div class="article-card">
-                      <div class="article-card__thumbnail">
+                    <div className="article-card">
+                      <div className="article-card__thumbnail">
                         <img src={url["urlToImage"]} alt="" />
                       </div>
                       
-                      <div class="article-card__content">
-                        <h2 class="article-card__title">{url["title"]}</h2>
+                      <div className="article-card__content">
+                        <h2 className="article-card__title">{url["title"]}</h2>
                         
-                        <div class="article-card__excerpt">
+                        <div className="article-card__excerpt">
                           <p>
                           {url["description"]} 
                           </p>
                         </div>
                         
-                        <div class="article-card__meta">
-                            <span class="article-card__timestamp"><i class="ion-clock"></i>{url["publishedAt"].slice(5,10)}</span>
+                        <div className="article-card__meta">
+                            <span className="article-card__timestamp"><i className="ion-clock"></i>{url["publishedAt"].slice(5,10)}</span>
                         </div>
                       </div>
                     </div>

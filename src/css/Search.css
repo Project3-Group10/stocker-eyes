@@ -8,15 +8,14 @@
     overflow: hidden;
   }
   
+.search {
+	background-color: #003049;
+    height: 1.5em;
+}
+  
+  
  .search-bar {
 	font-size: calc(16px + (24 - 16) * (100vw - 320px) / (1920 - 320));
-}
-
-.favListButton{
-	font-size: calc(16px + (24 - 16) * (100vw - 320px) / (1920 - 320));
-	background-color: blue;
-	color: white;
-	height: 31px;
 }
 
 button,
@@ -163,4 +162,52 @@ input {
 	.search-btn {
 		background: #f1f1f1;
 	}
+}
+
+.plus {
+    width: 80px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    height: 80px;
+    background: #003049;
+    border-radius: 50%;
+    display: flex;
+    position: relative;
+}
+.plus__line {
+	width: 4px;
+    height: 30px;
+    background: white;
+    border-radius: 10px;
+    position: absolute;
+    left: calc(50% - 2px);
+    top: calc(50% - 15px);
+}
+.plus__line--h {
+  transform: rotate(90deg);
+}
+.plus__line--v {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  overflow: hidden;
+  transition: all 0.4s ease 0s;
+}
+
+.plus--active .plus__line--v {
+  height: 68px;
+  top: calc(-100% - 60px);
+  padding: 0 5px;
+  box-sizing: border-box;
+  width: 220px;
+  border-radius: 60px;
+  left: calc(50% - 110px);
+}
+
+.centered {
+  display: flex;
+  width: 10%;
+  height: 30%;
+  align-items: center;
+  justify-content: center;
 }

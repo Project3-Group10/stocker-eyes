@@ -34,15 +34,17 @@ export const Profile = (props) => {
     return(
         <div className="pageHolder">
           { isLoggedIn ?
-          <div>
-          <img src={imageUri} alt="new"/>
-          <h1> Name: {name} </h1>
-          <h2> Email Address: {emailAddress} </h2>
-              <Logout />
+          <div className="profileCard">
+            <div className="profilePicture-container">
+              <img className="profilePicture" src={imageUri} alt="new"/>
+            </div>
+            <h1 className="username" > {name} </h1>
+            <h2 className="user-email" > <p className="usertitle">Email Address:</p> <p className="useremail">{emailAddress}</p> </h2>
+            <Logout />
           </div>
             : <div><h1> You are not logged in </h1></div>
         }
-          </div>
+        </div>
     );
   }
 
