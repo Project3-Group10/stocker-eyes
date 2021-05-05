@@ -80,11 +80,8 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Sho][product-screenshot]](https://stocker-eyes-polish.herokuapp.com/)
+[![Product Name Screen Shot][product-screenshot]](https://stocker-eyes-polish.herokuapp.com/)
 
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`Project3-Group10`, `stocker-eyes`, ``, ``, `stocker-eyes`, `project_description`
 
 
 ### Built With
