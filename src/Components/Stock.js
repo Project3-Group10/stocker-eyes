@@ -35,6 +35,7 @@ export const Stock = (props) => {
       console.log(groupData);
       if (props.rq == 'Dashboard') {
         if (props.ticker === sessionStorage.getItem('myStockName1')) {
+          console.log('dashboard', groupData['newsData'][props.ticker]['articles']);
           displayGraph(groupData['stockData']['myStockChartData'][0],groupData['newsData'][props.ticker]['articles']);
         }
         else if (props.ticker === sessionStorage.getItem('myStockName2')) {

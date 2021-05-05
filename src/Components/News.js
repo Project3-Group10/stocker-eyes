@@ -28,8 +28,8 @@ const News = (props) => {
         });
 
         socket.on('dashboardResponse', (groupData) => {
-          console.log(props.name)
-          
+
+            console.log('dashGroup', props.ticker, groupData);
 
             if (props.ticker === sessionStorage.getItem('myStockName1')) {
               const replace = JSON.parse(JSON.stringify(groupData['newsData']))[props.ticker]['articles'];

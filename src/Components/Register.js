@@ -9,7 +9,7 @@ import "../css/Register.css"
 if (process.env.NODE_ENV !== 'test') Modal.setAppElement('#root');
 
 const Register = () => {
-    const [modalShow, setModalShow] = useState(false);
+    const [modalShow, setModalShow] = useState(true);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     // const [favStock, setFavStock] = useState(
     //   {master:{
@@ -70,6 +70,7 @@ const Register = () => {
             socket.emit('my_f_list', data2);
             socket.emit('my_f_list', data3);
         }
+        setModalShow(false);
     }
 
     return (
@@ -84,7 +85,7 @@ const Register = () => {
         {(isLoggedIn&&firstTimeUser)? 
                 <div className='LogIn'> 
                     <center>
-                    <Modal className='modalLogIn' isOpen={isLoggedIn} style={style} > 
+                    <Modal className='modalLogIn' isOpen={modalShow} style={style} > 
                     <center>
                         <h2> Please Add three of your favorite stocks with its ticker name </h2>
                             <div class="container">
