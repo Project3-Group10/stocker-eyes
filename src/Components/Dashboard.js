@@ -5,12 +5,13 @@ import "../css/Dashboard.css";
 import "../css/Home.css";
 import Stock from "./Stock";
 import News from "./News";
+import FavoriteList from "./utils/FavoriteList";
 
 const Dashboard = (props) => {
     const [expandMain, setexpandMain] = useState({ dow: 1, sp: 1, nasdaq: 1 });
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [dashboardData, setDashboardData] = useState(false);
-
+    const [showModal, setModalShow] = useState(false);
 
 
     function expandStock(ele) {
@@ -44,14 +45,16 @@ const Dashboard = (props) => {
     }, []);
 
 
-
-
     return(
     <div>
         { isLoggedIn?
         <div className="home">
                 <div className="mainContainer">
-
+                    <div className="">
+                        <center>
+                            <FavoriteList />
+                        </center>
+                    </div>
                     <div className={`stockArea dow ${expandMain.dow? '' : 'hide'}`} onClick={expandStock} >
                         <h1 className="stockTitle">{props.favStock['master']['ticker1']}</h1>
                     

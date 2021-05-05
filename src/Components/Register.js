@@ -11,13 +11,7 @@ if (process.env.NODE_ENV !== 'test') Modal.setAppElement('#root');
 const Register = () => {
     const [modalShow, setModalShow] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    // const [favStock, setFavStock] = useState(
-    //   {master:{
-    //     ticker1: "",
-    //     ticker1: "",
-    //     ticker3: "" 
-    //     }
-    // });
+
     const stockTicker1 = useRef(null);
     const stockTicker2 = useRef(null);
     const stockTicker3 = useRef(null);
@@ -29,6 +23,14 @@ const Register = () => {
             setFirstTimeUser(data['firstTimeUser']);
         });
     }, []);
+
+    useEffect(() => {
+        if(isLoggedIn){
+            setModalShow(true);
+        } else {
+            setModalShow(false);
+        }
+    }, [isLoggedIn]);
 
     const style = {
         overlay: {
@@ -50,13 +52,6 @@ const Register = () => {
             var temp1 = stockTicker1.current.value;
             var temp2 = stockTicker2.current.value;
             var temp3 = stockTicker3.current.value;
-
-        //     setFavStock({...favStock,  master: {
-        //         ticker1: temp1,
-        //         ticker2: temp2,
-        //         ticker3: temp3
-        //         },
-        //    })
         }
 
         var data1 = {'userName': sessionStorage.getItem('name'), 'userEmail':sessionStorage.getItem('email'), 'tickerName': temp1}
@@ -70,6 +65,8 @@ const Register = () => {
             socket.emit('my_f_list', data2);
             socket.emit('my_f_list', data3);
         }
+
+        setModalShow(false);
     }
 
     return (
@@ -84,7 +81,7 @@ const Register = () => {
         {(isLoggedIn&&firstTimeUser)? 
                 <div className='LogIn'> 
                     <center>
-                    <Modal className='modalLogIn' isOpen={isLoggedIn} style={style} > 
+                    <Modal className='modalLogIn' isOpen={modalShow} style={style} > 
                     <center>
                         <h2> Please Add three of your favorite stocks with its ticker name </h2>
                             <div class="container">

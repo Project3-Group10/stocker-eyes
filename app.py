@@ -165,6 +165,11 @@ def sendFavlistData(userName, userEmail):
     myStockChartData = myStockInfo(favList[0], favList[1], favList[2])
     return { 'favList': favList, 'myStockChartData': myStockChartData}
 
+@SOCKETIO.on('deleteStockFavList')
+def deleteStock(data):
+    print("DELETE STOCK FROM FAV LIST")
+    print(data)
+
 @SOCKETIO.on('connect')
 def on_connect():
     print('User connected!')
@@ -230,6 +235,8 @@ def hello_world():
 def isLoggedIn(data):    
     print("HELLO PLESE CHECK THIS")
     print(data)
+
+
 
 @SOCKETIO.on('Login')
 def token_validation(data):

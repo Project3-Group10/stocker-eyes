@@ -1,0 +1,26 @@
+.ReactModal__Overlay ReactModal__Overlay--after-open{
+    height: 600px;
+    width: 600px;
+    position: fixed;
+    top: 50%; 
+    left: 50%;
+    margin-top: -300px;
+    margin-left: -270px;
+    background-color: white;
+    border-radius: 5px;
+    tex-align:center;
+}
+
+table {
+    font-family: 'Lucida Handwriting', cursive;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    padding: 8px;
+  }

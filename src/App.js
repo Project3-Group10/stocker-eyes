@@ -35,11 +35,11 @@ function App() {
             ticker3: data['favList'][2]
             },
        })
-       
+       sessionStorage.setItem('favList', 'true');
        sessionStorage.setItem('myStockName1', data['favList'][0]);
        sessionStorage.setItem('myStockName2', data['favList'][1]);
        sessionStorage.setItem('myStockName3', data['favList'][2]);
-
+       sessionStorage.setItem('favList', JSON.stringify(data['favList']));
        sessionStorage.setItem('myStockData1', JSON.stringify(data['myStockChartData'][0]));
        sessionStorage.setItem('myStockData2', JSON.stringify(data['myStockChartData'][1]));
        sessionStorage.setItem('myStockData3', JSON.stringify(data['myStockChartData'][2]));
