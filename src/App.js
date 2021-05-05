@@ -50,6 +50,7 @@ function App() {
 }, []);
 
   const pageHolder = () => {
+    console.log('Refreshed');
     window.location.reload(false);
   }; 
 
@@ -58,7 +59,7 @@ function App() {
           <div>
               <nav className="navigation">
                 <SearchBox />
-                <div className="menuItem" onClick={()=>{pageHolder()}}> <Link to="/home"> <p>Home </p></Link> </div>
+                <div className="menuItem" > <Link to="/home"> <p>Home </p></Link> </div>
                 <div className="menuItem"> <Link to="/register"><p>Register</p></Link> </div>
                 <div className="menuItem"> <Link to="/myStock"><p>My Stock</p></Link></div>
                 <div className="menuItem"> <Link to="/profile"><p>Profile</p></Link> </div>
