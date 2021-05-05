@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import socket from './Components/utils/socket';
 import './App.css';
+import Landing from "./Components/Landing";
 import Home from "./Components/Home";
 import Register from "./Components/Register";
 import Profile from "./Components/Profile";
@@ -19,7 +20,7 @@ function App() {
   const [favStock, setFavStock] = useState(
     {master:{
       ticker1: "",
-      ticker1: "",
+      ticker2: "",
       ticker3: "" 
       }
   });
@@ -57,7 +58,7 @@ function App() {
           <div>
               <nav className="navigation">
                 <SearchBox />
-                <div className="menuItem" onClick={()=>{pageHolder()}}> <Link to="/"> <p>Home </p></Link> </div>
+                <div className="menuItem" onClick={()=>{pageHolder()}}> <Link to="/home"> <p>Home </p></Link> </div>
                 <div className="menuItem"> <Link to="/register"><p>Register</p></Link> </div>
                 <div className="menuItem"> <Link to="/myStock"><p>My Stock</p></Link></div>
                 <div className="menuItem"> <Link to="/profile"><p>Profile</p></Link> </div>
@@ -68,6 +69,9 @@ function App() {
               <Switch>
                   <Route exact path="/"
                          refresh="true">
+                      <Landing />
+                  </Route>
+                  <Route path="/home">
                       <Home />
                   </Route>
                   <Route path="/register">
