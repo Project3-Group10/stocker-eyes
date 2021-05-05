@@ -3,7 +3,6 @@ import socket from './Components/utils/socket';
 import './App.css';
 import Landing from "./Components/Landing";
 import Home from "./Components/Home";
-import Landing from "./Components/Landing";
 import Register from "./Components/Register";
 import Profile from "./Components/Profile";
 import SearchBox from "./Components/utils/SearchBox";
