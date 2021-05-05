@@ -17,11 +17,7 @@ export const Stock = (props) => {
         const homeNews = JSON.parse(JSON.stringify(groupData['homeNews']));
 
         if (props.ticker === "wmt") {
-<<<<<<< HEAD
           displayGraph(homeStocks['wmtData'], homeNews['wmtData']);
-=======
-          displayGraph(homeStocks.wmtData);
->>>>>>> 9ab91450998298a5fcfd7f21cfa41ed5cd009d15
         }
 
         else if (props.ticker === "ovv") {
