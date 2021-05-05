@@ -8,7 +8,6 @@ function Logout(props) {
     const onSuccess = () => {
         sessionStorage.clear();
         alert('Successfully logged out');
-        window.location.reload(false);
         props.setIsLoggedIn(false);
     };
 
