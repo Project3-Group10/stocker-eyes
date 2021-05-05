@@ -8,6 +8,12 @@
     overflow: hidden;
   }
   
+.search {
+	background-color: #003049;
+    height: 1.5em;
+}
+  
+  
  .search-bar {
 	font-size: calc(16px + (24 - 16) * (100vw - 320px) / (1920 - 320));
 }

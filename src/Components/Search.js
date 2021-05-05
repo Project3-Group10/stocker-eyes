@@ -25,7 +25,7 @@ const Search = () => {
 
     return(
         <div className="pageHolder">
-            <h1 className="stockTitle">{sessionStorage.getItem('TickerName')}</h1>
+            <h1 className="search stockTitle">{sessionStorage.getItem('TickerName')}</h1>
             <Stock ticker={sessionStorage.getItem('TickerName')} rq="Search"/>
             <div class="favListButton centered" onClick={()=>{favListBtn()}}>
               <div class="plus" id="plus">
