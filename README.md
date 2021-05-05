@@ -43,7 +43,7 @@
     <a href="https://github.com/Project3-Group10/stocker-eyes"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/Project3-Group10/stocker-eyes">View Demo</a>
+    <a href="https://stocker-eyes-polish.herokuapp.com/">View Demo</a>
     ·
     <a href="https://github.com/Project3-Group10/stocker-eyes/issues">Report Bug</a>
     ·
