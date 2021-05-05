@@ -35,13 +35,13 @@ export const Stock = (props) => {
       console.log(groupData);
       if (props.rq == 'Dashboard') {
         if (props.ticker === sessionStorage.getItem('myStockName1')) {
-          displayGraph(groupData['stockData']['myStockChartData'][0]);
+          displayGraph(groupData['stockData']['myStockChartData'][0],groupData['newsData'][props.ticker]['articles']);
         }
         else if (props.ticker === sessionStorage.getItem('myStockName2')) {
-          displayGraph(groupData['stockData']['myStockChartData'][1]);
+          displayGraph(groupData['stockData']['myStockChartData'][1],groupData['newsData'][props.ticker]['articles']);
         }
         else if (props.ticker === sessionStorage.getItem('myStockName3')) {
-          displayGraph(groupData['stockData']['myStockChartData'][2]);
+          displayGraph(groupData['stockData']['myStockChartData'][2],groupData['newsData'][props.ticker]['articles']);
         }
       }
     });

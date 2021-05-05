@@ -367,11 +367,10 @@ def fetchStockInfo():
     return {'wmtData':teslaData,'ovvData':ovvData,'applData':amznData}
     
 def fetchNewsInfo():
-    # tslaData = fetchNews('WMT')
-    # ovvData = fetchNews('OVV')
-    # amznData = fetchNews('AAPL')
-    f = open("news.txt","r", encoding="utf-8")
-    return json.loads(f.read())
+    tslaData = fetchNews('WMT')
+    ovvData = fetchNews('OVV')
+    amznData = fetchNews('AAPL')
+    return {'wmtData':tslaData,'ovvData':ovvData,'applData':amznData}
 
     # return {'wmtData':tslaData,'ovvData':ovvData,'applData':amznData}
 
