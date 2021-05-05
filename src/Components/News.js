@@ -12,9 +12,13 @@ const News = (props) => {
 
     useEffect(() => {
         socket.on('homeResponse', (groupData) => {
-            const replace = JSON.parse(JSON.stringify(groupData['homeNews']))[props.ticker + 'Data']['articles'];
+            console.log('homeResponse',props.ticker,groupData.homeNews);
+            const key = props.ticker+'Data';
+            if ( key in groupData.homeNews) {
+              const replace = groupData.homeNews[props.ticker + 'Data'].articles;
             
-            sethomeNews(replace);
+              sethomeNews(replace);
+            }
         });
         
         socket.on('searchResponse', (groupData) => {

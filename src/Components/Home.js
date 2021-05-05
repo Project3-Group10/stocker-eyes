@@ -14,11 +14,10 @@ const Home = (props) => {
     const [expandMain, setexpandMain] = useState({ dow: 1, sp: 1, nasdaq: 1 });
     const [homeData, setHomeData] = useState(false);
     
-    if (!homeData) {
+    useEffect(() => {
         console.log('homeEmit');
         socket.emit('homeRequest');
-        setHomeData(true);
-    }
+    }, []);
     
 
     function expandStock(ele) {
