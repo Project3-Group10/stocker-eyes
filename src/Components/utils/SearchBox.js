@@ -20,20 +20,20 @@ const SearchBox = () => {
 
     return(
         
-        <form action="" className="search-bar">
+        <div className="search-bar">
 	        <input 
 	            placeholder="Search..."
                 ref={inputRef}
                 className="inputSearchDiv"
                 type="search"
-                name="search"
+                name="searc"
                 required
                 autoComplete="off"/>
 	        <button className="search-btn" type="submit" onClick={()=>{onClick()}}>
 	    	    <span>Search</span>
 	        </button>
-        </form>
+        </div>
     );
-}
+};
 
 export default SearchBox;

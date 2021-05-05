@@ -28,14 +28,14 @@ function App() {
   useEffect(() => {
     
     socket.on('sendFavlistData', (data) => {
-      console.log('useEffect maa aaivu App.js')
+      console.log('useEffect maa aaivu App.js');
       console.log(data);
         setFavStock({...favStock,  master: {
             ticker1: data['favList'][0],
             ticker2: data['favList'][1],
             ticker3: data['favList'][2]
             },
-       })
+       });
        
        sessionStorage.setItem('myStockName1', data['favList'][0]);
        sessionStorage.setItem('myStockName2', data['favList'][1]);
@@ -49,17 +49,17 @@ function App() {
 
 }, []);
 
-  const pageHolder = () => {
-    console.log('Refreshed');
-    window.location.reload(false);
-  }; 
+  // const pageHolder = () => {
+  //   console.log('Refreshed');
+  //   window.location.reload(false);
+  // }; 
 
   return (
       <Router>
           <div>
               <nav className="navigation">
                 <SearchBox />
-                <div className="menuItem" > <Link to="/home"> <p>Home </p></Link> </div>
+                <div className="menuItem"> <Link to="/home"> <p>Home </p></Link> </div>
                 <div className="menuItem"> <Link to="/register"><p>Register</p></Link> </div>
                 <div className="menuItem"> <Link to="/myStock"><p>My Stock</p></Link></div>
                 <div className="menuItem"> <Link to="/profile"><p>Profile</p></Link> </div>
